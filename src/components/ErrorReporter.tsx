@@ -3,15 +3,15 @@
 import { useEffect, useRef } from "react";
 
 type ReporterProps = {
-  /*  ⎯⎯ props are only provided on the global-error page ⎯⎯ */
+  /* ⎯⎯ props are only provided on the global-error page ⎯⎯ */
   error?: Error & { digest?: string };
   reset?: () => void;
 };
 
-export default function ErrorReporter({ error, reset }: ReporterProps) {
+export default function ErrorReporter({ error }: ReporterProps) {
   /* ─ instrumentation shared by every route ─ */
-  const lastOverlayMsg = useRef("");
-  const pollRef = useRef<NodeJS.Timeout>();
+  const lastOverlayMsg = useRef<string>("");
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     const inIframe = window.parent !== window;
@@ -24,7 +24,7 @@ export default function ErrorReporter({ error, reset }: ReporterProps) {
         type: "ERROR_CAPTURED",
         error: {
           message: e.message,
-          stack: e.error?.stack,
+          stack: (e as any).error?.stack,
           filename: e.filename,
           lineno: e.lineno,
           colno: e.colno,
@@ -37,8 +37,8 @@ export default function ErrorReporter({ error, reset }: ReporterProps) {
       send({
         type: "ERROR_CAPTURED",
         error: {
-          message: e.reason?.message ?? String(e.reason),
-          stack: e.reason?.stack,
+          message: (e.reason?.message as string) ?? String(e.reason),
+          stack: e.reason?.stack as string | undefined,
           source: "unhandledrejection",
         },
         timestamp: Date.now(),
@@ -47,7 +47,7 @@ export default function ErrorReporter({ error, reset }: ReporterProps) {
     const pollOverlay = () => {
       const overlay = document.querySelector("[data-nextjs-dialog-overlay]");
       const node =
-        overlay?.querySelector(
+        overlay?.querySelector<HTMLElement>(
           "h1, h2, .error-message, [data-nextjs-dialog-body]"
         ) ?? null;
       const txt = node?.textContent ?? node?.innerHTML ?? "";
@@ -68,7 +68,10 @@ export default function ErrorReporter({ error, reset }: ReporterProps) {
     return () => {
       window.removeEventListener("error", onError);
       window.removeEventListener("unhandledrejection", onReject);
-      pollRef.current && clearInterval(pollRef.current);
+      if (pollRef.current) {
+        clearInterval(pollRef.current);
+        pollRef.current = null;
+      }
     };
   }, []);
 
