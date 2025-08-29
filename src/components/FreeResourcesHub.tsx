@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, type ReactElement } from "react";
 import {
   Card,
   CardContent,
@@ -255,9 +255,7 @@ export const FreeResourcesHub: React.FC = () => {
       const email = emailInputs[resourceId] ?? "";
       if (!EMAIL_REGEX.test(email)) return;
 
-      // TODO: send to backend API, e.g.:
-      // fetch('/api/resources/download', { method: 'POST', body: JSON.stringify({ resourceId, email }) })
-      // For now, just log:
+      // TODO: send to backend API
       console.log(`Downloading resource ${resourceId} with email: ${email}`);
     },
     [emailInputs]
@@ -276,7 +274,8 @@ export const FreeResourcesHub: React.FC = () => {
     }
   };
 
-  const getCategoryIcon = (category: Category): JSX.Element => {
+  // ✅ Fix: use ReactElement (or omit the return type entirely)
+  const getCategoryIcon = (category: Category): ReactElement => {
     switch (category) {
       case "AI Strategy Guides":
         return <BarChart3 className="w-4 h-4" />;
