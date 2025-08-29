@@ -1,34 +1,83 @@
 "use client";
 
-import React, { useState, useCallback } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { 
-  Download, 
-  Star, 
-  Clock, 
-  Users, 
-  Filter, 
-  Search, 
-  BookOpen, 
-  FileText, 
-  BarChart3, 
-  Shield, 
+import React, { useState, useCallback } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import {
+  Download,
+  Star,
+  Clock,
+  Users,
+  Filter,
+  Search,
+  BookOpen,
+  FileText,
+  BarChart3,
+  Shield,
   Award,
   Timer,
   ArrowRight,
   CheckCircle,
   Mail,
-  Sparkles
-} from 'lucide-react';
+  Sparkles,
+} from "lucide-react";
 
-const resources = [
+/* ----------------------------- Types & helpers ----------------------------- */
+
+type Difficulty = "Beginner" | "Intermediate" | "Advanced";
+type Category = "AI Strategy Guides" | "Technical Tutorials" | "Industry Reports";
+
+type Resource = {
+  id: number;
+  title: string;
+  description: string;
+  category: Category;
+  downloads: number;
+  rating: number;
+  reviewCount: number;
+  readTime: string;
+  difficulty: Difficulty;
+  tags: string[];
+  preview: string;
+  featured: boolean;
+  exclusive: boolean;
+  expertVerified: boolean;
+  fileType: string;
+  pages: number;
+};
+
+type Testimonial = {
+  name: string;
+  role: string;
+  content: string;
+  rating: number;
+  avatar: string;
+};
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const categories = ["All", "AI Strategy Guides", "Technical Tutorials", "Industry Reports"] as const;
+type CategoryFilter = (typeof categories)[number];
+
+const difficulties = ["All", "Beginner", "Intermediate", "Advanced"] as const;
+type DifficultyFilter = (typeof difficulties)[number];
+
+/* --------------------------------- Data ---------------------------------- */
+
+const resources: Resource[] = [
   {
     id: 1,
     title: "Complete AI Strategy Implementation Guide",
-    description: "A comprehensive 50-page guide covering AI adoption frameworks, ROI calculations, and implementation roadmaps for enterprise organizations.",
+    description:
+      "A comprehensive 50-page guide covering AI adoption frameworks, ROI calculations, and implementation roadmaps for enterprise organizations.",
     category: "AI Strategy Guides",
     downloads: 15420,
     rating: 4.9,
@@ -41,12 +90,13 @@ const resources = [
     exclusive: false,
     expertVerified: true,
     fileType: "PDF",
-    pages: 50
+    pages: 50,
   },
   {
     id: 2,
     title: "AI Prompt Engineering Masterclass",
-    description: "Learn advanced prompting techniques with 100+ examples, templates, and best practices for ChatGPT, Claude, and other LLMs.",
+    description:
+      "Learn advanced prompting techniques with 100+ examples, templates, and best practices for ChatGPT, Claude, and other LLMs.",
     category: "Technical Tutorials",
     downloads: 8940,
     rating: 4.8,
@@ -59,12 +109,13 @@ const resources = [
     exclusive: true,
     expertVerified: true,
     fileType: "PDF + Templates",
-    pages: 35
+    pages: 35,
   },
   {
     id: 3,
     title: "AI Industry Trends Report 2024",
-    description: "Exclusive research on AI adoption rates, investment patterns, and emerging technologies across 15 major industries.",
+    description:
+      "Exclusive research on AI adoption rates, investment patterns, and emerging technologies across 15 major industries.",
     category: "Industry Reports",
     downloads: 12680,
     rating: 4.7,
@@ -77,12 +128,13 @@ const resources = [
     exclusive: true,
     expertVerified: true,
     fileType: "PDF",
-    pages: 42
+    pages: 42,
   },
   {
     id: 4,
     title: "AI Project Checklist & Templates",
-    description: "Ready-to-use project management templates, checklists, and workflows specifically designed for AI implementation projects.",
+    description:
+      "Ready-to-use project management templates, checklists, and workflows specifically designed for AI implementation projects.",
     category: "AI Strategy Guides",
     downloads: 6780,
     rating: 4.9,
@@ -95,12 +147,13 @@ const resources = [
     exclusive: false,
     expertVerified: true,
     fileType: "PDF + Excel",
-    pages: 28
+    pages: 28,
   },
   {
     id: 5,
     title: "Machine Learning Model Deployment Guide",
-    description: "Step-by-step technical guide covering model deployment, monitoring, scaling, and maintenance in production environments.",
+    description:
+      "Step-by-step technical guide covering model deployment, monitoring, scaling, and maintenance in production environments.",
     category: "Technical Tutorials",
     downloads: 5420,
     rating: 4.6,
@@ -113,12 +166,13 @@ const resources = [
     exclusive: false,
     expertVerified: true,
     fileType: "PDF",
-    pages: 65
+    pages: 65,
   },
   {
     id: 6,
     title: "AI Ethics & Compliance Framework",
-    description: "Complete framework for implementing ethical AI practices, compliance guidelines, and risk assessment methodologies.",
+    description:
+      "Complete framework for implementing ethical AI practices, compliance guidelines, and risk assessment methodologies.",
     category: "Industry Reports",
     downloads: 4230,
     rating: 4.8,
@@ -131,81 +185,107 @@ const resources = [
     exclusive: true,
     expertVerified: true,
     fileType: "PDF",
-    pages: 38
-  }
+    pages: 38,
+  },
 ];
 
-const testimonials = [
+const testimonials: Testimonial[] = [
   {
     name: "Sarah Chen",
     role: "AI Director at TechCorp",
-    content: "The AI Strategy Guide saved us months of research. The frameworks are practical and immediately actionable.",
+    content:
+      "The AI Strategy Guide saved us months of research. The frameworks are practical and immediately actionable.",
     rating: 5,
-    avatar: "/api/placeholder/40/40"
+    avatar: "/api/placeholder/40/40",
   },
   {
     name: "Marcus Rodriguez",
     role: "CTO at DataFlow",
-    content: "These resources are gold. The technical tutorials are comprehensive yet easy to follow.",
+    content:
+      "These resources are gold. The technical tutorials are comprehensive yet easy to follow.",
     rating: 5,
-    avatar: "/api/placeholder/40/40"
+    avatar: "/api/placeholder/40/40",
   },
   {
     name: "Dr. Emily Watson",
     role: "Research Lead at AI Labs",
-    content: "Expert-level content that's actually useful. The industry reports provide insights you can't find elsewhere.",
+    content:
+      "Expert-level content that's actually useful. The industry reports provide insights you can't find elsewhere.",
     rating: 5,
-    avatar: "/api/placeholder/40/40"
-  }
+    avatar: "/api/placeholder/40/40",
+  },
 ];
 
-const categories = ["All", "AI Strategy Guides", "Technical Tutorials", "Industry Reports"];
-const difficulties = ["All", "Beginner", "Intermediate", "Advanced"];
+/* ------------------------------- Component -------------------------------- */
 
-export const FreeResourcesHub = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [selectedDifficulty, setSelectedDifficulty] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [emailInputs, setEmailInputs] = useState({});
+export const FreeResourcesHub: React.FC = () => {
+  const [selectedCategory, setSelectedCategory] =
+    useState<CategoryFilter>("All");
+  const [selectedDifficulty, setSelectedDifficulty] =
+    useState<DifficultyFilter>("All");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [emailInputs, setEmailInputs] = useState<Record<number, string>>({});
 
-  const filteredResources = resources.filter(resource => {
-    const matchesCategory = selectedCategory === "All" || resource.category === selectedCategory;
-    const matchesDifficulty = selectedDifficulty === "All" || resource.difficulty === selectedDifficulty;
-    const matchesSearch = resource.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         resource.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         resource.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-    
+  const filteredResources = resources.filter((resource) => {
+    const matchesCategory =
+      selectedCategory === "All" || resource.category === selectedCategory;
+    const matchesDifficulty =
+      selectedDifficulty === "All" || resource.difficulty === selectedDifficulty;
+    const q = searchQuery.toLowerCase();
+    const matchesSearch =
+      resource.title.toLowerCase().includes(q) ||
+      resource.description.toLowerCase().includes(q) ||
+      resource.tags.some((tag) => tag.toLowerCase().includes(q));
+
     return matchesCategory && matchesDifficulty && matchesSearch;
   });
 
-  const handleEmailChange = useCallback((resourceId, email) => {
-    setEmailInputs(prev => ({
-      ...prev,
-      [resourceId]: email
-    }));
-  }, []);
+  const handleEmailChange = useCallback(
+    (resourceId: number, email: string) => {
+      setEmailInputs((prev) => ({
+        ...prev,
+        [resourceId]: email,
+      }));
+    },
+    []
+  );
 
-  const handleDownload = useCallback((resourceId) => {
-    // Simulate download process
-    console.log(`Downloading resource ${resourceId} with email: ${emailInputs[resourceId]}`);
-    // Here you would typically send the email to your backend
-  }, [emailInputs]);
+  const handleDownload = useCallback(
+    (resourceId: number) => {
+      const email = emailInputs[resourceId] ?? "";
+      if (!EMAIL_REGEX.test(email)) return;
 
-  const getDifficultyColor = (difficulty) => {
+      // TODO: send to backend API, e.g.:
+      // fetch('/api/resources/download', { method: 'POST', body: JSON.stringify({ resourceId, email }) })
+      // For now, just log:
+      console.log(`Downloading resource ${resourceId} with email: ${email}`);
+    },
+    [emailInputs]
+  );
+
+  const getDifficultyColor = (difficulty: Difficulty): string => {
     switch (difficulty) {
-      case "Beginner": return "bg-green-500/20 text-green-400";
-      case "Intermediate": return "bg-yellow-500/20 text-yellow-400";
-      case "Advanced": return "bg-red-500/20 text-red-400";
-      default: return "bg-muted text-muted-foreground";
+      case "Beginner":
+        return "bg-green-500/20 text-green-400";
+      case "Intermediate":
+        return "bg-yellow-500/20 text-yellow-400";
+      case "Advanced":
+        return "bg-red-500/20 text-red-400";
+      default:
+        return "bg-muted text-muted-foreground";
     }
   };
 
-  const getCategoryIcon = (category) => {
+  const getCategoryIcon = (category: Category): JSX.Element => {
     switch (category) {
-      case "AI Strategy Guides": return <BarChart3 className="w-4 h-4" />;
-      case "Technical Tutorials": return <BookOpen className="w-4 h-4" />;
-      case "Industry Reports": return <FileText className="w-4 h-4" />;
-      default: return <FileText className="w-4 h-4" />;
+      case "AI Strategy Guides":
+        return <BarChart3 className="w-4 h-4" />;
+      case "Technical Tutorials":
+        return <BookOpen className="w-4 h-4" />;
+      case "Industry Reports":
+        return <FileText className="w-4 h-4" />;
+      default:
+        return <FileText className="w-4 h-4" />;
     }
   };
 
@@ -222,10 +302,10 @@ export const FreeResourcesHub = () => {
             Build Your AI Expertise
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Access our comprehensive library of AI guides, tutorials, and industry reports. 
-            Trusted by 50,000+ professionals worldwide.
+            Access our comprehensive library of AI guides, tutorials, and industry
+            reports. Trusted by 50,000+ professionals worldwide.
           </p>
-          
+
           {/* Social Proof */}
           <div className="flex flex-wrap justify-center gap-8 text-sm text-muted-foreground mb-12">
             <div className="flex items-center gap-2">
@@ -247,7 +327,7 @@ export const FreeResourcesHub = () => {
         <div className="mb-12">
           <div className="flex flex-col lg:flex-row gap-4 mb-8">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
                 placeholder="Search resources..."
                 value={searchQuery}
@@ -256,11 +336,7 @@ export const FreeResourcesHub = () => {
               />
             </div>
             <div className="flex gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                className="bg-card border-border"
-              >
+              <Button variant="outline" size="sm" className="bg-card border-border">
                 <Filter className="w-4 h-4 mr-2" />
                 Filter
               </Button>
@@ -277,7 +353,7 @@ export const FreeResourcesHub = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={selectedCategory === category ? "" : "bg-card border-border hover:bg-primary/10"}
               >
-                {category !== "All" && getCategoryIcon(category)}
+                {category !== "All" && getCategoryIcon(category as Category)}
                 {category !== "All" && <span className="ml-2">{category}</span>}
                 {category === "All" && category}
               </Button>
@@ -303,16 +379,16 @@ export const FreeResourcesHub = () => {
         {/* Resources Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-16">
           {filteredResources.map((resource) => (
-            <Card 
-              key={resource.id} 
+            <Card
+              key={resource.id}
               className={`bg-card border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group ${
-                resource.featured ? 'ring-2 ring-primary/20' : ''
+                resource.featured ? "ring-2 ring-primary/20" : ""
               }`}
             >
               <CardHeader className="pb-4">
                 <div className="relative mb-4 overflow-hidden rounded-lg">
-                  <img 
-                    src={resource.preview} 
+                  <img
+                    src={resource.preview}
                     alt={resource.title}
                     className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
                   />
@@ -339,12 +415,12 @@ export const FreeResourcesHub = () => {
                     )}
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-2 mb-2">
                   {getCategoryIcon(resource.category)}
                   <span className="text-sm text-muted-foreground">{resource.category}</span>
                 </div>
-                
+
                 <CardTitle className="text-xl font-heading group-hover:text-primary transition-colors">
                   {resource.title}
                 </CardTitle>
@@ -352,7 +428,7 @@ export const FreeResourcesHub = () => {
                   {resource.description}
                 </CardDescription>
               </CardHeader>
-              
+
               <CardContent className="pt-0">
                 {/* Resource Meta */}
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -395,14 +471,14 @@ export const FreeResourcesHub = () => {
                   <Input
                     type="email"
                     placeholder="Enter your email for instant access"
-                    value={emailInputs[resource.id] || ""}
+                    value={emailInputs[resource.id] ?? ""}
                     onChange={(e) => handleEmailChange(resource.id, e.target.value)}
                     className="bg-muted border-border"
                   />
                   <Button
                     className="w-full group"
                     onClick={() => handleDownload(resource.id)}
-                    disabled={!emailInputs[resource.id]?.includes('@')}
+                    disabled={!EMAIL_REGEX.test(emailInputs[resource.id] ?? "")}
                   >
                     <Download className="w-4 h-4 mr-2 group-hover:translate-y-0.5 transition-transform" />
                     Get Instant Access
@@ -421,10 +497,10 @@ export const FreeResourcesHub = () => {
               Get Exclusive Access to Premium Resources
             </h3>
             <p className="text-muted-foreground mb-6">
-              Newsletter subscribers get early access to new resources, exclusive content, 
+              Newsletter subscribers get early access to new resources, exclusive content,
               and advanced guides not available to the public.
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
               <div className="flex items-center gap-3 text-left">
                 <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
@@ -460,26 +536,24 @@ export const FreeResourcesHub = () => {
             What Professionals Are Saying
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="bg-card border-border">
+            {testimonials.map((t, i) => (
+              <Card key={i} className="bg-card border-border">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-accent fill-accent" />
+                    {Array.from({ length: t.rating }).map((_, s) => (
+                      <Star key={s} className="w-4 h-4 text-accent fill-accent" />
                     ))}
                   </div>
-                  <p className="text-muted-foreground mb-4 italic">
-                    "{testimonial.content}"
-                  </p>
+                  <p className="text-muted-foreground mb-4 italic">"{t.content}"</p>
                   <div className="flex items-center gap-3">
-                    <img 
-                      src={testimonial.avatar} 
-                      alt={testimonial.name}
+                    <img
+                      src={t.avatar}
+                      alt={t.name}
                       className="w-10 h-10 rounded-full"
                     />
                     <div>
-                      <div className="font-medium">{testimonial.name}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                      <div className="font-medium">{t.name}</div>
+                      <div className="text-sm text-muted-foreground">{t.role}</div>
                     </div>
                   </div>
                 </CardContent>
