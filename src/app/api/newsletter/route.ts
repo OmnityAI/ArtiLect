@@ -1,102 +1,110 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/db';
-import { newsletterSubscribers } from '@/db/schema';
-import { eq, like, or } from 'drizzle-orm';
+// src/app/api/newsletter/route.ts
+import { NextRequest, NextResponse } from 'next/server'
+import { db } from '@/db'
+import { newsletterSubscribers } from '@/db/schema'
+import { eq, like, or, desc } from 'drizzle-orm'
 
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
-    const limit = Math.min(parseInt(searchParams.get('limit') || '10'), 100);
-    const offset = parseInt(searchParams.get('offset') || '0');
-    const search = searchParams.get('search');
+    const { searchParams } = new URL(request.url)
 
-    let query = db.select().from(newsletterSubscribers);
+    // sanitize pagination
+    const limitRaw = Number(searchParams.get('limit'))
+    const offsetRaw = Number(searchParams.get('offset'))
+    const limit = Number.isFinite(limitRaw) ? Math.min(Math.max(1, limitRaw), 100) : 10
+    const offset = Number.isFinite(offsetRaw) ? Math.max(0, offsetRaw) : 0
 
-    if (search) {
-      const searchTerm = `%${search.trim()}%`;
-      query = query.where(
-        or(
-          like(newsletterSubscribers.name, searchTerm),
-          like(newsletterSubscribers.email, searchTerm)
+    const search = searchParams.get('search')?.trim() ?? ''
+    const searchTerm = search ? `%${search}%` : null
+
+    // base query (order newest first if you have subscribedAt)
+    const base = db
+      .select()
+      .from(newsletterSubscribers)
+      .orderBy(desc(newsletterSubscribers.subscribedAt))
+
+    // conditionally add WHERE without mutating the builder (avoids Drizzle type mismatch)
+    const filtered = searchTerm
+      ? base.where(
+          or(
+            like(newsletterSubscribers.name, searchTerm),
+            like(newsletterSubscribers.email, searchTerm)
+          )
         )
-      );
-    }
+      : base
 
-    const subscribers = await query.limit(limit).offset(offset);
+    const rows = await filtered.limit(limit).offset(offset).all()
 
-    return NextResponse.json(subscribers, { status: 200 });
+    return NextResponse.json(rows, { status: 200 })
   } catch (error) {
-    console.error('GET newsletter_subscribers error:', error);
-    return NextResponse.json({
-      error: 'Internal server error: ' + error,
-      code: 'DATABASE_ERROR'
-    }, { status: 500 });
+    console.error('GET newsletter_subscribers error:', error)
+    return NextResponse.json(
+      { error: 'Internal server error', code: 'DATABASE_ERROR' },
+      { status: 500 }
+    )
   }
 }
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { name, email } = body;
+    const body = await request.json()
+    const name = typeof body?.name === 'string' ? body.name.trim() : ''
+    const email = typeof body?.email === 'string' ? body.email.trim().toLowerCase() : ''
 
-    // Validate required fields
-    if (!name || typeof name !== 'string' || !name.trim()) {
-      return NextResponse.json({
-        error: 'Name is required and must be a non-empty string',
-        code: 'MISSING_NAME'
-      }, { status: 400 });
+    if (!name) {
+      return NextResponse.json(
+        { error: 'Name is required and must be a non-empty string', code: 'MISSING_NAME' },
+        { status: 400 }
+      )
     }
 
-    if (!email || typeof email !== 'string' || !email.trim()) {
-      return NextResponse.json({
-        error: 'Email is required and must be a non-empty string',
-        code: 'MISSING_EMAIL'
-      }, { status: 400 });
+    if (!email) {
+      return NextResponse.json(
+        { error: 'Email is required and must be a non-empty string', code: 'MISSING_EMAIL' },
+        { status: 400 }
+      )
     }
 
-    // Sanitize inputs
-    const trimmedName = name.trim();
-    const normalizedEmail = email.trim().toLowerCase();
-
-    // Validate email format
-    if (!EMAIL_REGEX.test(normalizedEmail)) {
-      return NextResponse.json({
-        error: 'Invalid email format',
-        code: 'INVALID_EMAIL_FORMAT'
-      }, { status: 400 });
+    if (!EMAIL_REGEX.test(email)) {
+      return NextResponse.json(
+        { error: 'Invalid email format', code: 'INVALID_EMAIL_FORMAT' },
+        { status: 400 }
+      )
     }
 
-    // Check for duplicate email
-    const existingSubscriber = await db.select()
+    // duplicate check (use .get() for a single row)
+    const existing = await db
+      .select()
       .from(newsletterSubscribers)
-      .where(eq(newsletterSubscribers.email, normalizedEmail))
-      .limit(1);
+      .where(eq(newsletterSubscribers.email, email))
+      .get()
 
-    if (existingSubscriber.length > 0) {
-      return NextResponse.json({
-        error: 'Email address is already subscribed',
-        code: 'DUPLICATE_EMAIL'
-      }, { status: 409 });
+    if (existing) {
+      return NextResponse.json(
+        { error: 'Email address is already subscribed', code: 'DUPLICATE_EMAIL' },
+        { status: 409 }
+      )
     }
 
-    // Create new subscriber
-    const newSubscriber = await db.insert(newsletterSubscribers)
+    // insert (keep these fields only if they exist in your schema)
+    const inserted = await db
+      .insert(newsletterSubscribers)
       .values({
-        name: trimmedName,
-        email: normalizedEmail,
+        name,
+        email,
         subscribedAt: new Date().toISOString(),
-        isActive: true
+        isActive: true,
       })
-      .returning();
+      .returning()
 
-    return NextResponse.json(newSubscriber[0], { status: 201 });
+    return NextResponse.json(inserted[0], { status: 201 })
   } catch (error) {
-    console.error('POST newsletter_subscribers error:', error);
-    return NextResponse.json({
-      error: 'Internal server error: ' + error,
-      code: 'DATABASE_ERROR'
-    }, { status: 500 });
+    console.error('POST newsletter_subscribers error:', error)
+    return NextResponse.json(
+      { error: 'Internal server error', code: 'DATABASE_ERROR' },
+      { status: 500 }
+    )
   }
 }
