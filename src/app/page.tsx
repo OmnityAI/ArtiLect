@@ -11,7 +11,7 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 import { SocialProof } from "@/components/SocialProof";
 import { NewsletterPreview } from "@/components/NewsletterPreview";
 import { FOMOSection } from "@/components/FOMOSection";
-import { InteractiveQuiz } from "@/components/InteractiveQuiz";
+import InteractiveQuiz from "@/components/InteractiveQuiz";
 import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 
 export const metadata: Metadata = {
