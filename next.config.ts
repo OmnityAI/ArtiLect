@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
-import path from "node:path";
 
 const nextConfig: NextConfig = {
+  reactStrictMode: true,
   experimental: {
     serverComponentsHmrCache: false,
     optimizePackageImports: [
@@ -32,16 +32,14 @@ const nextConfig: NextConfig = {
       "@radix-ui/react-toggle-group",
       "@radix-ui/react-tooltip",
     ],
-    // removed the missing custom Turbopack loader
   },
-  logging: { fetches: { fullUrl: true } },
-  outputFileTracingRoot: path.resolve(__dirname, "../../"),
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "**" },
       { protocol: "http", hostname: "**" },
     ],
   },
+  // No distDir or outputFileTracingRoot — let Vercel use defaults.
 };
 
 export default nextConfig;
