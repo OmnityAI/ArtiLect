@@ -1,14 +1,36 @@
 "use client";
 
-import { useState } from 'react';
-import { Mail, Send, Clock, Users, Shield, Headphones, Heart, MessageSquare, Phone, MapPin, Twitter, Linkedin, Github, ChevronRight, Home } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Separator } from '@/components/ui/separator';
-import { toast } from 'sonner';
+import { useState } from "react";
+import Link from "next/link";
+import {
+  Mail,
+  Send,
+  Clock,
+  Users,
+  Shield,
+  Headphones,
+  Heart,
+  MessageSquare,
+  Phone,
+  Twitter,
+  Linkedin,
+  Github,
+  ChevronRight,
+  Home,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Separator } from "@/components/ui/separator";
+import { toast } from "sonner";
 
 interface ContactMethod {
   icon: React.ComponentType<any>;
@@ -31,10 +53,10 @@ interface FormData {
 
 export default function ContactPage() {
   const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Partial<FormData>>({});
@@ -42,84 +64,88 @@ export default function ContactPage() {
   const contactMethods: ContactMethod[] = [
     {
       icon: Mail,
-      title: 'General Inquiries',
-      description: 'Questions about our newsletter, subscriptions, or general information',
-      email: 'hello@artilect.com'
+      title: "General Inquiries",
+      description:
+        "Questions about our newsletter, subscriptions, or general information",
+      email: "hello@artilect.com",
     },
     {
       icon: Users,
-      title: 'Editorial Team',
-      description: 'Story submissions, content suggestions, or editorial feedback',
-      email: 'editorial@artilect.com'
+      title: "Editorial Team",
+      description:
+        "Story submissions, content suggestions, or editorial feedback",
+      email: "editorial@artilect.com",
     },
     {
       icon: Shield,
-      title: 'Privacy Questions',
-      description: 'Data protection, privacy policy, or GDPR-related inquiries',
-      email: 'privacy@artilect.com'
+      title: "Privacy Questions",
+      description: "Data protection, privacy policy, or GDPR-related inquiries",
+      email: "privacy@artilect.com",
     },
     {
       icon: Headphones,
-      title: 'Technical Support',
-      description: 'Website issues, subscription problems, or technical assistance',
-      email: 'support@artilect.com'
+      title: "Technical Support",
+      description: "Website issues, subscription problems, or technical assistance",
+      email: "support@artilect.com",
     },
     {
       icon: Heart,
-      title: 'Partnership Opportunities',
-      description: 'Sponsorships, collaborations, or business partnerships',
-      email: 'partnerships@artilect.com'
-    }
+      title: "Partnership Opportunities",
+      description: "Sponsorships, collaborations, or business partnerships",
+      email: "partnerships@artilect.com",
+    },
   ];
 
   const faqs: FAQItem[] = [
     {
-      question: 'How often do you publish?',
-      answer: 'We publish new issues every Tuesday and Friday, delivering the latest AI insights twice weekly.'
+      question: "How often do you publish?",
+      answer:
+        "We publish new issues every Tuesday and Friday, delivering the latest AI insights twice weekly.",
     },
     {
-      question: 'Is ArtiLect Newsletter free?',
-      answer: 'Yes! Our core newsletter is completely free. We also offer premium content for subscribers who want deeper analysis.'
+      question: "Is ArtiLect Newsletter free?",
+      answer:
+        "Yes! Our core newsletter is completely free. We also offer premium content for subscribers who want deeper analysis.",
     },
     {
-      question: 'How do I unsubscribe?',
-      answer: 'You can unsubscribe at any time using the link at the bottom of any newsletter email.'
+      question: "How do I unsubscribe?",
+      answer:
+        "You can unsubscribe at any time using the link at the bottom of any newsletter email.",
     },
     {
-      question: 'Can I suggest topics or stories?',
-      answer: 'Absolutely! We love hearing from our community. Send your suggestions to editorial@artilect.com.'
+      question: "Can I suggest topics or stories?",
+      answer:
+        "Absolutely! We love hearing from our community. Send your suggestions to editorial@artilect.com.",
     },
     {
-      question: 'Do you accept guest contributions?',
-      answer: 'We occasionally feature guest experts. Reach out to our editorial team with your proposal and credentials.'
+      question: "Do you accept guest contributions?",
+      answer:
+        "We occasionally feature guest experts. Reach out to our editorial team with your proposal and credentials.",
     },
     {
-      question: 'How can I advertise with ArtiLect?',
-      answer: 'For advertising and sponsorship opportunities, contact partnerships@artilect.com with your requirements.'
-    }
+      question: "How can I advertise with ArtiLect?",
+      answer:
+        "For advertising and sponsorship opportunities, contact partnerships@artilect.com with your requirements.",
+    },
   ];
 
   const validateForm = (): boolean => {
     const newErrors: Partial<FormData> = {};
 
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    }
+    if (!formData.name.trim()) newErrors.name = "Name is required";
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
+      newErrors.email = "Please enter a valid email address";
     }
 
-    if (!formData.subject.trim()) {
-      newErrors.subject = 'Subject is required';
-    }
+    if (!formData.subject.trim()) newErrors.subject = "Subject is required";
 
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = "Message is required";
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters long';
+      newErrors.message = "Message must be at least 10 characters long";
     }
 
     setErrors(newErrors);
@@ -128,33 +154,30 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
-      toast.error('Please fix the errors in the form');
+      toast.error("Please fix the errors in the form");
       return;
     }
 
     setIsSubmitting(true);
 
-    // Simulate form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      toast.success('Message sent successfully! We\'ll get back to you within 24 hours.');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      // Simulate send
+      await new Promise((r) => setTimeout(r, 2000));
+      toast.success("Message sent successfully! We'll get back to you within 24 hours.");
+      setFormData({ name: "", email: "", subject: "", message: "" });
       setErrors({});
-    } catch (error) {
-      toast.error('Failed to send message. Please try again later.');
+    } catch {
+      toast.error("Failed to send message. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleInputChange = (field: keyof FormData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: undefined }));
-    }
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
   };
 
   return (
@@ -169,22 +192,34 @@ export default function ContactPage() {
               </span>
             </div>
             <nav className="hidden md:flex items-center space-x-6">
-              <a href="/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              <Link
+                href="/"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Home
-              </a>
-              <a href="/about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              </Link>
+              <Link
+                href="/about"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
                 About
-              </a>
-              <a href="/archive" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              </Link>
+              <Link
+                href="/archive"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Archive
-              </a>
-              <a href="/contact" className="text-sm font-medium text-foreground">
+              </Link>
+              <Link
+                href="/contact"
+                className="text-sm font-medium text-foreground"
+              >
                 Contact
-              </a>
+              </Link>
             </nav>
           </div>
-          <Button size="sm" className="bg-gradient-to-r from-primary to-accent text-primary-foreground">
-            Subscribe
+          <Button size="sm" className="bg-gradient-to-r from-primary to-accent text-primary-foreground" asChild>
+            <Link href="/subscribe">Subscribe</Link>
           </Button>
         </div>
       </header>
@@ -207,7 +242,7 @@ export default function ContactPage() {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Have a question, suggestion, or just want to say hello? We'd love to hear from you. 
+              Have a question, suggestion, or just want to say hello? We&apos;d love to hear from you.
               Our team is here to help and typically responds within 24 hours.
             </p>
           </div>
@@ -225,7 +260,10 @@ export default function ContactPage() {
               {contactMethods.map((method, index) => {
                 const IconComponent = method.icon;
                 return (
-                  <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:shadow-primary/10 hover:border-primary/20">
+                  <Card
+                    key={index}
+                    className="group hover:shadow-lg transition-all duration-300 hover:shadow-primary/10 hover:border-primary/20"
+                  >
                     <CardHeader className="pb-4">
                       <div className="flex items-center space-x-3 mb-2">
                         <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
@@ -236,7 +274,7 @@ export default function ContactPage() {
                       <CardDescription>{method.description}</CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <a 
+                      <a
                         href={`mailto:${method.email}`}
                         className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors"
                       >
@@ -256,7 +294,9 @@ export default function ContactPage() {
           <div className="container max-w-4xl">
             <div className="text-center mb-12">
               <h2 className="font-heading text-3xl font-bold mb-4">Send Us a Message</h2>
-              <p className="text-muted-foreground">Fill out the form below and we'll get back to you as soon as possible</p>
+              <p className="text-muted-foreground">
+                Fill out the form below and we&apos;ll get back to you as soon as possible
+              </p>
             </div>
 
             <Card className="max-w-2xl mx-auto">
@@ -268,11 +308,13 @@ export default function ContactPage() {
                       <Input
                         id="name"
                         value={formData.name}
-                        onChange={(e) => handleInputChange('name', e.target.value)}
+                        onChange={(e) => handleInputChange("name", e.target.value)}
                         placeholder="Your full name"
-                        className={errors.name ? 'border-destructive' : ''}
+                        className={errors.name ? "border-destructive" : ""}
                       />
-                      {errors.name && <p className="text-sm text-destructive">{errors.name}</p>}
+                      {errors.name && (
+                        <p className="text-sm text-destructive">{errors.name}</p>
+                      )}
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="email">Email *</Label>
@@ -280,42 +322,48 @@ export default function ContactPage() {
                         id="email"
                         type="email"
                         value={formData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
+                        onChange={(e) => handleInputChange("email", e.target.value)}
                         placeholder="your.email@example.com"
-                        className={errors.email ? 'border-destructive' : ''}
+                        className={errors.email ? "border-destructive" : ""}
                       />
-                      {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
+                      {errors.email && (
+                        <p className="text-sm text-destructive">{errors.email}</p>
+                      )}
                     </div>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="subject">Subject *</Label>
                     <Input
                       id="subject"
                       value={formData.subject}
-                      onChange={(e) => handleInputChange('subject', e.target.value)}
+                      onChange={(e) => handleInputChange("subject", e.target.value)}
                       placeholder="What's this about?"
-                      className={errors.subject ? 'border-destructive' : ''}
+                      className={errors.subject ? "border-destructive" : ""}
                     />
-                    {errors.subject && <p className="text-sm text-destructive">{errors.subject}</p>}
+                    {errors.subject && (
+                      <p className="text-sm text-destructive">{errors.subject}</p>
+                    )}
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="message">Message *</Label>
                     <Textarea
                       id="message"
                       value={formData.message}
-                      onChange={(e) => handleInputChange('message', e.target.value)}
+                      onChange={(e) => handleInputChange("message", e.target.value)}
                       placeholder="Tell us more about your inquiry..."
                       rows={6}
-                      className={errors.message ? 'border-destructive' : ''}
+                      className={errors.message ? "border-destructive" : ""}
                     />
-                    {errors.message && <p className="text-sm text-destructive">{errors.message}</p>}
+                    {errors.message && (
+                      <p className="text-sm text-destructive">{errors.message}</p>
+                    )}
                   </div>
-                  
-                  <Button 
-                    type="submit" 
-                    size="lg" 
+
+                  <Button
+                    type="submit"
+                    size="lg"
                     className="w-full bg-gradient-to-r from-primary to-accent text-primary-foreground"
                     disabled={isSubmitting}
                   >
@@ -341,7 +389,7 @@ export default function ContactPage() {
         <section className="py-16 px-4">
           <div className="container max-w-4xl">
             <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl font-bold mb-4">Quick Answers</h2>
+              <h2 className="font-heading text-3xl font-bold">Quick Answers</h2>
               <p className="text-muted-foreground">Find answers to commonly asked questions</p>
             </div>
 
@@ -349,8 +397,12 @@ export default function ContactPage() {
               {faqs.map((faq, index) => (
                 <Card key={index} className="h-fit">
                   <CardContent className="p-6">
-                    <h3 className="font-semibold text-lg mb-3 text-primary">{faq.question}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                    <h3 className="font-semibold text-lg mb-3 text-primary">
+                      {faq.question}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {faq.answer}
+                    </p>
                   </CardContent>
                 </Card>
               ))}
@@ -362,8 +414,10 @@ export default function ContactPage() {
         <section className="py-16 px-4 bg-muted/30">
           <div className="container max-w-4xl">
             <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl font-bold mb-4">What to Expect</h2>
-              <p className="text-muted-foreground">Information about our response times and process</p>
+              <h2 className="font-heading text-3xl font-bold">What to Expect</h2>
+              <p className="text-muted-foreground">
+                Information about our response times and process
+              </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -373,7 +427,9 @@ export default function ContactPage() {
                     <Clock className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">Response Time</h3>
-                  <p className="text-muted-foreground">We typically respond within 24 hours during business days</p>
+                  <p className="text-muted-foreground">
+                    We typically respond within 24 hours during business days
+                  </p>
                 </CardContent>
               </Card>
 
@@ -383,7 +439,9 @@ export default function ContactPage() {
                     <MessageSquare className="h-6 w-6 text-accent" />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">Business Hours</h3>
-                  <p className="text-muted-foreground">Monday - Friday, 9:00 AM - 6:00 PM EST</p>
+                  <p className="text-muted-foreground">
+                    Monday - Friday, 9:00 AM - 6:00 PM EST
+                  </p>
                 </CardContent>
               </Card>
 
@@ -393,7 +451,9 @@ export default function ContactPage() {
                     <Phone className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">Follow Up</h3>
-                  <p className="text-muted-foreground">Complex inquiries may require additional time for thorough research</p>
+                  <p className="text-muted-foreground">
+                    Complex inquiries may require additional time for thorough research
+                  </p>
                 </CardContent>
               </Card>
             </div>
@@ -409,24 +469,24 @@ export default function ContactPage() {
             </p>
 
             <div className="flex justify-center space-x-6">
-              <a 
-                href="https://twitter.com/artilect" 
+              <a
+                href="https://twitter.com/artilect"
                 className="p-4 rounded-full bg-card hover:bg-primary/10 transition-colors group"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Twitter className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" />
               </a>
-              <a 
-                href="https://linkedin.com/company/artilect" 
+              <a
+                href="https://linkedin.com/company/artilect"
                 className="p-4 rounded-full bg-card hover:bg-primary/10 transition-colors group"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Linkedin className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" />
               </a>
-              <a 
-                href="https://github.com/artilect" 
+              <a
+                href="https://github.com/artilect"
                 className="p-4 rounded-full bg-card hover:bg-primary/10 transition-colors group"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -452,49 +512,100 @@ export default function ContactPage() {
                 Delivering AI insights that matter, twice weekly.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold mb-4">Newsletter</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="/subscribe" className="hover:text-foreground transition-colors">Subscribe</a></li>
-                <li><a href="/archive" className="hover:text-foreground transition-colors">Archive</a></li>
-                <li><a href="/topics" className="hover:text-foreground transition-colors">Topics</a></li>
+                <li>
+                  <Link href="/subscribe" className="hover:text-foreground transition-colors">
+                    Subscribe
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/archive" className="hover:text-foreground transition-colors">
+                    Archive
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/topics" className="hover:text-foreground transition-colors">
+                    Topics
+                  </Link>
+                </li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="/about" className="hover:text-foreground transition-colors">About</a></li>
-                <li><a href="/careers" className="hover:text-foreground transition-colors">Careers</a></li>
-                <li><a href="/press" className="hover:text-foreground transition-colors">Press</a></li>
+                <li>
+                  <Link href="/about" className="hover:text-foreground transition-colors">
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/careers" className="hover:text-foreground transition-colors">
+                    Careers
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/press" className="hover:text-foreground transition-colors">
+                    Press
+                  </Link>
+                </li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold mb-4">Legal</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</a></li>
-                <li><a href="/terms" className="hover:text-foreground transition-colors">Terms of Service</a></li>
-                <li><a href="/contact" className="hover:text-foreground transition-colors">Contact</a></li>
+                <li>
+                  <Link href="/privacy" className="hover:text-foreground transition-colors">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms" className="hover:text-foreground transition-colors">
+                    Terms of Service
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="hover:text-foreground transition-colors">
+                    Contact
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
-          
+
           <Separator className="my-8" />
-          
+
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-muted-foreground">
               © 2024 ArtiLect Newsletter. All rights reserved.
             </p>
             <div className="flex space-x-4">
-              <a href="https://twitter.com/artilect" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a
+                href="https://twitter.com/artilect"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="https://linkedin.com/company/artilect" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a
+                href="https://linkedin.com/company/artilect"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="https://github.com/artilect" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a
+                href="https://github.com/artilect"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Github className="h-5 w-5" />
               </a>
             </div>
