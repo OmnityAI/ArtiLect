@@ -216,3 +216,49 @@ nextjs-portal {
     line-height: 1.1;
   }
 }
+
+/* --- Frame layout: 120px border on all sides --- */
+:root {
+  --frame: 120px; /* border thickness on each side */
+  --frame-color: var(--color-border); /* customize this to change border color */
+}
+
+/* Make the body act as the border area */
+body.frame {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--frame-color); /* border color */
+  padding: var(--frame);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Inner panel that holds the app content */
+.app-shell {
+  position: relative;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  border-radius: var(--radius-lg);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - 2 * var(--frame));
+  overflow: hidden;
+}
+
+/* Ensure main can grow and scroll within the panel */
+.app-shell main {
+  flex: 1;
+  min-height: 0; /* allow nested flex children to scroll */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Keep headers inside the frame if any were fixed previously */
+header[class*="fixed"] {
+  position: sticky !important;
+  top: 0 !important;
+  left: auto !important;
+  right: auto !important;
+}
