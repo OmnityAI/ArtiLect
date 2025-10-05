@@ -128,7 +128,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-  <div className="relative z-10 container mx-auto px-6 md:px-8 lg:px-[120px] py-24 min-h-screen flex items-center">
+  <div className="relative z-10 container mx-auto px-6 md:px-8 lg:px-[120px] py-24 min-h-[calc(100dvh-80px)] flex items-center">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
           {/* Left Column - Content */}
           <div className="space-y-8">
