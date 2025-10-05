@@ -55,16 +55,16 @@ const ActivityFeed = () => {
   }, []);
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-2 relative h-[92px] overflow-hidden">
       {activities.map((activity, index) => (
         <div
           key={activity.id}
-          className={`flex items-center gap-2 p-2 rounded-lg bg-muted/30 transition-all duration-700 ${
+          className={`flex items-center gap-2 px-3 h-10 rounded-full bg-muted/30 transition-transform duration-700 ${
             index === 0 ? 'animate-in slide-in-from-top-1 fade-in' : ''
           }`}
         >
           <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-          <span className="text-sm text-muted-foreground">
+          <span className="text-sm text-muted-foreground truncate">
             <span className="text-foreground font-medium">{activity.location}</span> • {activity.time}
           </span>
         </div>
