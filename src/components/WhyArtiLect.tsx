@@ -8,7 +8,7 @@ export default function WhyArtiLect() {
     {
       icon: Brain,
       title: "Deep AI Analysis",
-      description: "Beyond surface news—we analyze implications and future possibilities of AI developments.",
+      description: "Beyond surface news, we analyze implications and future possibilities of AI developments.",
       gradient: "from-primary to-accent"
     },
     {
@@ -42,7 +42,7 @@ export default function WhyArtiLect() {
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
-            The signal in the noise. No fluff, no hype—just AI intelligence that matters.
+            The signal in the noise. No fluff, no hype, just AI intelligence that matters.
           </p>
         </div>
 
