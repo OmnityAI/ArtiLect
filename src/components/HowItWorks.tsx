@@ -7,7 +7,7 @@ import { Mail, Users, TrendingUp } from "lucide-react"
 export default function HowItWorks() {
   return (
     <section className="py-16 bg-card/30">
-      <div className="container mx-auto px-8">
+  <div className="container mx-auto px-6 md:px-8 lg:px-[120px]">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-heading font-bold mb-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">

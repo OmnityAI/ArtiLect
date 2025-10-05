@@ -59,7 +59,7 @@ export default function PrivacyPolicyPage() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container max-w-7xl mx-auto px-6">
+  <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-[120px]">
           <div className="flex h-16 items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
               <div className="h-8 w-8 rounded-full bg-gradient-to-r from-primary to-accent" />
@@ -87,7 +87,7 @@ export default function PrivacyPolicyPage() {
       </header>
 
       {/* Breadcrumb */}
-      <div className="container max-w-7xl mx-auto px-6 pt-8">
+  <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-[120px] pt-8">
         <nav className="flex items-center text-sm text-muted-foreground">
           <Link href="/" className="hover:text-foreground transition-colors">
             Home
@@ -97,7 +97,7 @@ export default function PrivacyPolicyPage() {
         </nav>
       </div>
 
-      <div className="container max-w-7xl mx-auto px-6 py-12">
+  <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-[120px] py-12">
         <div className="grid lg:grid-cols-4 gap-12">
           {/* Table of Contents - Sidebar */}
           <div className="lg:col-span-1">
@@ -604,7 +604,7 @@ export default function PrivacyPolicyPage() {
 
       {/* Footer */}
       <footer className="border-t border-border/40 bg-card">
-        <div className="container max-w-7xl mx-auto px-6 py-12">
+  <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-[120px] py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="col-span-2 md:col-span-1">
               <div className="flex items-center space-x-2 mb-4">

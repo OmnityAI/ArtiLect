@@ -57,7 +57,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-card/30 border-t border-border/50">
-      <div className="container mx-auto px-8 py-16">
+  <div className="container mx-auto px-6 md:px-8 lg:px-[120px] py-16">
         <div className="grid lg:grid-cols-4 gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-2 space-y-6">

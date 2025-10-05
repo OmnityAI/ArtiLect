@@ -83,7 +83,7 @@ export const SocialProof = () => {
 
   return (
     <section className="py-12">
-      <div className="max-w-6xl mx-auto px-6">
+  <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-[120px]">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-heading font-bold mb-2">
             Trusted by <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">AI Professionals</span>

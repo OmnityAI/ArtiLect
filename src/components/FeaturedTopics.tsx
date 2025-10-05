@@ -44,7 +44,7 @@ export default function FeaturedTopics() {
 
   return (
     <section className="w-full">
-      <div className="container max-w-6xl mx-auto px-6">
+  <div className="container max-w-6xl mx-auto px-6 md:px-8 lg:px-[120px]">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
             Explore Featured Topics

@@ -135,7 +135,7 @@ export default function AboutPage() {
       <Header />
       
       {/* Breadcrumb Navigation */}
-      <div className="container mx-auto px-6 pt-24 pb-8">
+  <div className="container mx-auto px-6 md:px-8 lg:px-[120px] pt-24 pb-8">
         <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
           <Link href="/" className="flex items-center hover:text-foreground transition-colors">
             <Home className="w-4 h-4 mr-1" />
@@ -147,7 +147,7 @@ export default function AboutPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-6 py-16">
+  <section className="container mx-auto px-6 md:px-8 lg:px-[120px] py-16">
         <div className="max-w-4xl mx-auto text-center">
           <Badge variant="secondary" className="mb-6 bg-gradient-to-r from-primary/20 to-accent/20 border-primary/30">
             About ArtiLect
@@ -164,7 +164,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Mission Section */}
-      <section className="container mx-auto px-6 py-20">
+  <section className="container mx-auto px-6 md:px-8 lg:px-[120px] py-20">
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -231,7 +231,7 @@ export default function AboutPage() {
       </section>
 
       {/* What Makes Us Different */}
-      <section className="container mx-auto px-6 py-20">
+  <section className="container mx-auto px-6 md:px-8 lg:px-[120px] py-20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
@@ -270,7 +270,7 @@ export default function AboutPage() {
       </section>
 
       {/* The Team Section */}
-      <section className="container mx-auto px-6 py-20">
+  <section className="container mx-auto px-6 md:px-8 lg:px-[120px] py-20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
@@ -308,7 +308,7 @@ export default function AboutPage() {
       </section>
 
       {/* By The Numbers Section */}
-      <section className="container mx-auto px-6 py-20">
+  <section className="container mx-auto px-6 md:px-8 lg:px-[120px] py-20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
@@ -337,7 +337,7 @@ export default function AboutPage() {
       </section>
 
       {/* Community Section */}
-      <section className="container mx-auto px-6 py-20">
+  <section className="container mx-auto px-6 md:px-8 lg:px-[120px] py-20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">

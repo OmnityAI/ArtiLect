@@ -121,7 +121,7 @@ export default function NotFound() {
 
       {/* Header */}
       <header className="relative z-10 border-b border-border/50">
-        <div className="container max-w-6xl mx-auto px-6 py-4">
+  <div className="container max-w-6xl mx-auto px-6 md:px-8 lg:px-[120px] py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-2 group">
               <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">

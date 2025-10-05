@@ -65,7 +65,7 @@ export default function TermsOfService() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b border-secondary/50 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="container mx-auto px-4 sm:px-8 lg:px-[120px]">
           <div className="flex h-16 items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
               <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
@@ -95,7 +95,7 @@ export default function TermsOfService() {
 
       {/* Breadcrumb */}
       <div className="border-b border-secondary/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+  <div className="container mx-auto px-4 sm:px-8 lg:px-[120px] py-4">
           <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
             <Link href="/" className="hover:text-foreground transition-colors">
               Home
@@ -106,7 +106,7 @@ export default function TermsOfService() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div className="container mx-auto px-4 sm:px-8 lg:px-[120px] py-8">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Table of Contents - Sidebar */}
           <aside className="lg:w-64 lg:shrink-0">
@@ -568,7 +568,7 @@ export default function TermsOfService() {
 
       {/* Footer */}
       <footer className="border-t border-secondary/30 bg-card/20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div className="container mx-auto px-4 sm:px-8 lg:px-[120px] py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">

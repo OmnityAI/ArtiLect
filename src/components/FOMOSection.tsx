@@ -43,7 +43,7 @@ export const FOMOSection = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-background to-blue-900/10" />
       
       {/* Content container */}
-      <div className="relative max-w-6xl mx-auto px-6">
+  <div className="relative max-w-6xl mx-auto px-6 md:px-8 lg:px-[120px]">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
