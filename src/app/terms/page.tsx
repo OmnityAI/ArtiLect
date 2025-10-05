@@ -1,24 +1,5 @@
 "use client";
 
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Terms of Service • Artilect",
-  description:
-    "Read the Terms of Service for Artilect Newsletter, covering subscriptions, privacy, content usage, and your responsibilities.",
-  openGraph: {
-    title: "Terms of Service • Artilect",
-    description:
-      "Read the Terms of Service for Artilect Newsletter, covering subscriptions, privacy, content usage, and your responsibilities.",
-    siteName: "Artilect",
-  },
-  twitter: {
-    title: "Terms of Service • Artilect",
-    description:
-      "Read the Terms of Service for Artilect Newsletter, covering subscriptions, privacy, content usage, and your responsibilities.",
-  },
-};
-
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowUp, ChevronRight, Shield, Mail, FileText, Users, Eye, AlertTriangle, Scale, Phone } from "lucide-react";
