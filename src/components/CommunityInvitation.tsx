@@ -82,7 +82,7 @@ export default function CommunityInvitation() {
 
   return (
     <section className="py-24 bg-card/30">
-      <div className="container mx-auto px-8">
+  <div className="container mx-auto px-6 md:px-8 lg:px-[120px]">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-heading font-bold mb-6">
             Join the{" "}
@@ -150,7 +150,7 @@ export default function CommunityInvitation() {
               <DialogTrigger asChild>
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground font-semibold px-12 py-6 text-lg transition-all duration-200 shadow-lg hover:shadow-xl"
+                  className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground font-semibold px-12 py-6 text-lg transition-all duration-200 shadow-lg hover:shadow-xl rounded-[120px]"
                 >
                   Subscribe to Newsletter
                 </Button>
@@ -176,6 +176,7 @@ export default function CommunityInvitation() {
                       onChange={(e) => setName(e.target.value)}
                       required
                       disabled={isLoading}
+                      className="rounded-[120px]"
                     />
                   </div>
                   <div className="space-y-2">
@@ -188,11 +189,12 @@ export default function CommunityInvitation() {
                       onChange={(e) => setEmail(e.target.value)}
                       required
                       disabled={isLoading}
+                      className="rounded-[120px]"
                     />
                   </div>
                   <Button 
                     type="submit" 
-                    className="w-full" 
+                    className="w-full rounded-[120px]" 
                     size="lg"
                     disabled={isLoading}
                   >
