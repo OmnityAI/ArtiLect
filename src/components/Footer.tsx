@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Brain, Mail, Linkedin, Twitter, Github } from "lucide-react";
+import { Brain, Mail, Instagram, Twitter, Github } from "lucide-react";
 import { toast } from "sonner";
 
 export default function Footer() {
@@ -141,14 +141,14 @@ export default function Footer() {
           <div className="space-y-6">
             <h4 className="font-semibold text-foreground">Newsletter</h4>
             <nav className="flex flex-col space-y-3">
-              <a href="/about" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <a href="/#hero" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
                 About Artilect
               </a>
               <a href="/#featured-topics" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Featured Topics
               </a>
-              <a href="/tags/ai-machine-learning" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
-                Newsletter Archive
+              <a href="/terms" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
+                Terms of Service
               </a>
               <a href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Privacy Policy
@@ -169,13 +169,13 @@ export default function Footer() {
               {/* Social Links */}
               <div className="flex items-center gap-4 pt-2">
                 <a 
-                  href="https://linkedin.com/company/artilectai" 
+                  href="https://instagram.com/artilectai" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg bg-background/50 hover:bg-primary/20 text-muted-foreground hover:text-primary transition-all duration-200"
-                  aria-label="Follow us on LinkedIn"
+                  aria-label="Follow us on Instagram"
                 >
-                  <Linkedin className="w-5 h-5" />
+                  <Instagram className="w-5 h-5" />
                 </a>
                 <a 
                   href="https://twitter.com/artilectai" 

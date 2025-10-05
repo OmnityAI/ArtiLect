@@ -63,7 +63,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-background">
+    <section id="hero" className="relative min-h-screen overflow-hidden bg-background">
       {/* Neural Network Background Pattern */}
       <div className="absolute inset-0">
         {/* Dark gradient base */}
