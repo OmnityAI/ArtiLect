@@ -135,17 +135,7 @@ export const SocialProof = () => {
           </Card>
         </div>
 
-        {/* Company Trust Indicators */}
-        <div className="mt-8 text-center">
-          <p className="text-xs text-muted-foreground mb-4">Trusted by professionals at</p>
-          <div className="flex justify-center items-center gap-8 opacity-50">
-            {['Google', 'Microsoft', 'OpenAI', 'Meta', 'Apple'].map((company) => (
-              <div key={company} className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-300 cursor-default">
-                {company}
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Company Trust Indicators removed by request */}
       </div>
     </section>
   );
