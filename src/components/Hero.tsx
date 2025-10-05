@@ -129,7 +129,7 @@ export default function Hero() {
 
       {/* Content */}
   <div className="relative z-10 container mx-auto px-6 md:px-8 lg:px-[120px] py-24 min-h-[calc(100dvh-80px)] flex items-center">
-  <div className="grid gap-12 lg:gap-16 items-center w-full">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
           {/* Left Column - Content */}
           <div className="space-y-8">
             <div className="space-y-6">
@@ -216,7 +216,56 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column - Newsletter Preview removed by request */}
+          {/* Right Column - Newsletter Preview */}
+          <div className="relative animate-in fade-in slide-in-from-right-8 duration-1000 delay-300">
+            <div className="relative bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 hover:-translate-y-2">
+              {/* Newsletter Header */}
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center animate-pulse">
+                  <Brain className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground">ArtiLect Weekly</h3>
+                  <p className="text-sm text-muted-foreground">AI Intelligence</p>
+                </div>
+              </div>
+
+              {/* Newsletter Content Preview */}
+              <div className="space-y-4">
+                <h4 className="text-lg font-semibold text-foreground leading-tight">
+                  This Week: The Future of Enterprise AI
+                </h4>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  • OpenAI's latest developments and business implications<br />
+                  • Fortune 500 AI integration strategies<br />
+                  • New research on AI safety and alignment
+                </p>
+                
+                {/* Newsletter Tags */}
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 bg-primary/20 text-primary text-xs rounded-full animate-pulse">
+                    Weekly Insights
+                  </span>
+                  <span className="px-3 py-1 bg-accent/20 text-accent-foreground text-xs rounded-full animate-pulse delay-75">
+                    Industry Updates
+                  </span>
+                  <span className="px-3 py-1 bg-secondary text-secondary-foreground text-xs rounded-full animate-pulse delay-150">
+                    Research
+                  </span>
+                </div>
+
+                {/* Newsletter Stats */}
+                <div className="flex items-center gap-6 pt-4 border-t border-border/50">
+                  <span className="text-xs text-muted-foreground">12k+ subscribers</span>
+                  <span className="text-xs text-muted-foreground">5 min read</span>
+                  <span className="text-xs text-accent">Weekly</span>
+                </div>
+              </div>
+
+              {/* Decorative gradient overlay */}
+              <div className="absolute -top-2 -right-2 w-20 h-20 bg-gradient-to-br from-primary/30 to-accent/30 rounded-full blur-2xl -z-10 animate-pulse" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
