@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -57,34 +59,7 @@ export default function PrivacyPolicyPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-  <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-[120px]">
-          <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="h-8 w-8 rounded-full bg-gradient-to-r from-primary to-accent" />
-              <span className="font-heading font-bold text-xl">Artilect</span>
-            </Link>
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Home
-              </Link>
-              <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                About
-              </Link>
-              <Link href="/topics" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Topics
-              </Link>
-              <Link href="/archive" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Archive
-              </Link>
-              <Button size="sm" className="bg-gradient-to-r from-primary to-accent text-primary-foreground">
-                Subscribe
-              </Button>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Breadcrumb */}
   <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-[120px] pt-8">
@@ -602,51 +577,7 @@ export default function PrivacyPolicyPage() {
         <ArrowUp className="h-5 w-5" />
       </button>
 
-      {/* Footer */}
-      <footer className="border-t border-border/40 bg-card">
-  <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-[120px] py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="col-span-2 md:col-span-1">
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="h-8 w-8 rounded-full bg-gradient-to-r from-primary to-accent" />
-                <span className="font-heading font-bold text-xl">Artilect</span>
-              </div>
-              <p className="text-muted-foreground text-sm">
-                Cutting-edge AI insights delivered to your inbox. Stay ahead with the latest in artificial intelligence.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Newsletter</h3>
-              <ul className="space-y-2">
-                <li><Link href="/about" className="text-muted-foreground hover:text-foreground text-sm transition-colors">About</Link></li>
-                <li><Link href="/archive" className="text-muted-foreground hover:text-foreground text-sm transition-colors">Archive</Link></li>
-                <li><Link href="/topics" className="text-muted-foreground hover:text-foreground text-sm transition-colors">Topics</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Legal</h3>
-              <ul className="space-y-2">
-                <li><Link href="/privacy" className="text-primary hover:text-primary/80 text-sm transition-colors">Privacy Policy</Link></li>
-                <li><Link href="/terms" className="text-muted-foreground hover:text-foreground text-sm transition-colors">Terms of Service</Link></li>
-                <li><Link href="/contact" className="text-muted-foreground hover:text-foreground text-sm transition-colors">Contact</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Connect</h3>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-muted-foreground hover:text-foreground text-sm transition-colors">Twitter</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-foreground text-sm transition-colors">LinkedIn</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-foreground text-sm transition-colors">GitHub</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-border/40 mt-8 pt-8 text-center">
-            <p className="text-muted-foreground text-sm">
-              © {new Date().getFullYear()} Artilect Newsletter. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

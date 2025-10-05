@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -119,27 +121,7 @@ export default function NotFound() {
         </svg>
       </div>
 
-      {/* Header */}
-      <header className="relative z-10 border-b border-border/50">
-  <div className="container max-w-6xl mx-auto px-6 md:px-8 lg:px-[120px] py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2 group">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
-                <Brain className="w-4 h-4 text-primary-foreground" />
-              </div>
-              <span className="text-xl font-heading font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Artilect
-              </span>
-            </Link>
-            <Button asChild size="sm">
-              <Link href="/">
-                <Home className="w-4 h-4 mr-2" />
-                Back to Home
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <main className="relative z-10">
         {/* Hero Section */}
@@ -285,60 +267,7 @@ export default function NotFound() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="relative z-10 border-t border-border/50 py-12 px-6">
-        <div className="container max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div className="space-y-4">
-              <Link href="/" className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                  <Brain className="w-4 h-4 text-primary-foreground" />
-                </div>
-                <span className="text-lg font-heading font-bold">Artilect</span>
-              </Link>
-              <p className="text-sm text-muted-foreground">
-                Your trusted source for AI insights and machine learning breakthroughs.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-3">Navigation</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/" className="text-muted-foreground hover:text-primary transition-colors">Home</Link></li>
-                <li><Link href="/newsletter" className="text-muted-foreground hover:text-primary transition-colors">Newsletter</Link></li>
-                <li><Link href="/topics" className="text-muted-foreground hover:text-primary transition-colors">Topics</Link></li>
-                <li><Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-3">Resources</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/archive" className="text-muted-foreground hover:text-primary transition-colors">Archive</Link></li>
-                <li><Link href="/faq" className="text-muted-foreground hover:text-primary transition-colors">FAQ</Link></li>
-                <li><Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
-                <li><Link href="/privacy" className="text-muted-foreground hover:text-primary transition-colors">Privacy</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-3">Connect</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Twitter</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">LinkedIn</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">GitHub</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Discord</a></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="pt-8 border-t border-border/50 text-center">
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Artilect Newsletter. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

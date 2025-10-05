@@ -5,6 +5,8 @@ import Link from "next/link";
 import { ArrowUp, ChevronRight, Shield, Mail, FileText, Users, Eye, AlertTriangle, Scale, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const sections = [
   { id: "acceptance", title: "Acceptance of Terms", icon: Shield },
@@ -63,35 +65,7 @@ export default function TermsOfService() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b border-secondary/50 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-  <div className="container mx-auto px-4 sm:px-8 lg:px-[120px]">
-          <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <span className="text-sm font-bold text-primary-foreground">A</span>
-              </div>
-              <span className="font-heading text-xl font-bold">Artilect</span>
-            </Link>
-            
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">
-                Home
-              </Link>
-              <Link href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="text-foreground font-medium">
-                Terms of Service
-              </Link>
-            </nav>
-
-            <Button asChild size="sm" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90">
-              <Link href="/#subscribe">Subscribe</Link>
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Breadcrumb */}
       <div className="border-b border-secondary/30">
@@ -205,76 +179,6 @@ export default function TermsOfService() {
                     <p className="text-muted-foreground leading-relaxed">
                       We reserve the right to modify, suspend, or discontinue any part of our Service at any time, with or without notice. We may also impose limits on certain features or restrict access to parts or all of the Service without notice or liability.
                     </p>
-                  </CardContent>
-                </Card>
-              </section>
-
-              {/* User Accounts and Registration */}
-              <section id="accounts" className="scroll-mt-24">
-                <Card className="bg-card/50 backdrop-blur">
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
-                      <Users className="h-6 w-6 text-primary" />
-                      <span>3. User Accounts and Registration</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="prose prose-invert max-w-none">
-                    <p className="text-muted-foreground leading-relaxed mb-4">
-                      To subscribe to our newsletter, you must provide a valid email address. You are responsible for maintaining the accuracy of your contact information and promptly updating any changes.
-                    </p>
-                    <p className="text-muted-foreground leading-relaxed mb-4">
-                      You agree to:
-                    </p>
-                    <ul className="text-muted-foreground space-y-2 mb-4 ml-6">
-                      <li>• Provide accurate, current, and complete information</li>
-                      <li>• Maintain and promptly update your account information</li>
-                      <li>• Use only one account per person</li>
-                      <li>• Not share your subscription access with others</li>
-                      <li>• Not use the Service for any unauthorized purpose</li>
-                    </ul>
-                    <p className="text-muted-foreground leading-relaxed">
-                      We reserve the right to suspend or terminate accounts that violate these Terms or are used for fraudulent or abusive purposes.
-                    </p>
-                  </CardContent>
-                </Card>
-              </section>
-
-              {/* Subscription Terms */}
-              <section id="subscription" className="scroll-mt-24">
-                <Card className="bg-card/50 backdrop-blur">
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
-                      <FileText className="h-6 w-6 text-primary" />
-                      <span>4. Subscription Terms</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="prose prose-invert max-w-none">
-                    <div className="mb-6">
-                      <h4 className="text-lg font-semibold text-foreground mb-3">Free Subscription</h4>
-                      <p className="text-muted-foreground leading-relaxed mb-4">
-                        Our basic newsletter service is provided free of charge. Free subscribers receive regular newsletter emails and access to publicly available content.
-                      </p>
-                    </div>
-                    
-                    <div className="mb-6">
-                      <h4 className="text-lg font-semibold text-foreground mb-3">Premium Subscriptions</h4>
-                      <p className="text-muted-foreground leading-relaxed mb-4">
-                        Premium subscription tiers may be offered with additional features, exclusive content, or enhanced services. Premium subscription terms include:
-                      </p>
-                      <ul className="text-muted-foreground space-y-2 mb-4 ml-6">
-                        <li>• Subscription fees are billed according to the selected plan</li>
-                        <li>• Automatic renewal unless cancelled before the next billing cycle</li>
-                        <li>• No refunds for partial subscription periods</li>
-                        <li>• Price changes will be communicated 30 days in advance</li>
-                      </ul>
-                    </div>
-
-                    <div>
-                      <h4 className="text-lg font-semibold text-foreground mb-3">Cancellation</h4>
-                      <p className="text-muted-foreground leading-relaxed">
-                        You may unsubscribe from our newsletter at any time using the unsubscribe link in any email or by contacting us directly. Cancellation is effective immediately for free subscriptions and at the end of the current billing period for premium subscriptions.
-                      </p>
-                    </div>
                   </CardContent>
                 </Card>
               </section>
@@ -566,61 +470,7 @@ export default function TermsOfService() {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="border-t border-secondary/30 bg-card/20">
-  <div className="container mx-auto px-4 sm:px-8 lg:px-[120px] py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="md:col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                  <span className="text-sm font-bold text-primary-foreground">A</span>
-                </div>
-                <span className="font-heading text-xl font-bold">Artilect</span>
-              </div>
-              <p className="text-muted-foreground max-w-md">
-                Your source for curated AI insights and technology trends. 
-                Stay ahead of the curve with our weekly newsletter.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">Legal</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>
-                  <Link href="/privacy" className="hover:text-foreground transition-colors">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/terms" className="hover:text-foreground transition-colors">
-                    Terms of Service
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">Connect</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>
-                  <Link href="/#subscribe" className="hover:text-foreground transition-colors">
-                    Subscribe
-                  </Link>
-                </li>
-                <li>
-                  <a href="mailto:info@artilectai.com" className="hover:text-foreground transition-colors">
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-secondary/30 mt-8 pt-8 text-center text-muted-foreground">
-            <p>&copy; 2025 Artilect Newsletter. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Scroll to Top Button */}
       {showScrollTop && (

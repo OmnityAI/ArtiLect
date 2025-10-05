@@ -1,6 +1,8 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -271,33 +273,7 @@ export default async function TopicPage({
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <span className="text-sm font-bold text-primary-foreground">A</span>
-            </div>
-            <span className="font-heading font-bold text-xl">Artilect</span>
-          </Link>
-
-          <nav className="flex items-center space-x-6">
-            <Link
-              href="/"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Home
-            </Link>
-            <Link
-              href="/topics"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Topics
-            </Link>
-            <Button size="sm">Subscribe</Button>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       {/* Breadcrumb */}
       <div className="container py-4">
@@ -544,6 +520,7 @@ export default async function TopicPage({
           </div>
         </div>
       </footer>
+      <Footer />
     </div>
   )
 }
