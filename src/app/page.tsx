@@ -9,7 +9,6 @@ import Footer from "@/components/Footer";
 import { FAQSection } from "@/components/FAQ";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { SocialProof } from "@/components/SocialProof";
-import { NewsletterPreview } from "@/components/NewsletterPreview";
 import { FOMOSection } from "@/components/FOMOSection";
 import InteractiveQuiz from "@/components/InteractiveQuiz";
 import { ExitIntentPopup } from "@/components/ExitIntentPopup";
@@ -85,9 +84,7 @@ export default function Home() {
           <HowItWorks />
         </div>
         
-        <div className="py-16">
-          <NewsletterPreview />
-        </div>
+        {/* NewsletterPreview section removed by request */}
         
         <div className="py-16">
           <WhyArtiLect />
