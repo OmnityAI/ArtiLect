@@ -23,8 +23,8 @@ import {
 const faqData = [
   {
     id: 'what-is-artilect',
-    question: 'What is ArtiLect Newsletter?',
-    answer: 'ArtiLect is a premium AI intelligence newsletter that delivers cutting-edge insights, analysis, and trends in artificial intelligence. We curate the most important developments in AI research, industry applications, and emerging technologies to keep you ahead of the curve.',
+    question: 'What is Artilect Newsletter?',
+    answer: 'Artilect is a premium AI intelligence newsletter that delivers cutting-edge insights, analysis, and trends in artificial intelligence. We curate the most important developments in AI research, industry applications, and emerging technologies to keep you ahead of the curve.',
     icon: HelpCircle,
   },
   {
@@ -42,7 +42,7 @@ const faqData = [
   {
     id: 'subscription-cost',
     question: 'Is it free to subscribe?',
-    answer: 'Yes! ArtiLect Newsletter is completely free to subscribe. We believe in democratizing AI knowledge and making high-quality intelligence accessible to everyone in the AI community.',
+    answer: 'Yes! Artilect Newsletter is completely free to subscribe. We believe in democratizing AI knowledge and making high-quality intelligence accessible to everyone in the AI community.',
     icon: DollarSign,
   },
   {
@@ -93,7 +93,7 @@ export const FAQSection = () => {
             Frequently Asked Questions
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Everything you need to know about ArtiLect Newsletter and how we're building the future of AI intelligence.
+            Everything you need to know about Artilect Newsletter and how we're building the future of AI intelligence.
           </p>
         </div>
 
@@ -138,7 +138,7 @@ export const FAQSection = () => {
             We're here to help. Reach out to our team anytime.
           </p>
           <a 
-            href="mailto:hello@artilect.ai" 
+            href="mailto:info@artilectai.com" 
             className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-colors duration-300"
           >
             <MessageSquare className="w-4 h-4" />

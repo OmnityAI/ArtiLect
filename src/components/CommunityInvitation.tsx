@@ -38,7 +38,7 @@ export default function CommunityInvitation() {
         setIsSignupOpen(false);
         setEmail("");
         setName("");
-        toast.success("Welcome to ArtiLect Newsletter! You'll receive the latest AI insights directly in your inbox.");
+  toast.success("Welcome to Artilect Newsletter! You'll receive the latest AI insights directly in your inbox.");
       } else {
         if (data.code === 'DUPLICATE_EMAIL') {
           toast.error("You're already subscribed to our newsletter!");
@@ -92,7 +92,7 @@ export default function CommunityInvitation() {
             Community
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Thousands of AI professionals, researchers, and innovators trust ArtiLect Newsletter 
+            Thousands of AI professionals, researchers, and innovators trust Artilect Newsletter 
             to keep them informed and ahead of the curve.
           </p>
         </div>
@@ -158,7 +158,7 @@ export default function CommunityInvitation() {
                 <DialogHeader>
                   <DialogTitle className="flex items-center gap-2">
                     <Brain className="w-5 h-5 text-primary" />
-                    Subscribe to ArtiLect Newsletter
+                    Subscribe to Artilect Newsletter
                   </DialogTitle>
                   <DialogDescription>
                     Join thousands of AI enthusiasts and professionals getting the latest insights weekly.

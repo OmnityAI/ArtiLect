@@ -38,7 +38,7 @@ export default function Header() {
         setIsSignupOpen(false);
         setEmail("");
         setName("");
-        toast.success("Welcome to ArtiLect Newsletter! You'll receive the latest AI insights directly in your inbox.");
+  toast.success("Welcome to Artilect Newsletter! You'll receive the latest AI insights directly in your inbox.");
       } else {
         if (data.code === 'DUPLICATE_EMAIL') {
           toast.error("You're already subscribed to our newsletter!");
@@ -74,7 +74,7 @@ export default function Header() {
               <Brain className="w-6 h-6 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-xl font-heading font-bold text-foreground">ArtiLect</h1>
+              <h1 className="text-xl font-heading font-bold text-foreground">Artilect</h1>
               <p className="text-xs text-muted-foreground">AI Newsletter</p>
             </div>
           </div>
@@ -115,7 +115,7 @@ export default function Header() {
                 <DialogHeader>
                   <DialogTitle className="flex items-center gap-2">
                     <Brain className="w-5 h-5 text-primary" />
-                    Subscribe to ArtiLect Newsletter
+                    Subscribe to Artilect Newsletter
                   </DialogTitle>
                   <DialogDescription>
                     Join thousands of AI enthusiasts and professionals getting the latest insights weekly.
@@ -210,7 +210,7 @@ export default function Header() {
                     <DialogHeader>
                       <DialogTitle className="flex items-center gap-2">
                         <Brain className="w-5 h-5 text-primary" />
-                        Subscribe to ArtiLect Newsletter
+                        Subscribe to Artilect Newsletter
                       </DialogTitle>
                       <DialogDescription>
                         Join thousands of AI enthusiasts and professionals getting the latest insights weekly.

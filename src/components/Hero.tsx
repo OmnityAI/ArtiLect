@@ -37,7 +37,7 @@ export default function Hero() {
         setIsSignupOpen(false);
         setEmail("");
         setName("");
-        toast.success("Welcome to ArtiLect Newsletter! You'll receive the latest AI insights directly in your inbox.");
+  toast.success("Welcome to Artilect Newsletter! You'll receive the latest AI insights directly in your inbox.");
       } else {
         if (data.code === 'DUPLICATE_EMAIL') {
           toast.error("You're already subscribed to our newsletter!");
@@ -152,7 +152,7 @@ export default function Hero() {
                   <Button 
                     size="lg" 
                     className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground font-semibold px-8 py-6 text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-1"
-                    aria-label="Subscribe to ArtiLect newsletter"
+                    aria-label="Subscribe to Artilect newsletter"
                   >
                     Subscribe Now
                   </Button>
@@ -161,7 +161,7 @@ export default function Hero() {
                   <DialogHeader>
                     <DialogTitle className="flex items-center gap-2">
                       <Brain className="w-5 h-5 text-primary" />
-                      Subscribe to ArtiLect Newsletter
+                      Subscribe to Artilect Newsletter
                     </DialogTitle>
                     <DialogDescription>
                       Join thousands of AI professionals getting weekly intelligence.
@@ -225,7 +225,7 @@ export default function Hero() {
                   <Brain className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground">ArtiLect Weekly</h3>
+                  <h3 className="font-semibold text-foreground">Artilect Weekly</h3>
                   <p className="text-sm text-muted-foreground">AI Intelligence</p>
                 </div>
               </div>

@@ -128,7 +128,7 @@ export default function NotFound() {
                 <Brain className="w-4 h-4 text-primary-foreground" />
               </div>
               <span className="text-xl font-heading font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                ArtiLect
+                Artilect
               </span>
             </Link>
             <Button asChild size="sm">
@@ -294,7 +294,7 @@ export default function NotFound() {
                 <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
                   <Brain className="w-4 h-4 text-primary-foreground" />
                 </div>
-                <span className="text-lg font-heading font-bold">ArtiLect</span>
+                <span className="text-lg font-heading font-bold">Artilect</span>
               </Link>
               <p className="text-sm text-muted-foreground">
                 Your trusted source for AI insights and machine learning breakthroughs.
@@ -334,7 +334,7 @@ export default function NotFound() {
           
           <div className="pt-8 border-t border-border/50 text-center">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} ArtiLect Newsletter. All rights reserved.
+              © {new Date().getFullYear()} Artilect Newsletter. All rights reserved.
             </p>
           </div>
         </div>

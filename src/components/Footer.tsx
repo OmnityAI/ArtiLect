@@ -37,7 +37,7 @@ export default function Footer() {
         setIsSignupOpen(false);
         setEmail("");
         setName("");
-        toast.success("Welcome to ArtiLect Newsletter! You'll receive the latest AI insights directly in your inbox.");
+  toast.success("Welcome to Artilect Newsletter! You'll receive the latest AI insights directly in your inbox.");
       } else {
         if (data.code === 'DUPLICATE_EMAIL') {
           toast.error("You're already subscribed to our newsletter!");
@@ -66,7 +66,7 @@ export default function Footer() {
                 <Brain className="w-7 h-7 text-primary-foreground" />
               </div>
               <div>
-                <h3 className="text-2xl font-heading font-bold text-foreground">ArtiLect</h3>
+                <h3 className="text-2xl font-heading font-bold text-foreground">Artilect</h3>
                 <p className="text-sm text-muted-foreground">AI Intelligence Newsletter</p>
               </div>
             </div>
@@ -92,7 +92,7 @@ export default function Footer() {
                   <DialogHeader>
                     <DialogTitle className="flex items-center gap-2">
                       <Brain className="w-5 h-5 text-primary" />
-                      Subscribe to ArtiLect Newsletter
+                      Subscribe to Artilect Newsletter
                     </DialogTitle>
                     <DialogDescription>
                       Join thousands of AI enthusiasts and professionals getting the latest insights weekly.
@@ -142,7 +142,7 @@ export default function Footer() {
             <h4 className="font-semibold text-foreground">Newsletter</h4>
             <nav className="flex flex-col space-y-3">
               <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
-                About ArtiLect
+                About Artilect
               </a>
               <a href="#topics" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Featured Topics
@@ -161,8 +161,8 @@ export default function Footer() {
             <h4 className="font-semibold text-foreground">Connect</h4>
             <div className="space-y-3">
               <p className="text-muted-foreground">
-                <a href="mailto:hello@artilectai.com" className="hover:text-foreground transition-colors duration-200">
-                  hello@artilectai.com
+                <a href="mailto:info@artilectai.com" className="hover:text-foreground transition-colors duration-200">
+                  info@artilectai.com
                 </a>
               </p>
               
@@ -203,7 +203,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="mt-12 pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © 2024 ArtiLect AI. All rights reserved.
+            © 2025 Artilect AI. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <a href="#terms" className="hover:text-foreground transition-colors duration-200">

@@ -16,7 +16,7 @@ export default function HowItWorks() {
             Delivered
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
-            Three reasons why thousands choose ArtiLect for their AI intelligence
+            Three reasons why thousands choose Artilect for their AI intelligence
           </p>
         </div>
 

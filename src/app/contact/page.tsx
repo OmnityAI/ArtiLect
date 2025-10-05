@@ -67,7 +67,7 @@ export default function ContactPage() {
       title: "General Inquiries",
       description:
         "Questions about our newsletter, subscriptions, or general information",
-      email: "hello@artilect.com",
+      email: "info@artilectai.com",
     },
     {
       icon: Users,
@@ -103,7 +103,7 @@ export default function ContactPage() {
         "We publish new issues every Tuesday and Friday, delivering the latest AI insights twice weekly.",
     },
     {
-      question: "Is ArtiLect Newsletter free?",
+      question: "Is Artilect Newsletter free?",
       answer:
         "Yes! Our core newsletter is completely free. We also offer premium content for subscribers who want deeper analysis.",
     },
@@ -123,7 +123,7 @@ export default function ContactPage() {
         "We occasionally feature guest experts. Reach out to our editorial team with your proposal and credentials.",
     },
     {
-      question: "How can I advertise with ArtiLect?",
+      question: "How can I advertise with Artilect?",
       answer:
         "For advertising and sponsorship opportunities, contact partnerships@artilect.com with your requirements.",
     },
@@ -187,8 +187,8 @@ export default function ContactPage() {
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center space-x-8">
             <div className="font-heading text-xl font-bold">
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-                ArtiLect
+                  <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                    Artilect
               </span>
             </div>
             <nav className="hidden md:flex items-center space-x-6">
@@ -276,7 +276,7 @@ export default function ContactPage() {
                     <CardContent>
                       <a
                         href={`mailto:${method.email}`}
-                        className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors"
+                        className="inline-flex items-center space-x-2 text-primary hover:underline"
                       >
                         <Mail className="h-4 w-4" />
                         <span className="font-medium">{method.email}</span>
@@ -505,7 +505,7 @@ export default function ContactPage() {
             <div className="space-y-4">
               <div className="font-heading text-xl font-bold">
                 <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-                  ArtiLect
+                  Artilect
                 </span>
               </div>
               <p className="text-sm text-muted-foreground">
@@ -581,7 +581,7 @@ export default function ContactPage() {
 
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-muted-foreground">
-              © 2024 ArtiLect Newsletter. All rights reserved.
+              © 2025 Artilect Newsletter. All rights reserved.
             </p>
             <div className="flex space-x-4">
               <a

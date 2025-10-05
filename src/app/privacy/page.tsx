@@ -63,7 +63,7 @@ export default function PrivacyPolicyPage() {
           <div className="flex h-16 items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
               <div className="h-8 w-8 rounded-full bg-gradient-to-r from-primary to-accent" />
-              <span className="font-heading font-bold text-xl">ArtiLect</span>
+              <span className="font-heading font-bold text-xl">Artilect</span>
             </Link>
             <nav className="hidden md:flex items-center space-x-8">
               <Link href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
@@ -142,7 +142,7 @@ export default function PrivacyPolicyPage() {
               </h1>
               <div className="prose prose-neutral prose-invert max-w-none">
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  At ArtiLect Newsletter, we respect your privacy and are committed to protecting your personal information. 
+                  At Artilect Newsletter, we respect your privacy and are committed to protecting your personal information. 
                   This Privacy Policy explains how we collect, use, and safeguard your data when you subscribe to our newsletter 
                   and use our services.
                 </p>
@@ -487,7 +487,7 @@ export default function PrivacyPolicyPage() {
                   </div>
                   <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-6">
                     <p className="text-muted-foreground">
-                      ArtiLect Newsletter is not intended for children under the age of 13. We do not knowingly 
+                      Artilect Newsletter is not intended for children under the age of 13. We do not knowingly 
                       collect personal information from children under 13. If you are a parent or guardian and 
                       believe your child has provided us with personal information, please contact us immediately, 
                       and we will delete such information from our systems.
@@ -581,7 +581,7 @@ export default function PrivacyPolicyPage() {
                   Ready to Stay Informed?
                 </h2>
                 <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                  Join thousands of professionals who trust ArtiLect Newsletter with their privacy. 
+                  Join thousands of professionals who trust Artilect Newsletter with their privacy. 
                   Get cutting-edge AI insights delivered to your inbox with complete data protection.
                 </p>
                 <Button size="lg" className="bg-gradient-to-r from-primary to-accent text-primary-foreground">
@@ -609,7 +609,7 @@ export default function PrivacyPolicyPage() {
             <div className="col-span-2 md:col-span-1">
               <div className="flex items-center space-x-2 mb-4">
                 <div className="h-8 w-8 rounded-full bg-gradient-to-r from-primary to-accent" />
-                <span className="font-heading font-bold text-xl">ArtiLect</span>
+                <span className="font-heading font-bold text-xl">Artilect</span>
               </div>
               <p className="text-muted-foreground text-sm">
                 Cutting-edge AI insights delivered to your inbox. Stay ahead with the latest in artificial intelligence.
@@ -642,7 +642,7 @@ export default function PrivacyPolicyPage() {
           </div>
           <div className="border-t border-border/40 mt-8 pt-8 text-center">
             <p className="text-muted-foreground text-sm">
-              © {new Date().getFullYear()} ArtiLect Newsletter. All rights reserved.
+              © {new Date().getFullYear()} Artilect Newsletter. All rights reserved.
             </p>
           </div>
         </div>

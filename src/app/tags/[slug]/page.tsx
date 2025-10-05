@@ -233,23 +233,23 @@ export async function generateMetadata({
 
   if (!topic) {
     return {
-      title: 'Topic Not Found - ArtiLect',
+      title: 'Topic Not Found - Artilect',
       description: 'The requested topic could not be found.',
     }
   }
 
   return {
-    title: `${topic.title} - ArtiLect Newsletter`,
+  title: `${topic.title} - Artilect Newsletter`,
     description: topic.description,
     keywords: [topic.title, 'AI newsletter', 'artificial intelligence', 'technology insights'],
     openGraph: {
-      title: `${topic.title} - ArtiLect Newsletter`,
+  title: `${topic.title} - Artilect Newsletter`,
       description: topic.description,
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${topic.title} - ArtiLect Newsletter`,
+  title: `${topic.title} - Artilect Newsletter`,
       description: topic.description,
     },
   }
@@ -278,7 +278,7 @@ export default async function TopicPage({
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
               <span className="text-sm font-bold text-primary-foreground">A</span>
             </div>
-            <span className="font-heading font-bold text-xl">ArtiLect</span>
+            <span className="font-heading font-bold text-xl">Artilect</span>
           </Link>
 
           <nav className="flex items-center space-x-6">
@@ -488,7 +488,7 @@ export default async function TopicPage({
                 <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
                   <span className="text-sm font-bold text-primary-foreground">A</span>
                 </div>
-                <span className="font-heading font-bold text-xl">ArtiLect</span>
+                <span className="font-heading font-bold text-xl">Artilect</span>
               </Link>
               <p className="text-sm text-muted-foreground">Your weekly dose of AI insights and analysis.</p>
             </div>
@@ -540,7 +540,7 @@ export default async function TopicPage({
           </div>
 
           <div className="mt-12 pt-8 border-t border-border/40 text-center">
-            <p className="text-sm text-muted-foreground">© 2024 ArtiLect. All rights reserved.</p>
+            <p className="text-sm text-muted-foreground">© 2025 Artilect. All rights reserved.</p>
           </div>
         </div>
       </footer>

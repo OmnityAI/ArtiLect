@@ -71,7 +71,7 @@ export default function TermsOfService() {
               <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
                 <span className="text-sm font-bold text-primary-foreground">A</span>
               </div>
-              <span className="font-heading text-xl font-bold">ArtiLect</span>
+              <span className="font-heading text-xl font-bold">Artilect</span>
             </Link>
             
             <nav className="hidden md:flex items-center space-x-8">
@@ -146,7 +146,7 @@ export default function TermsOfService() {
                 Terms of Service
               </h1>
               <p className="text-lg text-muted-foreground max-w-3xl">
-                Please read these Terms of Service carefully before using the ArtiLect Newsletter service. 
+                Please read these Terms of Service carefully before using the Artilect Newsletter service. 
                 By subscribing to or using our service, you agree to be bound by these terms.
               </p>
               <div className="mt-4 text-sm text-muted-foreground">
@@ -167,10 +167,10 @@ export default function TermsOfService() {
                   </CardHeader>
                   <CardContent className="prose prose-invert max-w-none">
                     <p className="text-muted-foreground leading-relaxed mb-4">
-                      By accessing, subscribing to, or using the ArtiLect Newsletter service ("Service"), you acknowledge that you have read, understood, and agree to be bound by these Terms of Service ("Terms") and our Privacy Policy.
+                      By accessing, subscribing to, or using the Artilect Newsletter service ("Service"), you acknowledge that you have read, understood, and agree to be bound by these Terms of Service ("Terms") and our Privacy Policy.
                     </p>
                     <p className="text-muted-foreground leading-relaxed mb-4">
-                      If you do not agree to these Terms, you may not access or use our Service. These Terms constitute a legally binding agreement between you and ArtiLect.
+                      If you do not agree to these Terms, you may not access or use our Service. These Terms constitute a legally binding agreement between you and Artilect.
                     </p>
                     <p className="text-muted-foreground leading-relaxed">
                       You must be at least 13 years old to use our Service. By using our Service, you represent and warrant that you meet this age requirement and have the legal capacity to enter into these Terms.
@@ -190,7 +190,7 @@ export default function TermsOfService() {
                   </CardHeader>
                   <CardContent className="prose prose-invert max-w-none">
                     <p className="text-muted-foreground leading-relaxed mb-4">
-                      ArtiLect Newsletter is a digital publication service that delivers curated content about artificial intelligence, technology trends, and related topics directly to subscribers' email addresses.
+                      Artilect Newsletter is a digital publication service that delivers curated content about artificial intelligence, technology trends, and related topics directly to subscribers' email addresses.
                     </p>
                     <p className="text-muted-foreground leading-relaxed mb-4">
                       Our Service includes:
@@ -292,7 +292,7 @@ export default function TermsOfService() {
                     <div className="mb-6">
                       <h4 className="text-lg font-semibold text-foreground mb-3">Our Content</h4>
                       <p className="text-muted-foreground leading-relaxed mb-4">
-                        All content provided through the ArtiLect Newsletter, including but not limited to text, graphics, logos, images, and software, is the property of ArtiLect or its content suppliers and is protected by copyright, trademark, and other intellectual property laws.
+                        All content provided through the Artilect Newsletter, including but not limited to text, graphics, logos, images, and software, is the property of Artilect or its content suppliers and is protected by copyright, trademark, and other intellectual property laws.
                       </p>
                     </div>
 
@@ -428,7 +428,7 @@ export default function TermsOfService() {
                   </CardHeader>
                   <CardContent className="prose prose-invert max-w-none">
                     <p className="text-muted-foreground leading-relaxed mb-4">
-                      These Terms remain in effect until terminated by either you or ArtiLect. You may terminate these Terms at any time by unsubscribing from our newsletter and ceasing use of our Service.
+                      These Terms remain in effect until terminated by either you or Artilect. You may terminate these Terms at any time by unsubscribing from our newsletter and ceasing use of our Service.
                     </p>
                     <p className="text-muted-foreground leading-relaxed mb-4">
                       We may terminate or suspend your access to the Service immediately, without prior notice or liability, for any reason, including but not limited to:
@@ -546,7 +546,7 @@ export default function TermsOfService() {
               <Card className="bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
                 <CardContent className="text-center py-12">
                   <h3 className="text-2xl font-heading font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    Ready to Join ArtiLect?
+                    Ready to Join Artilect?
                   </h3>
                   <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
                     By subscribing, you agree to these Terms of Service and our Privacy Policy. 
@@ -575,7 +575,7 @@ export default function TermsOfService() {
                 <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
                   <span className="text-sm font-bold text-primary-foreground">A</span>
                 </div>
-                <span className="font-heading text-xl font-bold">ArtiLect</span>
+                <span className="font-heading text-xl font-bold">Artilect</span>
               </div>
               <p className="text-muted-foreground max-w-md">
                 Your source for curated AI insights and technology trends. 
@@ -617,7 +617,7 @@ export default function TermsOfService() {
           </div>
           
           <div className="border-t border-secondary/30 mt-8 pt-8 text-center text-muted-foreground">
-            <p>&copy; 2024 ArtiLect Newsletter. All rights reserved.</p>
+            <p>&copy; 2025 Artilect Newsletter. All rights reserved.</p>
           </div>
         </div>
       </footer>

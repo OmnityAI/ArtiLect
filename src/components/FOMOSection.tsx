@@ -113,7 +113,7 @@ export const FOMOSection = () => {
 
             <div className="space-y-4">
               {missedContent.map((item, index) => (
-                <div key={index} className="group bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] min-h-[220px]">
+                <div key={index} className="group bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] min-h-[180px]">
                   <div className="flex items-start justify-between mb-3">
                     <span className="inline-flex items-center bg-destructive/10 text-destructive px-2 py-1 rounded text-xs font-medium">
                       {item.tag}
@@ -147,7 +147,7 @@ export const FOMOSection = () => {
 
             <div className="space-y-4">
               {comingContent.map((item, index) => (
-                <div key={index} className="group bg-card border border-border rounded-lg p-6 hover:border-accent/50 transition-all duration-300 relative overflow-hidden hover:scale-[1.02] min-h-[220px]">
+                <div key={index} className="group bg-card border border-border rounded-lg p-6 hover:border-accent/50 transition-all duration-300 relative overflow-hidden hover:scale-[1.02] min-h-[180px]">
                   <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
                   <div className="relative">

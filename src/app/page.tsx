@@ -14,8 +14,8 @@ import InteractiveQuiz from "@/components/InteractiveQuiz";
 import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 
 export const metadata: Metadata = {
-  title: 'ArtiLect - AI Intelligence Newsletter | Weekly AI Insights & Analysis',
-  description: 'Stay ahead of the AI revolution with ArtiLect Newsletter. Get curated insights, expert analysis, and breaking research on artificial intelligence, machine learning, and data analytics delivered weekly.',
+  title: 'Artilect - AI Intelligence Newsletter | Weekly AI Insights & Analysis',
+  description: 'Stay ahead of the AI revolution with Artilect Newsletter. Get curated insights, expert analysis, and breaking research on artificial intelligence, machine learning, and data analytics delivered weekly.',
   keywords: [
     'AI newsletter',
     'artificial intelligence',
@@ -28,20 +28,20 @@ export const metadata: Metadata = {
     'data ethics',
     'technology trends'
   ],
-  authors: [{ name: 'ArtiLect Team' }],
-  creator: 'ArtiLect',
-  publisher: 'ArtiLect',
+  authors: [{ name: 'Artilect Team' }],
+  creator: 'Artilect',
+  publisher: 'Artilect',
   openGraph: {
-    title: 'ArtiLect - AI Intelligence Newsletter',
+  title: 'Artilect - AI Intelligence Newsletter',
     description: 'Weekly AI insights and analysis for professionals, researchers, and enthusiasts.',
     url: 'https://artilect.ai',
-    siteName: 'ArtiLect',
+  siteName: 'Artilect',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'ArtiLect - AI Intelligence Newsletter',
+  alt: 'Artilect - AI Intelligence Newsletter',
       },
     ],
     locale: 'en_US',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ArtiLect - AI Intelligence Newsletter',
+  title: 'Artilect - AI Intelligence Newsletter',
     description: 'Weekly AI insights and analysis for professionals, researchers, and enthusiasts.',
     images: ['/twitter-image.jpg'],
     creator: '@artilectai',

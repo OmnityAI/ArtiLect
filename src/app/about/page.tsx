@@ -21,11 +21,11 @@ import {
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'About ArtiLect Newsletter | Leading AI Intelligence Newsletter',
-  description: 'Learn about ArtiLect\'s mission to democratize AI knowledge through expert-curated analysis, practical insights, and community-driven intelligence for AI professionals.',
+  title: 'About Artilect Newsletter | Leading AI Intelligence Newsletter',
+  description: 'Learn about Artilect\'s mission to democratize AI knowledge through expert-curated analysis, practical insights, and community-driven intelligence for AI professionals.',
   keywords: 'AI newsletter, artificial intelligence, machine learning, AI research, tech analysis, AI community',
   openGraph: {
-    title: 'About ArtiLect Newsletter',
+    title: 'About Artilect Newsletter',
     description: 'Democratizing AI knowledge through expert analysis and community intelligence',
     type: 'website',
   },
@@ -113,7 +113,7 @@ const stats = [
 
 const testimonials = [
   {
-    quote: "ArtiLect is my go-to source for understanding what actually matters in AI. No fluff, just actionable intelligence.",
+    quote: "Artilect is my go-to source for understanding what actually matters in AI. No fluff, just actionable intelligence.",
     author: "Tech Lead at Microsoft",
     role: "Anonymous Subscriber"
   },
@@ -150,7 +150,7 @@ export default function AboutPage() {
   <section className="container mx-auto px-6 md:px-8 lg:px-[120px] py-16">
         <div className="max-w-4xl mx-auto text-center">
           <Badge variant="secondary" className="mb-6 bg-gradient-to-r from-primary/20 to-accent/20 border-primary/30">
-            About ArtiLect
+            About Artilect
           </Badge>
           <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 bg-gradient-to-r from-primary via-purple-400 to-accent bg-clip-text text-transparent">
             The Leading AI Intelligence Newsletter
@@ -238,7 +238,7 @@ export default function AboutPage() {
               What Makes Us Different
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We're not just another AI newsletter. Here's what sets ArtiLect apart from the noise.
+              We're not just another AI newsletter. Here's what sets Artilect apart from the noise.
             </p>
           </div>
           
@@ -412,10 +412,10 @@ export default function AboutPage() {
             <CardContent className="relative p-12 text-center">
               <Mail className="w-16 h-16 text-primary mx-auto mb-6" />
               <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-                Ready to Join ArtiLect?
+                Ready to Join Artilect?
               </h2>
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Join 52,000+ AI professionals who rely on ArtiLect for expert analysis, 
+                Join 52,000+ AI professionals who rely on Artilect for expert analysis, 
                 practical insights, and community intelligence.
               </p>
               
