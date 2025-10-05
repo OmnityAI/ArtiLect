@@ -141,16 +141,16 @@ export default function Footer() {
           <div className="space-y-6">
             <h4 className="font-semibold text-foreground">Newsletter</h4>
             <nav className="flex flex-col space-y-3">
-              <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <a href="/about" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
                 About Artilect
               </a>
-              <a href="#topics" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <a href="/#featured-topics" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Featured Topics
               </a>
-              <a href="#archive" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <a href="/tags/ai-machine-learning" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Newsletter Archive
               </a>
-              <a href="#privacy" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <a href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Privacy Policy
               </a>
             </nav>
