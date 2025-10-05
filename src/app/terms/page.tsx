@@ -1,5 +1,24 @@
 "use client";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms of Service • Artilect",
+  description:
+    "Read the Terms of Service for Artilect Newsletter, covering subscriptions, privacy, content usage, and your responsibilities.",
+  openGraph: {
+    title: "Terms of Service • Artilect",
+    description:
+      "Read the Terms of Service for Artilect Newsletter, covering subscriptions, privacy, content usage, and your responsibilities.",
+    siteName: "Artilect",
+  },
+  twitter: {
+    title: "Terms of Service • Artilect",
+    description:
+      "Read the Terms of Service for Artilect Newsletter, covering subscriptions, privacy, content usage, and your responsibilities.",
+  },
+};
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowUp, ChevronRight, Shield, Mail, FileText, Users, Eye, AlertTriangle, Scale, Phone } from "lucide-react";
@@ -150,7 +169,7 @@ export default function TermsOfService() {
                 By subscribing to or using our service, you agree to be bound by these terms.
               </p>
               <div className="mt-4 text-sm text-muted-foreground">
-                <span>Last updated: December 2024</span>
+                <span>Last updated: October 2025</span>
               </div>
             </div>
 
@@ -487,7 +506,7 @@ export default function TermsOfService() {
                   </CardHeader>
                   <CardContent className="prose prose-invert max-w-none">
                     <p className="text-muted-foreground leading-relaxed mb-4">
-                      These Terms and your use of the Service are governed by and construed in accordance with the laws of the jurisdiction in which ArtiLect operates, without regard to conflict of law principles.
+                      These Terms and your use of the Service are governed by and construed in accordance with the laws of the jurisdiction in which Artilect operates, without regard to conflict of law principles.
                     </p>
                     <p className="text-muted-foreground leading-relaxed mb-4">
                       Any disputes arising from these Terms or your use of the Service shall be resolved through:
@@ -520,16 +539,16 @@ export default function TermsOfService() {
                     <div className="bg-secondary/30 rounded-lg p-6 mb-4">
                       <div className="space-y-3">
                         <div>
-                          <span className="font-semibold text-foreground">Email:</span>
-                          <span className="ml-2 text-primary">legal@artilect.news</span>
+                          <span className="font-semibold text-foreground">Legal:</span>
+                          <span className="ml-2 text-primary">info@artilectai.com</span>
                         </div>
                         <div>
                           <span className="font-semibold text-foreground">Support:</span>
-                          <span className="ml-2 text-primary">support@artilect.news</span>
+                          <span className="ml-2 text-primary">info@artilectai.com</span>
                         </div>
                         <div>
                           <span className="font-semibold text-foreground">Website:</span>
-                          <span className="ml-2 text-primary">www.artilect.news</span>
+                          <span className="ml-2 text-primary">www.artilectai.com</span>
                         </div>
                       </div>
                     </div>
@@ -608,7 +627,7 @@ export default function TermsOfService() {
                   </Link>
                 </li>
                 <li>
-                  <a href="mailto:support@artilect.news" className="hover:text-foreground transition-colors">
+                  <a href="mailto:info@artilectai.com" className="hover:text-foreground transition-colors">
                     Contact Us
                   </a>
                 </li>

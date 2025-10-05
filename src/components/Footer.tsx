@@ -206,14 +206,14 @@ export default function Footer() {
             © 2025 Artilect AI. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#terms" className="hover:text-foreground transition-colors duration-200">
+            <a href="/terms" className="hover:text-foreground transition-colors duration-200">
               Terms of Service
             </a>
-            <a href="#privacy" className="hover:text-foreground transition-colors duration-200">
+            <a href="/privacy" className="hover:text-foreground transition-colors duration-200">
               Privacy Policy
             </a>
-            <a href="#unsubscribe" className="hover:text-foreground transition-colors duration-200">
-              Unsubscribe
+            <a href="/contact" className="hover:text-foreground transition-colors duration-200">
+              Contact
             </a>
           </div>
         </div>

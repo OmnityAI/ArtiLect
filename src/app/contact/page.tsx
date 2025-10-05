@@ -74,25 +74,25 @@ export default function ContactPage() {
       title: "Editorial Team",
       description:
         "Story submissions, content suggestions, or editorial feedback",
-      email: "editorial@artilect.com",
+      email: "info@artilectai.com",
     },
     {
       icon: Shield,
       title: "Privacy Questions",
       description: "Data protection, privacy policy, or GDPR-related inquiries",
-      email: "privacy@artilect.com",
+      email: "info@artilectai.com",
     },
     {
       icon: Headphones,
       title: "Technical Support",
       description: "Website issues, subscription problems, or technical assistance",
-      email: "support@artilect.com",
+      email: "info@artilectai.com",
     },
     {
       icon: Heart,
       title: "Partnership Opportunities",
       description: "Sponsorships, collaborations, or business partnerships",
-      email: "partnerships@artilect.com",
+      email: "info@artilectai.com",
     },
   ];
 
@@ -115,7 +115,7 @@ export default function ContactPage() {
     {
       question: "Can I suggest topics or stories?",
       answer:
-        "Absolutely! We love hearing from our community. Send your suggestions to editorial@artilect.com.",
+  "Absolutely! We love hearing from our community. Send your suggestions to info@artilectai.com.",
     },
     {
       question: "Do you accept guest contributions?",
@@ -125,7 +125,7 @@ export default function ContactPage() {
     {
       question: "How can I advertise with Artilect?",
       answer:
-        "For advertising and sponsorship opportunities, contact partnerships@artilect.com with your requirements.",
+  "For advertising and sponsorship opportunities, contact info@artilectai.com with your requirements.",
     },
   ];
 

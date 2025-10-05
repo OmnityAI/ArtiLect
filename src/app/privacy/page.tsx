@@ -544,7 +544,7 @@ export default function PrivacyPolicyPage() {
                           <div className="space-y-3">
                             <div className="flex items-center">
                               <Mail className="h-4 w-4 text-primary mr-3" />
-                              <span className="text-muted-foreground">privacy@artilect.com</span>
+                              <span className="text-muted-foreground">info@artilectai.com</span>
                             </div>
                             <div className="flex items-center">
                               <Clock className="h-4 w-4 text-primary mr-3" />
@@ -559,7 +559,7 @@ export default function PrivacyPolicyPage() {
                           <div className="space-y-3">
                             <div className="flex items-center">
                               <Mail className="h-4 w-4 text-primary mr-3" />
-                              <span className="text-muted-foreground">dpo@artilect.com</span>
+                              <span className="text-muted-foreground">info@artilectai.com</span>
                             </div>
                             <div className="flex items-center">
                               <Shield className="h-4 w-4 text-primary mr-3" />
