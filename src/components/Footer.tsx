@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Brain, Mail, Instagram, Twitter, Github } from "lucide-react";
+import { Brain, Instagram } from "lucide-react";
 import { toast } from "sonner";
 
 export default function Footer() {
@@ -81,21 +81,15 @@ export default function Footer() {
               <h4 className="font-semibold text-foreground">Never miss an update</h4>
               <Dialog open={isSignupOpen} onOpenChange={setIsSignupOpen}>
                 <DialogTrigger asChild>
-                  <Button 
-                    className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground font-medium w-full sm:w-auto"
-                  >
-                    <Mail className="w-4 h-4 mr-2" />
+                  <Button size="lg" className="rounded-[120px]">
                     Subscribe to Newsletter
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-md">
+                <DialogContent className="sm:max-w-[500px]">
                   <DialogHeader>
-                    <DialogTitle className="flex items-center gap-2">
-                      <Brain className="w-5 h-5 text-primary" />
-                      Subscribe to Artilect Newsletter
-                    </DialogTitle>
+                    <DialogTitle>Join the Artilect newsletter</DialogTitle>
                     <DialogDescription>
-                      Join thousands of AI enthusiasts and professionals getting the latest insights weekly.
+                      Get cutting-edge AI insights, research, and analysis delivered weekly.
                     </DialogDescription>
                   </DialogHeader>
                   <form onSubmit={handleNewsletterSignup} className="space-y-4">
@@ -125,11 +119,11 @@ export default function Footer() {
                     </div>
                     <Button 
                       type="submit" 
-                      className="w-full" 
+                      className="w-full rounded-[120px]" 
                       size="lg"
                       disabled={isLoading}
                     >
-                      {isLoading ? "Subscribing..." : "Subscribe to Newsletter"}
+                      {isLoading ? "Subscribing..." : "Subscribe"}
                     </Button>
                   </form>
                 </DialogContent>
@@ -177,24 +171,6 @@ export default function Footer() {
                 >
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a 
-                  href="https://twitter.com/artilectai" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-background/50 hover:bg-primary/20 text-muted-foreground hover:text-primary transition-all duration-200"
-                  aria-label="Follow us on Twitter"
-                >
-                  <Twitter className="w-5 h-5" />
-                </a>
-                <a 
-                  href="https://github.com/artilectai" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-background/50 hover:bg-primary/20 text-muted-foreground hover:text-primary transition-all duration-200"
-                  aria-label="Follow us on GitHub"
-                >
-                  <Github className="w-5 h-5" />
-                </a>
               </div>
             </div>
           </div>
@@ -211,9 +187,6 @@ export default function Footer() {
             </a>
             <a href="/privacy" className="hover:text-foreground transition-colors duration-200">
               Privacy Policy
-            </a>
-            <a href="/contact" className="hover:text-foreground transition-colors duration-200">
-              Contact
             </a>
           </div>
         </div>
