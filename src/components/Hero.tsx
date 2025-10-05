@@ -133,7 +133,7 @@ export default function Hero() {
           {/* Left Column - Content */}
           <div className="space-y-8">
             <div className="space-y-6">
-              <h1 className="text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-tight tracking-tight animate-in fade-in slide-in-from-left-8 duration-1000">
+              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-heading font-bold leading-tight tracking-tight animate-in fade-in slide-in-from-left-8 duration-1000">
                 Stay Ahead of the{" "}
                 <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-pulse">
                   AI Revolution
