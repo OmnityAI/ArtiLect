@@ -1,6 +1,7 @@
 // src/app/api/newsletter/route.ts
 import { NextRequest, NextResponse } from 'next/server'
 import { getSupabaseAdmin } from '@/lib/supabaseServer'
+import { sendWelcomeEmail } from '@/lib/email'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -115,6 +116,11 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       )
     }
+
+    // Fire-and-forget welcome email (do not block response)
+    sendWelcomeEmail({ to: email, name }).catch((e) => {
+      console.error('Welcome email failed:', e)
+    })
 
     return NextResponse.json(data, { status: 201 })
   } catch (error) {
