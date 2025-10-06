@@ -1,14 +1,14 @@
-import { createClient, SupabaseClient } from '@supabase/supabase-js'
+export type { SupabaseClient } from '@supabase/supabase-js'
 
-const SUPABASE_URL = process.env.SUPABASE_URL
-const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY
-
-// Server-side Supabase client using the service role key.
-// If env vars are missing, export null and let callers no-op gracefully.
-export const supabaseAdmin: SupabaseClient | null =
-  SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY
-    ? createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
-        auth: { persistSession: false, autoRefreshToken: false },
-        global: { headers: { 'X-Client-Info': 'artilect-website' } },
-      })
-    : null
+// Dynamically create a server-side Supabase client when needed.
+// Avoids build-time failures if the module or env vars are missing locally.
+export async function getSupabaseAdmin() {
+  const SUPABASE_URL = process.env.SUPABASE_URL
+  const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY
+  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) return null
+  const { createClient } = await import('@supabase/supabase-js')
+  return createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
+    auth: { persistSession: false, autoRefreshToken: false },
+    global: { headers: { 'X-Client-Info': 'artilect-website' } },
+  })
+}

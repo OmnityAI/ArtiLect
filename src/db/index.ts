@@ -1,3 +1,5 @@
+// Deprecated: Drizzle/Turso client removed. Supabase is now the only database.
+export {}
 import { drizzle } from 'drizzle-orm/libsql';
 import { createClient } from '@libsql/client';
 import * as schema from '@/db/schema';

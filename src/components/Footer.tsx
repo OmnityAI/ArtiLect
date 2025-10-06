@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Brain, Instagram } from "lucide-react";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export default function Footer() {
   const [isSignupOpen, setIsSignupOpen] = useState(false);
@@ -135,18 +136,18 @@ export default function Footer() {
           <div className="space-y-6">
             <h4 className="font-semibold text-foreground">Newsletter</h4>
             <nav className="flex flex-col space-y-3">
-              <a href="/#hero" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <Link href="/#hero" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
                 About Artilect
-              </a>
-              <a href="/#featured-topics" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
+              </Link>
+              <Link href="/#featured-topics" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Featured Topics
-              </a>
-              <a href="/terms" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
+              </Link>
+              <Link href="/terms" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Terms of Service
-              </a>
-              <a href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
+              </Link>
+              <Link href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Privacy Policy
-              </a>
+              </Link>
             </nav>
           </div>
 
@@ -182,12 +183,12 @@ export default function Footer() {
             © 2025 Artilect AI. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="/terms" className="hover:text-foreground transition-colors duration-200">
+            <Link href="/terms" className="hover:text-foreground transition-colors duration-200">
               Terms of Service
-            </a>
-            <a href="/privacy" className="hover:text-foreground transition-colors duration-200">
+            </Link>
+            <Link href="/privacy" className="hover:text-foreground transition-colors duration-200">
               Privacy Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,14 +1,18 @@
 // src/app/api/newsletter/route.ts
 import { NextRequest, NextResponse } from 'next/server'
-import { db } from '@/db'
-import { newsletterSubscribers } from '@/db/schema'
-import { eq, like, or, desc } from 'drizzle-orm'
-import { supabaseAdmin } from '@/lib/supabaseServer'
+import { getSupabaseAdmin } from '@/lib/supabaseServer'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export async function GET(request: NextRequest) {
   try {
+    const supabase = await getSupabaseAdmin()
+    if (!supabase) {
+      return NextResponse.json(
+        { error: 'Supabase not configured', code: 'SUPABASE_MISSING' },
+        { status: 500 }
+      )
+    }
     const { searchParams } = new URL(request.url)
 
     // sanitize pagination
@@ -20,23 +24,25 @@ export async function GET(request: NextRequest) {
     const search = searchParams.get('search')?.trim() ?? ''
     const searchTerm = search ? `%${search}%` : null
 
-    // base query (order newest first if you have subscribedAt)
-    const base = db
-      .select()
-      .from(newsletterSubscribers)
-      .orderBy(desc(newsletterSubscribers.subscribedAt))
+    let query = supabase
+      .from('newsletter_subscribers')
+      .select('*')
+      .order('subscribed_at', { ascending: false })
+      .range(offset, offset + limit - 1)
 
-    // conditionally add WHERE without mutating the builder (avoids Drizzle type mismatch)
-    const filtered = searchTerm
-      ? base.where(
-          or(
-            like(newsletterSubscribers.name, searchTerm),
-            like(newsletterSubscribers.email, searchTerm)
-          )
-        )
-      : base
+    if (searchTerm) {
+      // OR ilike on name or email
+      query = query.or(`name.ilike.${searchTerm},email.ilike.${searchTerm}`)
+    }
 
-    const rows = await filtered.limit(limit).offset(offset).all()
+    const { data: rows, error } = await query
+    if (error) {
+      console.error('GET newsletter_subscribers supabase error:', error)
+      return NextResponse.json(
+        { error: 'Database error', code: 'DATABASE_ERROR' },
+        { status: 500 }
+      )
+    }
 
     return NextResponse.json(rows, { status: 200 })
   } catch (error) {
@@ -50,6 +56,13 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
+    const supabase = await getSupabaseAdmin()
+    if (!supabase) {
+      return NextResponse.json(
+        { error: 'Supabase not configured', code: 'SUPABASE_MISSING' },
+        { status: 500 }
+      )
+    }
     const body = await request.json()
     const name = typeof body?.name === 'string' ? body.name.trim() : ''
     const email = typeof body?.email === 'string' ? body.email.trim().toLowerCase() : ''
@@ -75,53 +88,35 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // duplicate check (use .get() for a single row)
-    const existing = await db
+    // insert into Supabase, handle duplicates
+    const { data, error } = await supabase
+      .from('newsletter_subscribers')
+      .insert({
+        name,
+        email,
+        subscribed_at: new Date().toISOString(),
+        is_active: true,
+        source: 'website',
+      })
       .select()
-      .from(newsletterSubscribers)
-      .where(eq(newsletterSubscribers.email, email))
-      .get()
+      .single()
 
-    if (existing) {
+    if (error) {
+      const msg = (error as any)?.message?.toLowerCase?.() || ''
+      if (msg.includes('duplicate') || (error as any)?.code === '23505') {
+        return NextResponse.json(
+          { error: 'Email address is already subscribed', code: 'DUPLICATE_EMAIL' },
+          { status: 409 }
+        )
+      }
+      console.error('POST newsletter_subscribers supabase error:', error)
       return NextResponse.json(
-        { error: 'Email address is already subscribed', code: 'DUPLICATE_EMAIL' },
-        { status: 409 }
+        { error: 'Internal server error', code: 'DATABASE_ERROR' },
+        { status: 500 }
       )
     }
 
-    // insert into local database
-    const inserted = await db
-      .insert(newsletterSubscribers)
-      .values({
-        name,
-        email,
-        subscribedAt: new Date().toISOString(),
-        isActive: true,
-      })
-      .returning()
-
-    // also insert into Supabase (ignore duplicate errors gracefully)
-    try {
-      if (supabaseAdmin) {
-        const { error: spError } = await supabaseAdmin
-          .from('newsletter_subscribers')
-          .insert({
-            name,
-            email,
-            subscribed_at: new Date().toISOString(),
-            is_active: true,
-            source: 'website',
-          })
-
-        if (spError && !spError.message.toLowerCase().includes('duplicate')) {
-          console.error('Supabase insert error:', spError)
-        }
-      }
-    } catch (e) {
-      console.error('Supabase insert exception:', e)
-    }
-
-    return NextResponse.json(inserted[0], { status: 201 })
+    return NextResponse.json(data, { status: 201 })
   } catch (error) {
     console.error('POST newsletter_subscribers error:', error)
     return NextResponse.json(
