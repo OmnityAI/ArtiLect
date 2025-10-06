@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowUp, ChevronRight, Shield, Mail, FileText, Users, Eye, AlertTriangle, Scale, Phone } from "lucide-react";
+import { ChevronRight, Shield, Mail, FileText, Users, Eye, AlertTriangle, Scale, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Header from "@/components/Header";
@@ -25,12 +25,10 @@ const sections = [
 
 export default function TermsOfService() {
   const [activeSection, setActiveSection] = useState("acceptance");
-  const [showScrollTop, setShowScrollTop] = useState(false);
+  
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 400);
-
       // Update active section based on scroll position
       const sectionElements = sections.map(section => ({
         id: section.id,
@@ -59,9 +57,7 @@ export default function TermsOfService() {
     }
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  
 
   return (
     <div className="min-h-screen bg-background">
@@ -472,16 +468,7 @@ export default function TermsOfService() {
 
       <Footer />
 
-      {/* Scroll to Top Button */}
-      {showScrollTop && (
-        <Button
-          onClick={scrollToTop}
-          size="icon"
-          className="fixed bottom-8 right-8 z-40 h-12 w-12 rounded-full bg-primary/90 hover:bg-primary shadow-lg backdrop-blur"
-        >
-          <ArrowUp className="h-5 w-5" />
-        </Button>
-      )}
+      {/* Global ScrollToTop is provided via RootLayout */}
     </div>
   );
 }

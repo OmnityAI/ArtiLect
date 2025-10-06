@@ -7,7 +7,6 @@ import FeaturedTopics from "@/components/FeaturedTopics";
 import CommunityInvitation from "@/components/CommunityInvitation";
 import Footer from "@/components/Footer";
 import { FAQSection } from "@/components/FAQ";
-import { ScrollToTop } from "@/components/ScrollToTop";
 import { SocialProof } from "@/components/SocialProof";
 import { FOMOSection } from "@/components/FOMOSection";
 import InteractiveQuiz from "@/components/InteractiveQuiz";
@@ -107,8 +106,7 @@ export default function Home() {
         </div>
       </main>
       
-      <Footer />
-      <ScrollToTop />
+  <Footer />
       <ExitIntentPopup />
     </div>
   );

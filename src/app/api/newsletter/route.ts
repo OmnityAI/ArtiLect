@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/db'
 import { newsletterSubscribers } from '@/db/schema'
 import { eq, like, or, desc } from 'drizzle-orm'
+import { supabaseAdmin } from '@/lib/supabaseServer'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -88,7 +89,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // insert (keep these fields only if they exist in your schema)
+    // insert into local database
     const inserted = await db
       .insert(newsletterSubscribers)
       .values({
@@ -98,6 +99,27 @@ export async function POST(request: NextRequest) {
         isActive: true,
       })
       .returning()
+
+    // also insert into Supabase (ignore duplicate errors gracefully)
+    try {
+      if (supabaseAdmin) {
+        const { error: spError } = await supabaseAdmin
+          .from('newsletter_subscribers')
+          .insert({
+            name,
+            email,
+            subscribed_at: new Date().toISOString(),
+            is_active: true,
+            source: 'website',
+          })
+
+        if (spError && !spError.message.toLowerCase().includes('duplicate')) {
+          console.error('Supabase insert error:', spError)
+        }
+      }
+    } catch (e) {
+      console.error('Supabase insert exception:', e)
+    }
 
     return NextResponse.json(inserted[0], { status: 201 })
   } catch (error) {

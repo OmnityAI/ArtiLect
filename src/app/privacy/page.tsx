@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Shield, Mail, Calendar, FileText, Eye, Lock, Globe, Users, Clock, Phone, ArrowUp } from "lucide-react";
+import { ChevronRight, Shield, Mail, Calendar, FileText, Eye, Lock, Globe, Users, Clock, Phone } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
@@ -39,9 +39,7 @@ export default function PrivacyPolicyPage() {
     }
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  
 
   const tableOfContents = [
     { id: "information-collection", title: "Information We Collect", icon: FileText },
@@ -568,14 +566,7 @@ export default function PrivacyPolicyPage() {
         </div>
       </div>
 
-      {/* Scroll to Top Button */}
-      <button
-        onClick={scrollToTop}
-        className="fixed bottom-8 right-8 p-3 bg-primary text-primary-foreground rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 z-50"
-        aria-label="Scroll to top"
-      >
-        <ArrowUp className="h-5 w-5" />
-      </button>
+      {/* Global ScrollToTop is provided via RootLayout */}
 
       <Footer />
     </div>
