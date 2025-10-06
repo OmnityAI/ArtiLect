@@ -11,6 +11,8 @@ import { toast } from "sonner";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSignupOpen, setIsSignupOpen] = useState(false);
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
+  const [submittedEmail, setSubmittedEmail] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -24,21 +26,25 @@ export default function Header() {
 
     setIsLoading(true);
     try {
+      const nameValue = name.trim();
+      const emailValue = email.trim();
       const response = await fetch('/api/newsletter', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name: name.trim(), email: email.trim() }),
+        body: JSON.stringify({ name: nameValue, email: emailValue }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
         setIsSignupOpen(false);
+        setSubmittedEmail(data?.email ?? emailValue);
+        setIsSuccessOpen(true);
         setEmail("");
         setName("");
-  toast.success("Welcome to Artilect Newsletter! You'll receive the latest AI insights directly in your inbox.");
+        toast.success("Welcome to Artilect Newsletter! You'll receive the latest AI insights directly in your inbox.");
       } else {
         if (data.code === 'DUPLICATE_EMAIL') {
           toast.error("You're already subscribed to our newsletter!");
@@ -256,6 +262,19 @@ export default function Header() {
             </nav>
           </div>
         )}
+
+        {/* Success Confirmation */}
+        <Dialog open={isSuccessOpen} onOpenChange={setIsSuccessOpen}>
+          <DialogContent className="sm:max-w-md text-center">
+            <DialogHeader>
+              <DialogTitle>You're subscribed! 🎉</DialogTitle>
+              <DialogDescription>
+                We’ve added <span className="font-medium text-foreground">{submittedEmail}</span> to our list. Check your inbox for a welcome email.
+              </DialogDescription>
+            </DialogHeader>
+            <Button className="mt-2" onClick={() => setIsSuccessOpen(false)}>Close</Button>
+          </DialogContent>
+        </Dialog>
       </div>
     </header>
   );
