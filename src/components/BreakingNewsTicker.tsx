@@ -124,22 +124,22 @@ export const BreakingNewsTicker = () => {
   }, []);
 
   return (
-  <div className="relative w-full bg-gradient-to-r from-card via-card/95 to-card overflow-hidden border-b border-border/50">
+    <div className="relative w-full bg-gradient-to-r from-card via-card/95 to-card overflow-hidden border-b border-border/50">
       {/* Breaking News Label */}
-      <div className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-primary via-primary to-primary/80 px-3 sm:px-6 flex items-center z-10">
+      <div className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-primary via-primary to-primary/80 px-6 flex items-center z-10">
         <div className="flex items-center gap-2 text-primary-foreground font-semibold">
-          <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse" />
-          <span className="text-xs sm:text-sm font-heading tracking-wide">BREAKING NEWS</span>
+          <TrendingUp className="w-4 h-4 animate-pulse" />
+          <span className="text-sm font-heading tracking-wide">BREAKING NEWS</span>
         </div>
       </div>
 
       {/* Ticker Content */}
       <div 
-        className="flex items-center pl-28 sm:pl-40 pr-3 sm:pr-6 py-3 sm:py-4"
+        className="flex items-center pl-40 pr-6 py-4"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className={`flex items-center gap-6 sm:gap-8 ${isHovered ? '' : 'animate-scroll'}`}>
+        <div className={`flex items-center gap-8 ${isHovered ? '' : 'animate-scroll'}`}>
           {currentItems.concat(currentItems).map((item, index) => {
             const IconComponent = typeConfig[item.type].icon;
             
@@ -147,11 +147,11 @@ export const BreakingNewsTicker = () => {
               <div
                 key={`${item.id}-${index}`}
                 onClick={() => handleItemClick(item)}
-                className="flex items-center gap-2 sm:gap-3 cursor-pointer hover:bg-muted/30 rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 transition-all duration-300 group min-w-max"
+                className="flex items-center gap-3 cursor-pointer hover:bg-muted/30 rounded-lg px-4 py-2 transition-all duration-300 group min-w-max"
               >
                 {/* Type Icon */}
                 <div className={`p-1.5 rounded-full ${typeConfig[item.type].bg}`}>
-                  <IconComponent className={`w-2.5 h-2.5 sm:w-3 sm:h-3 ${typeConfig[item.type].color}`} />
+                  <IconComponent className={`w-3 h-3 ${typeConfig[item.type].color}`} />
                 </div>
 
                 {/* Badge */}
@@ -166,14 +166,14 @@ export const BreakingNewsTicker = () => {
                 )}
 
                 {/* News Content */}
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <span className="text-xs sm:text-sm text-foreground font-medium group-hover:text-primary transition-colors duration-200 line-clamp-1">
+                <div className="flex items-center gap-3">
+                  <span className="text-sm text-foreground font-medium group-hover:text-primary transition-colors duration-200 line-clamp-1">
                     {item.title}
                   </span>
                   
-                  <div className="flex items-center gap-1.5 sm:gap-2 text-muted-foreground">
-                    <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
-                    <span className="text-[10px] sm:text-xs font-medium">{item.timestamp}</span>
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <Clock className="w-3 h-3" />
+                    <span className="text-xs font-medium">{item.timestamp}</span>
                   </div>
                 </div>
 
@@ -189,8 +189,8 @@ export const BreakingNewsTicker = () => {
       </div>
 
       {/* Gradient Fade Edges */}
-  <div className="absolute top-0 right-0 bottom-0 w-10 sm:w-20 bg-gradient-to-l from-card to-transparent pointer-events-none" />
-  <div className="absolute top-0 left-28 sm:left-40 bottom-0 w-6 sm:w-8 bg-gradient-to-r from-card to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 bottom-0 w-20 bg-gradient-to-l from-card to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-40 bottom-0 w-8 bg-gradient-to-r from-card to-transparent pointer-events-none" />
 
       <style jsx>{`
         @keyframes scroll {
