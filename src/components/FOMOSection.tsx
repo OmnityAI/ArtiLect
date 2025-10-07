@@ -37,6 +37,12 @@ export const FOMOSection = () => {
     }
   ];
 
+  // Combine for mobile 2x2 grid (first two from each list)
+  const mobileGridItems = [
+    ...missedContent.map((i) => ({ ...i, variant: 'missed' as const })),
+    ...comingContent.map((i) => ({ ...i, variant: 'coming' as const })),
+  ];
+
   return (
     <section className="relative py-16 overflow-hidden">
       {/* Background gradient */}
@@ -71,8 +77,8 @@ export const FOMOSection = () => {
           </div>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="flex justify-center mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400">
+        {/* Tab Navigation (desktop only) */}
+        <div className="hidden lg:flex justify-center mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400">
           <div className="bg-card border border-border rounded-lg p-1 inline-flex">
             <button
               onClick={() => setActiveTab('missed')}
@@ -97,8 +103,47 @@ export const FOMOSection = () => {
           </div>
         </div>
 
-        {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+        {/* Mobile 2x2 compact grid */}
+        <div className="lg:hidden grid grid-cols-2 gap-3 sm:gap-4 mb-8">
+          {mobileGridItems.map((item, index) => (
+            <div
+              key={`${item.title}-${index}`}
+              className="group bg-card border border-border rounded-lg p-3 sm:p-4 hover:border-primary/40 transition-all duration-300 hover:scale-[1.01] min-h-[140px] flex flex-col"
+            >
+              <div className="flex items-start justify-between mb-2">
+                <span
+                  className={`inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium ${
+                    item.variant === 'missed'
+                      ? 'bg-destructive/10 text-destructive'
+                      : 'bg-accent/10 text-accent'
+                  }`}
+                >
+                  {item.tag}
+                </span>
+                <span
+                  className={`text-[10px] ${
+                    item.variant === 'missed' ? 'text-muted-foreground' : 'text-accent'
+                  }`}
+                >
+                  {item.time}
+                </span>
+              </div>
+              <h4
+                className={`font-semibold mb-1 line-clamp-2 ${
+                  item.variant === 'missed' ? 'group-hover:text-primary' : 'group-hover:text-accent'
+                } transition-colors text-sm sm:text-base`}
+              >
+                {item.title}
+              </h4>
+              <p className="text-muted-foreground text-xs sm:text-sm leading-snug line-clamp-3">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Content Grid (desktop) */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-8 mb-12">
           {/* What You Missed */}
           <div className={`transition-all duration-500 ${activeTab === 'missed' ? 'opacity-100 scale-100' : 'lg:opacity-40 lg:scale-95'}`}>
             <div className="flex items-center gap-3 mb-6">

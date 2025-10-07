@@ -54,7 +54,7 @@ export default function FeaturedTopics() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-4 sm:gap-5 md:gap-6 items-stretch">
           {topics.map((topic) => {
             const IconComponent = topic.icon;
             
@@ -69,16 +69,16 @@ export default function FeaturedTopics() {
                   {/* Subtle left accent stripe */}
                   <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-accent to-primary opacity-60 group-hover:opacity-100 transition-opacity duration-200" />
                   
-                  <CardContent className="p-8 h-full flex flex-col">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors duration-200">
-                        <IconComponent className="h-6 w-6 text-primary group-hover:text-accent transition-colors duration-200" />
+                  <CardContent className="p-4 sm:p-5 md:p-8 h-full flex flex-col">
+                    <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+                      <div className="p-2.5 sm:p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors duration-200">
+                        <IconComponent className="h-5 w-5 sm:h-6 sm:w-6 text-primary group-hover:text-accent transition-colors duration-200" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-heading font-semibold mb-2 text-card-foreground group-hover:text-foreground transition-colors duration-200">
+                        <h3 className="text-base sm:text-lg md:text-xl font-heading font-semibold mb-1.5 sm:mb-2 text-card-foreground group-hover:text-foreground transition-colors duration-200 line-clamp-2">
                           {topic.title}
                         </h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed">
+                        <p className="text-muted-foreground text-xs sm:text-sm leading-snug md:leading-relaxed line-clamp-3">
                           {topic.description}
                         </p>
                       </div>

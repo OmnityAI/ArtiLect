@@ -46,24 +46,24 @@ export default function WhyArtiLect() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-4 sm:gap-5 md:gap-6 items-stretch">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
               <Card 
                 key={index} 
-                className={`bg-card/50 border-border/50 hover:bg-card/70 transition-all duration-500 group hover:scale-[1.02] hover:shadow-lg animate-in fade-in slide-in-from-bottom-4 duration-700 delay-${(index + 1) * 100}`}
+                className={`h-full bg-card/50 border-border/50 hover:bg-card/70 transition-all duration-500 group hover:scale-[1.02] hover:shadow-lg animate-in fade-in slide-in-from-bottom-4 duration-700 delay-${(index + 1) * 100}`}
               >
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className={`p-3 rounded-xl bg-gradient-to-br ${feature.gradient} bg-opacity-20 group-hover:scale-110 transition-all duration-300`}>
-                      <Icon className="w-6 h-6 text-primary group-hover:text-accent transition-colors duration-300" />
+                <CardContent className="p-4 sm:p-5 md:p-6 h-full">
+                  <div className="flex items-start gap-3 sm:gap-4 h-full">
+                    <div className={`p-2.5 sm:p-3 rounded-xl bg-gradient-to-br ${feature.gradient} bg-opacity-20 group-hover:scale-110 transition-all duration-300`}>
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:text-accent transition-colors duration-300" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold mb-2 text-foreground group-hover:text-primary transition-colors duration-300">
+                      <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-1.5 sm:mb-2 text-foreground group-hover:text-primary transition-colors duration-300">
                         {feature.title}
                       </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-xs sm:text-sm leading-snug md:leading-relaxed min-h-[48px] sm:min-h-[56px]">
                         {feature.description}
                       </p>
                     </div>
