@@ -1,37 +1,10 @@
 "use client"
 
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { Card, CardContent } from "@/components/ui/card"
 import { Mail, Users, TrendingUp } from "lucide-react"
 
 export default function HowItWorks() {
-  const scrollerRef = useRef<HTMLDivElement | null>(null)
-
-  // Auto-scroll horizontally on small screens only; respect reduced motion
-  useEffect(() => {
-    const el = scrollerRef.current
-    if (!el) return
-
-    const isDesktop = typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches
-    const prefersReduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (isDesktop || prefersReduced) return
-
-    let rafId: number
-    const speed = 0.6 // px per frame approx
-
-    const step = () => {
-      if (!el) return
-      el.scrollLeft += speed
-      // loop back when reaching end
-      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 1) {
-        el.scrollLeft = 0
-      }
-      rafId = requestAnimationFrame(step)
-    }
-
-    rafId = requestAnimationFrame(step)
-    return () => cancelAnimationFrame(rafId)
-  }, [])
   return (
     <section className="py-16 bg-card/30">
   <div className="container mx-auto px-6 md:px-8 lg:px-[120px]">
@@ -47,55 +20,52 @@ export default function HowItWorks() {
           </p>
         </div>
 
-        {/* Horizontal scroll on mobile (auto-advancing, hidden scrollbar), 3-col grid on md+ */}
-        <div
-          ref={scrollerRef}
-          className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:snap-none"
-        >
+        {/* Show all three on small screens: compact 3-col grid, scale up on md+ */}
+        <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-8">
           {/* Curated Content */}
-          <div className="text-center group animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 flex-none w-4/5 max-w-xs snap-center md:w-auto">
-            <div className="relative mb-6">
-              <div className="w-16 h-16 mx-auto bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center group-hover:from-primary/30 group-hover:to-accent/30 transition-all duration-500 group-hover:scale-110">
-                <Mail className="w-8 h-8 text-primary group-hover:rotate-12 transition-all duration-300" />
+          <div className="text-center group animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
+            <div className="relative mb-4 md:mb-6">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mx-auto bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center group-hover:from-primary/30 group-hover:to-accent/30 transition-all duration-500 group-hover:scale-110">
+                <Mail className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-primary group-hover:rotate-12 transition-all duration-300" />
               </div>
             </div>
             
-            <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors duration-300">
+            <h3 className="text-sm sm:text-base md:text-xl font-semibold mb-2 md:mb-3 group-hover:text-primary transition-colors duration-300">
               Curated Weekly
             </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-muted-foreground text-xs sm:text-sm leading-snug md:leading-relaxed">
               Hand-picked insights from 100+ sources. Zero noise, maximum signal.
             </p>
           </div>
 
           {/* Expert Analysis */}
-          <div className="text-center group animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300 flex-none w-4/5 max-w-xs snap-center md:w-auto">
-            <div className="relative mb-6">
-              <div className="w-16 h-16 mx-auto bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl flex items-center justify-center group-hover:from-accent/30 group-hover:to-primary/30 transition-all duration-500 group-hover:scale-110">
-                <Users className="w-8 h-8 text-accent group-hover:rotate-12 transition-all duration-300" />
+          <div className="text-center group animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
+            <div className="relative mb-4 md:mb-6">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mx-auto bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl flex items-center justify-center group-hover:from-accent/30 group-hover:to-primary/30 transition-all duration-500 group-hover:scale-110">
+                <Users className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-accent group-hover:rotate-12 transition-all duration-300" />
               </div>
             </div>
             
-            <h3 className="text-xl font-semibold mb-3 group-hover:text-accent transition-colors duration-300">
+            <h3 className="text-sm sm:text-base md:text-xl font-semibold mb-2 md:mb-3 group-hover:text-accent transition-colors duration-300">
               Expert Commentary
             </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-muted-foreground text-xs sm:text-sm leading-snug md:leading-relaxed">
               Direct insights from AI researchers and industry leaders.
             </p>
           </div>
 
           {/* Stay Ahead */}
-          <div className="text-center group animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400 flex-none w-4/5 max-w-xs snap-center md:w-auto">
-            <div className="relative mb-6">
-              <div className="w-16 h-16 mx-auto bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center group-hover:from-primary/30 group-hover:to-accent/30 transition-all duration-500 group-hover:scale-110">
-                <TrendingUp className="w-8 h-8 text-primary group-hover:rotate-12 transition-all duration-300" />
+          <div className="text-center group animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400">
+            <div className="relative mb-4 md:mb-6">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mx-auto bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center group-hover:from-primary/30 group-hover:to-accent/30 transition-all duration-500 group-hover:scale-110">
+                <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-primary group-hover:rotate-12 transition-all duration-300" />
               </div>
             </div>
             
-            <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors duration-300">
+            <h3 className="text-sm sm:text-base md:text-xl font-semibold mb-2 md:mb-3 group-hover:text-primary transition-colors duration-300">
               First to Know
             </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-muted-foreground text-xs sm:text-sm leading-snug md:leading-relaxed">
               Get breakthrough research 24-48 hours before mainstream media.
             </p>
           </div>
