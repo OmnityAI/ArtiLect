@@ -20,9 +20,10 @@ export default function HowItWorks() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* Horizontal scroll on mobile, 3-col grid on md+ */}
+        <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:snap-none">
           {/* Curated Content */}
-          <div className="text-center group animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
+          <div className="text-center group animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 flex-none w-4/5 max-w-xs snap-center md:w-auto">
             <div className="relative mb-6">
               <div className="w-16 h-16 mx-auto bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center group-hover:from-primary/30 group-hover:to-accent/30 transition-all duration-500 group-hover:scale-110">
                 <Mail className="w-8 h-8 text-primary group-hover:rotate-12 transition-all duration-300" />
@@ -38,7 +39,7 @@ export default function HowItWorks() {
           </div>
 
           {/* Expert Analysis */}
-          <div className="text-center group animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
+          <div className="text-center group animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300 flex-none w-4/5 max-w-xs snap-center md:w-auto">
             <div className="relative mb-6">
               <div className="w-16 h-16 mx-auto bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl flex items-center justify-center group-hover:from-accent/30 group-hover:to-primary/30 transition-all duration-500 group-hover:scale-110">
                 <Users className="w-8 h-8 text-accent group-hover:rotate-12 transition-all duration-300" />
@@ -54,7 +55,7 @@ export default function HowItWorks() {
           </div>
 
           {/* Stay Ahead */}
-          <div className="text-center group animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400">
+          <div className="text-center group animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400 flex-none w-4/5 max-w-xs snap-center md:w-auto">
             <div className="relative mb-6">
               <div className="w-16 h-16 mx-auto bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center group-hover:from-primary/30 group-hover:to-accent/30 transition-all duration-500 group-hover:scale-110">
                 <TrendingUp className="w-8 h-8 text-primary group-hover:rotate-12 transition-all duration-300" />
