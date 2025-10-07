@@ -1,10 +1,37 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Card, CardContent } from "@/components/ui/card"
 import { Mail, Users, TrendingUp } from "lucide-react"
 
 export default function HowItWorks() {
+  const scrollerRef = useRef<HTMLDivElement | null>(null)
+
+  // Auto-scroll horizontally on small screens only; respect reduced motion
+  useEffect(() => {
+    const el = scrollerRef.current
+    if (!el) return
+
+    const isDesktop = typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches
+    const prefersReduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (isDesktop || prefersReduced) return
+
+    let rafId: number
+    const speed = 0.6 // px per frame approx
+
+    const step = () => {
+      if (!el) return
+      el.scrollLeft += speed
+      // loop back when reaching end
+      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 1) {
+        el.scrollLeft = 0
+      }
+      rafId = requestAnimationFrame(step)
+    }
+
+    rafId = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(rafId)
+  }, [])
   return (
     <section className="py-16 bg-card/30">
   <div className="container mx-auto px-6 md:px-8 lg:px-[120px]">
@@ -20,8 +47,11 @@ export default function HowItWorks() {
           </p>
         </div>
 
-        {/* Horizontal scroll on mobile, 3-col grid on md+ */}
-        <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:snap-none">
+        {/* Horizontal scroll on mobile (auto-advancing, hidden scrollbar), 3-col grid on md+ */}
+        <div
+          ref={scrollerRef}
+          className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:snap-none"
+        >
           {/* Curated Content */}
           <div className="text-center group animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 flex-none w-4/5 max-w-xs snap-center md:w-auto">
             <div className="relative mb-6">
