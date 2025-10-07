@@ -105,26 +105,26 @@ export default function CommunityInvitation() {
         </div>
 
         {/* Testimonials */}
-        <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-8 mb-16">
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="h-full bg-card/50 border-border/50 hover:bg-card/70 transition-all duration-300">
-              <CardContent className="p-3 sm:p-4 md:p-6 h-full flex flex-col">
-                <div className="flex items-center gap-1 mb-2 sm:mb-3">
+            <Card key={index} className="bg-card/50 border-border/50 hover:bg-card/70 transition-all duration-300">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-primary text-primary" />
+                    <Star key={i} className="w-4 h-4 fill-primary text-primary" />
                   ))}
                 </div>
-                <blockquote className="text-muted-foreground mb-3 sm:mb-4 leading-snug md:leading-relaxed italic text-xs sm:text-sm line-clamp-3">
+                <blockquote className="text-muted-foreground mb-6 leading-relaxed italic">
                   "{testimonial.quote}"
                 </blockquote>
-                <div className="mt-auto flex items-center gap-2 sm:gap-3">
-                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                    <span className="text-primary-foreground font-semibold text-[10px] sm:text-xs">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                    <span className="text-primary-foreground font-semibold text-sm">
                       {testimonial.name.split(' ').map(n => n[0]).join('')}
                     </span>
                   </div>
                   <div>
-                    <p className="font-medium text-sm text-foreground leading-none">{testimonial.name}</p>
+                    <p className="font-semibold text-foreground">{testimonial.name}</p>
                   </div>
                 </div>
               </CardContent>
