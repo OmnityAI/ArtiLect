@@ -45,16 +45,16 @@ export default function FeaturedTopics() {
   return (
     <section className="w-full">
   <div className="container max-w-6xl mx-auto px-6 md:px-8 lg:px-[120px]">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-4xl font-heading font-bold mb-3 md:mb-4">
             Explore Featured Topics
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
             Dive deep into the most important areas shaping the future of technology and business
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
           {topics.map((topic) => {
             const IconComponent = topic.icon;
             

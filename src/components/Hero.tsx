@@ -135,18 +135,18 @@ export default function Hero() {
 
       {/* Content */}
   <div className="relative z-10 container mx-auto px-6 md:px-8 lg:px-[120px] py-24 min-h-[calc(100dvh-80px)] flex items-center">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
+  <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
           {/* Left Column - Content */}
           <div className="space-y-8">
             <div className="space-y-6">
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-heading font-bold leading-tight tracking-tight animate-in fade-in slide-in-from-left-8 duration-1000">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold leading-tight tracking-tight animate-in fade-in slide-in-from-left-8 duration-1000">
                 Stay Ahead of the{" "}
                 <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-pulse">
                   AI Revolution
                 </span>
               </h1>
               
-              <p className="text-xl lg:text-2xl text-muted-foreground font-light leading-relaxed max-w-2xl animate-in fade-in slide-in-from-left-8 duration-1000 delay-200">
+              <p className="text-base sm:text-lg lg:text-2xl text-muted-foreground font-light leading-relaxed max-w-2xl animate-in fade-in slide-in-from-left-8 duration-1000 delay-200">
                 Get exclusive insights, cutting-edge research, and expert analysis delivered weekly.
               </p>
             </div>
@@ -223,7 +223,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column - Newsletter Preview */}
-          <div className="relative animate-in fade-in slide-in-from-right-8 duration-1000 delay-300">
+          <div className="relative hidden lg:block animate-in fade-in slide-in-from-right-8 duration-1000 delay-300">
             <div className="relative bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 hover:-translate-y-2">
               {/* Newsletter Header */}
               <div className="flex items-center gap-4 mb-6">
