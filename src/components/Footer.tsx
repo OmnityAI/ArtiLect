@@ -196,6 +196,13 @@ export default function Footer() {
             <Link href="/privacy" className="hover:text-foreground transition-colors duration-200">
               Privacy Policy
             </Link>
+            <button
+              type="button"
+              onClick={() => (window as any)?.__openCookieConsent?.()}
+              className="hover:text-foreground transition-colors duration-200 underline-offset-2 hover:underline"
+            >
+              Manage Cookies
+            </button>
           </div>
         </div>
       </div>

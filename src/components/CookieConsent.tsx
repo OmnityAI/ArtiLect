@@ -41,6 +41,13 @@ export default function CookieConsent({ measurementId }: Props) {
     }
   }, []);
 
+  // Expose a global opener so footer can trigger the manage dialog
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      (window as any).__openCookieConsent = () => setOpen(true);
+    }
+  }, []);
+
   const applyConsent = (state: ConsentState) => {
     const granted = state === "accepted" ? "granted" : "denied";
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
@@ -71,28 +78,8 @@ export default function CookieConsent({ measurementId }: Props) {
 
   const handleManage = () => setOpen(true);
 
-  // When banner is closed (user decided), show a slim bottom bar with Manage + links
-  if (!open && consent !== "unset") {
-    return (
-      <div className="fixed inset-x-0 bottom-0 z-[55] px-4 py-2 bg-background/70 backdrop-blur border-t border-border/60">
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={handleManage}
-              className="underline-offset-2 hover:underline text-foreground"
-            >
-              Manage Cookies
-            </button>
-            <span className="hidden sm:inline text-border">|</span>
-            <a href="/terms" className="underline-offset-2 hover:underline">Terms of Service</a>
-            <span className="hidden sm:inline text-border">|</span>
-            <a href="/privacy" className="underline-offset-2 hover:underline">Privacy Policy</a>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  // When banner is closed (user decided), render nothing; footer will provide Manage link
+  if (!open && consent !== "unset") return null;
 
   return (
     <>
