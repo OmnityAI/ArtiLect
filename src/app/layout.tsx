@@ -34,11 +34,6 @@ export default function RootLayout({
               gtag('js', new Date());
             `}
           </Script>
-          <Script
-            id="gtag-src"
-            src="https://www.googletagmanager.com/gtag/js?id=G-2LYX6FZW6V"
-            strategy="beforeInteractive"
-          />
           <Script id="gtag-config" strategy="beforeInteractive">
             {`
               if (typeof window !== 'undefined' && window.gtag) {
