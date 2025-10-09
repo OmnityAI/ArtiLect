@@ -6,6 +6,7 @@ import Script from "next/script";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import CookieConsent from "../components/CookieConsent";
 import GAClientPageViews from "@/components/GAClientPageViews";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -65,7 +66,9 @@ export default function RootLayout({
           <ScrollToTop />
           <VisualEditsMessenger />
           <CookieConsent measurementId="G-2LYX6FZW6V" />
-          <GAClientPageViews measurementId="G-2LYX6FZW6V" />
+          <Suspense fallback={null}>
+            <GAClientPageViews measurementId="G-2LYX6FZW6V" />
+          </Suspense>
         </div>
       </body>
     </html>
