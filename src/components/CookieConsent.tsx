@@ -75,11 +75,21 @@ export default function CookieConsent({ measurementId }: Props) {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
       window.gtag("consent", "update", {
         ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
         analytics_storage: p.analytics ? 'granted' : 'denied',
       });
-      if (p.analytics) {
-        window.gtag("config", measurementId, { send_page_view: true });
-      }
+    }
+  };
+
+  const sendPageView = () => {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      const url = window.location.pathname + window.location.search;
+      window.gtag('event', 'page_view', {
+        page_path: url,
+        page_location: window.location.href,
+        send_to: measurementId,
+      });
     }
   };
 
@@ -94,6 +104,8 @@ export default function CookieConsent({ measurementId }: Props) {
     setOpen(false);
     persist("accepted", nextPrefs);
     updateGtagConsent(nextPrefs);
+    // Fire a single page_view immediately on acceptance
+    sendPageView();
   };
 
   const handleReject = () => {
@@ -114,6 +126,9 @@ export default function CookieConsent({ measurementId }: Props) {
     setOpen(false);
     persist(state, prefs);
     updateGtagConsent(prefs);
+    if (prefs.analytics) {
+      sendPageView();
+    }
     setShowPrefs(false);
   };
 

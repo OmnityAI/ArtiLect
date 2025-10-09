@@ -5,6 +5,7 @@ import ErrorReporter from "@/components/ErrorReporter";
 import Script from "next/script";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import CookieConsent from "../components/CookieConsent";
+import GAClientPageViews from "@/components/GAClientPageViews";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,12 +29,20 @@ export default function RootLayout({
               gtag('consent', 'default', {
                 'ad_storage': 'denied',
                 'analytics_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
                 'functionality_storage': 'granted',
                 'security_storage': 'granted'
               });
               gtag('js', new Date());
             `}
           </Script>
+          {/* Load GA4 library. With consent default-denied, it will buffer until user grants analytics. */}
+          <Script
+            id="gtag-js"
+            src="https://www.googletagmanager.com/gtag/js?id=G-2LYX6FZW6V"
+            strategy="afterInteractive"
+          />
           <Script id="gtag-config" strategy="beforeInteractive">
             {`
               if (typeof window !== 'undefined' && window.gtag) {
@@ -56,6 +65,7 @@ export default function RootLayout({
           <ScrollToTop />
           <VisualEditsMessenger />
           <CookieConsent measurementId="G-2LYX6FZW6V" />
+          <GAClientPageViews measurementId="G-2LYX6FZW6V" />
         </div>
       </body>
     </html>
