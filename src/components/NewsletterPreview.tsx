@@ -5,14 +5,65 @@ import { ChevronDown, Clock, Star, Zap, TrendingUp, BookOpen, Calendar, CheckCir
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
+import { toast } from 'sonner';
 
 export const NewsletterPreview = () => {
   const [activeSection, setActiveSection] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [isSignupOpen, setIsSignupOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [consent, setConsent] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  const handleNewsletterSignup = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) {
+      toast.error("Please enter your email");
+      return;
+    }
+    if (!consent) {
+      toast.error("Please agree to the Terms of Service and Privacy Policy");
+      return;
+    }
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name.trim(), email: email.trim() }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setIsSignupOpen(false);
+        setName("");
+        setEmail("");
+        setConsent(false);
+        toast.success("You're subscribed! Check your inbox for a welcome email.");
+      } else {
+        if (data.code === 'DUPLICATE_EMAIL') {
+          toast.error("You're already subscribed to our newsletter!");
+        } else if (data.code === 'INVALID_EMAIL_FORMAT') {
+          toast.error("Please enter a valid email address");
+        } else {
+          toast.error(data.error || "Something went wrong. Please try again.");
+        }
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Network error. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const newsletterSections = [
     {
@@ -295,10 +346,42 @@ export const NewsletterPreview = () => {
                 delivered every Friday to your inbox.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-                <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground font-medium">
-                  <Mail className="w-5 h-5 mr-2" />
-                  Subscribe Now - Free
-                </Button>
+                <Dialog open={isSignupOpen} onOpenChange={setIsSignupOpen}>
+                  <DialogTrigger asChild>
+                    <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground font-medium">
+                      <Mail className="w-5 h-5 mr-2" />
+                      Subscribe Now - Free
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-md">
+                    <DialogHeader>
+                      <DialogTitle>Subscribe to ArtiLect Weekly</DialogTitle>
+                      <DialogDescription>Get the weekly AI intelligence report delivered to your inbox.</DialogDescription>
+                    </DialogHeader>
+                    <form onSubmit={handleNewsletterSignup} className="space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="preview-name">Full Name (optional)</Label>
+                        <Input id="preview-name" type="text" value={name} onChange={(e) => setName(e.target.value)} disabled={isLoading} />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="preview-email">Email Address</Label>
+                        <Input id="preview-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required disabled={isLoading} />
+                      </div>
+                      <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <Checkbox id="preview-consent" checked={consent} onCheckedChange={(v) => setConsent(Boolean(v))} />
+                        <label htmlFor="preview-consent" className="leading-snug">
+                          I have read and agree to the{' '}
+                          <a href="/terms" className="text-primary underline-offset-2 hover:underline">Terms of Service</a>
+                          {' '}and{' '}
+                          <a href="/privacy" className="text-primary underline-offset-2 hover:underline">Privacy Policy</a>.
+                        </label>
+                      </div>
+                      <Button type="submit" className="w-full" size="lg" disabled={isLoading || !consent}>
+                        {isLoading ? 'Subscribing...' : 'Subscribe'}
+                      </Button>
+                    </form>
+                  </DialogContent>
+                </Dialog>
                 <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/10">
                   View Sample Issue
                   <ArrowRight className="w-4 h-4 ml-2" />

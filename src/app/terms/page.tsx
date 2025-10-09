@@ -2,29 +2,30 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ChevronRight, Shield, Mail, FileText, Users, Eye, AlertTriangle, Scale, Phone } from "lucide-react";
+import { ChevronRight, Shield, Mail, FileText, AlertTriangle, Scale, Phone, Link as LinkIcon, PenTool } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const sections = [
-  { id: "acceptance", title: "Acceptance of Terms", icon: Shield },
-  { id: "service", title: "Description of Service", icon: Mail },
-  { id: "accounts", title: "User Accounts and Registration", icon: Users },
-  { id: "subscription", title: "Subscription Terms", icon: FileText },
-  { id: "content", title: "Content and Intellectual Property", icon: Eye },
-  { id: "conduct", title: "User Conduct and Responsibilities", icon: AlertTriangle },
-  { id: "privacy", title: "Privacy and Data Protection", icon: Shield },
-  { id: "disclaimer", title: "Disclaimer and Limitation of Liability", icon: Scale },
+  { id: "introduction", title: "Introduction & Agreement", icon: Shield },
+  { id: "nature", title: "Nature of Services & Advice", icon: AlertTriangle },
+  { id: "ipr", title: "Intellectual Property Rights", icon: FileText },
+  { id: "permitted", title: "Permitted Use & Prohibitions", icon: Scale },
+  { id: "ugc", title: "User-Generated Content", icon: PenTool },
+  { id: "thirdparty", title: "Third-Party Links & Content", icon: LinkIcon },
+  { id: "disclaimer", title: "Disclaimer of Warranties", icon: AlertTriangle },
+  { id: "liability", title: "Limitation of Liability", icon: Scale },
+  { id: "indemnification", title: "Indemnification", icon: Shield },
+  { id: "governing", title: "Governing Law & Jurisdiction", icon: Scale },
   { id: "termination", title: "Termination", icon: AlertTriangle },
-  { id: "modifications", title: "Modifications to Terms", icon: FileText },
-  { id: "governing", title: "Governing Law", icon: Scale },
+  { id: "misc", title: "Miscellaneous", icon: FileText },
   { id: "contact", title: "Contact Information", icon: Phone }
 ];
 
 export default function TermsOfService() {
-  const [activeSection, setActiveSection] = useState("acceptance");
+  const [activeSection, setActiveSection] = useState("introduction");
   
 
   useEffect(() => {
@@ -116,348 +117,343 @@ export default function TermsOfService() {
                 Terms of Service
               </h1>
               <p className="text-lg text-muted-foreground max-w-3xl">
-                Please read these Terms of Service carefully before using the Artilect Newsletter service. 
-                By subscribing to or using our service, you agree to be bound by these terms.
+                Please read these Terms of Service carefully. They are a binding legal agreement governing your
+                access to and use of artilectai.com and associated social media channels (the "Services").
               </p>
               <div className="mt-4 text-sm text-muted-foreground">
-                <span>Last updated: October 2025</span>
+                <span>Last Updated: 9 October 2025</span>
               </div>
             </div>
 
             {/* Terms Sections */}
             <div className="space-y-12">
-              {/* Acceptance of Terms */}
-              <section id="acceptance" className="scroll-mt-24">
+              {/* 1. Introduction and Agreement to Terms */}
+              <section id="introduction" className="scroll-mt-24">
                 <Card className="bg-card/50 backdrop-blur">
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
                       <Shield className="h-6 w-6 text-primary" />
-                      <span>1. Acceptance of Terms</span>
+                      <span>1. Introduction and Agreement to Terms</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="prose prose-invert max-w-none">
                     <p className="text-muted-foreground leading-relaxed mb-4">
-                      By accessing, subscribing to, or using the Artilect Newsletter service ("Service"), you acknowledge that you have read, understood, and agree to be bound by these Terms of Service ("Terms") and our Privacy Policy.
+                      Welcome to Artilect AI. These Terms of Service (the "Terms") govern your access to and use of the
+                      content, services, and features provided through our website artilectai.com and our associated
+                      social media channels (collectively, the "Services").
                     </p>
                     <p className="text-muted-foreground leading-relaxed mb-4">
-                      If you do not agree to these Terms, you may not access or use our Service. These Terms constitute a legally binding agreement between you and Artilect.
+                      The Services are operated by the individuals who manage and contribute to the Artilect AI project
+                      (the "Artilect AI Team," "we," "us," or "our"). Artilect AI is an independent, unincorporated project
+                      and is not a registered legal entity.
                     </p>
                     <p className="text-muted-foreground leading-relaxed">
-                      You must be at least 13 years old to use our Service. By using our Service, you represent and warrant that you meet this age requirement and have the legal capacity to enter into these Terms.
+                      BY ACCESSING, READING, OR OTHERWISE USING THE SERVICES, YOU AGREE TO BE LEGALLY BOUND BY THESE TERMS.
+                      IF YOU DO NOT AGREE TO ALL OF THESE TERMS, YOU ARE PROHIBITED FROM USING THE SERVICES AND MUST
+                      DISCONTINUE USE IMMEDIATELY.
                     </p>
                   </CardContent>
                 </Card>
               </section>
 
-              {/* Description of Service */}
-              <section id="service" className="scroll-mt-24">
-                <Card className="bg-card/50 backdrop-blur">
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
-                      <Mail className="h-6 w-6 text-primary" />
-                      <span>2. Description of Service</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="prose prose-invert max-w-none">
-                    <p className="text-muted-foreground leading-relaxed mb-4">
-                      Artilect Newsletter is a digital publication service that delivers curated content about artificial intelligence, technology trends, and related topics directly to subscribers' email addresses.
-                    </p>
-                    <p className="text-muted-foreground leading-relaxed mb-4">
-                      Our Service includes:
-                    </p>
-                    <ul className="text-muted-foreground space-y-2 mb-4 ml-6">
-                      <li>• Weekly or bi-weekly newsletter emails</li>
-                      <li>• Curated AI and technology news and insights</li>
-                      <li>• Analysis and commentary on industry developments</li>
-                      <li>• Access to archived newsletter content</li>
-                      <li>• Subscriber-only resources and tools</li>
-                    </ul>
-                    <p className="text-muted-foreground leading-relaxed">
-                      We reserve the right to modify, suspend, or discontinue any part of our Service at any time, with or without notice. We may also impose limits on certain features or restrict access to parts or all of the Service without notice or liability.
-                    </p>
-                  </CardContent>
-                </Card>
-              </section>
-
-              {/* Content and Intellectual Property */}
-              <section id="content" className="scroll-mt-24">
-                <Card className="bg-card/50 backdrop-blur">
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
-                      <Eye className="h-6 w-6 text-primary" />
-                      <span>5. Content and Intellectual Property</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="prose prose-invert max-w-none">
-                    <div className="mb-6">
-                      <h4 className="text-lg font-semibold text-foreground mb-3">Our Content</h4>
-                      <p className="text-muted-foreground leading-relaxed mb-4">
-                        All content provided through the Artilect Newsletter, including but not limited to text, graphics, logos, images, and software, is the property of Artilect or its content suppliers and is protected by copyright, trademark, and other intellectual property laws.
-                      </p>
-                    </div>
-
-                    <div className="mb-6">
-                      <h4 className="text-lg font-semibold text-foreground mb-3">License to Use</h4>
-                      <p className="text-muted-foreground leading-relaxed mb-4">
-                        We grant you a limited, non-exclusive, non-transferable license to access and use our content for personal, non-commercial purposes. You may not:
-                      </p>
-                      <ul className="text-muted-foreground space-y-2 mb-4 ml-6">
-                        <li>• Reproduce, distribute, or publicly display our content without permission</li>
-                        <li>• Use our content for commercial purposes</li>
-                        <li>• Modify or create derivative works from our content</li>
-                        <li>• Remove or alter any copyright, trademark, or other proprietary notices</li>
-                      </ul>
-                    </div>
-
-                    <div>
-                      <h4 className="text-lg font-semibold text-foreground mb-3">Third-Party Content</h4>
-                      <p className="text-muted-foreground leading-relaxed">
-                        Our newsletter may include links to or excerpts from third-party websites and content. We do not own or control such content and are not responsible for its accuracy, completeness, or availability.
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </section>
-
-              {/* User Conduct and Responsibilities */}
-              <section id="conduct" className="scroll-mt-24">
+              {/* 2. Nature of the Services & Disclaimer of Professional Advice */}
+              <section id="nature" className="scroll-mt-24">
                 <Card className="bg-card/50 backdrop-blur">
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
                       <AlertTriangle className="h-6 w-6 text-primary" />
-                      <span>6. User Conduct and Responsibilities</span>
+                      <span>2. Nature of the Services & Disclaimer of Professional Advice</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="prose prose-invert max-w-none">
                     <p className="text-muted-foreground leading-relaxed mb-4">
-                      When using our Service, you agree to comply with all applicable laws and regulations and to respect the rights of others. You must not:
+                      The Services provide commentary, analysis, news, and educational materials related to artificial
+                      intelligence for informational purposes only.
                     </p>
-                    <ul className="text-muted-foreground space-y-2 mb-6 ml-6">
-                      <li>• Use the Service for any illegal or unauthorized purpose</li>
-                      <li>• Violate any laws in your jurisdiction</li>
-                      <li>• Transmit any harmful or malicious code</li>
-                      <li>• Attempt to gain unauthorized access to our systems</li>
-                      <li>• Interfere with or disrupt the Service or servers</li>
-                      <li>• Use automated means to access the Service without permission</li>
-                      <li>• Impersonate any person or entity</li>
-                      <li>• Harass, abuse, or harm other users</li>
-                    </ul>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      THE CONTENT PROVIDED THROUGH THE SERVICES DOES NOT CONSTITUTE FINANCIAL, INVESTMENT, LEGAL,
+                      TECHNICAL, MEDICAL, OR ANY OTHER FORM OF PROFESSIONAL ADVICE.
+                    </p>
                     <p className="text-muted-foreground leading-relaxed">
-                      We reserve the right to investigate and take appropriate legal action against anyone who violates these provisions, including terminating their access to the Service.
+                      You are solely responsible for any decisions or actions you take based on information obtained from
+                      the Services. Always conduct your own independent research and consult with a qualified professional
+                      before making any significant decisions. We are not fiduciaries, and no fiduciary relationship is
+                      created by your use of the Services.
                     </p>
                   </CardContent>
                 </Card>
               </section>
 
-              {/* Privacy and Data Protection */}
-              <section id="privacy" className="scroll-mt-24">
-                <Card className="bg-card/50 backdrop-blur">
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
-                      <Shield className="h-6 w-6 text-primary" />
-                      <span>7. Privacy and Data Protection</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="prose prose-invert max-w-none">
-                    <p className="text-muted-foreground leading-relaxed mb-4">
-                      Your privacy is important to us. Our collection and use of personal information is governed by our Privacy Policy, which is incorporated into these Terms by reference.
-                    </p>
-                    <p className="text-muted-foreground leading-relaxed mb-4">
-                      By using our Service, you consent to:
-                    </p>
-                    <ul className="text-muted-foreground space-y-2 mb-4 ml-6">
-                      <li>• The collection and use of your information as described in our Privacy Policy</li>
-                      <li>• Receiving newsletter emails at the address you provide</li>
-                      <li>• Our use of cookies and similar technologies</li>
-                      <li>• Processing of your data in accordance with applicable privacy laws</li>
-                    </ul>
-                    <p className="text-muted-foreground leading-relaxed">
-                      We implement appropriate security measures to protect your personal information, but cannot guarantee absolute security of data transmitted over the internet.
-                    </p>
-                  </CardContent>
-                </Card>
-              </section>
-
-              {/* Disclaimer and Limitation of Liability */}
-              <section id="disclaimer" className="scroll-mt-24">
-                <Card className="bg-card/50 backdrop-blur">
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
-                      <Scale className="h-6 w-6 text-primary" />
-                      <span>8. Disclaimer and Limitation of Liability</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="prose prose-invert max-w-none">
-                    <div className="mb-6">
-                      <h4 className="text-lg font-semibold text-foreground mb-3">Disclaimer of Warranties</h4>
-                      <p className="text-muted-foreground leading-relaxed mb-4">
-                        THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
-                      </p>
-                      <p className="text-muted-foreground leading-relaxed mb-4">
-                        We do not warrant that:
-                      </p>
-                      <ul className="text-muted-foreground space-y-2 mb-4 ml-6">
-                        <li>• The Service will be uninterrupted or error-free</li>
-                        <li>• The information provided is accurate or complete</li>
-                        <li>• Any defects will be corrected</li>
-                        <li>• The Service is free of viruses or harmful components</li>
-                      </ul>
-                    </div>
-
-                    <div>
-                      <h4 className="text-lg font-semibold text-foreground mb-3">Limitation of Liability</h4>
-                      <p className="text-muted-foreground leading-relaxed mb-4">
-                        TO THE MAXIMUM EXTENT PERMITTED BY LAW, ARTILECT SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, OR USE, ARISING OUT OF OR RELATING TO THESE TERMS OR THE SERVICE.
-                      </p>
-                      <p className="text-muted-foreground leading-relaxed">
-                        IN NO EVENT SHALL OUR TOTAL LIABILITY EXCEED THE AMOUNT PAID BY YOU FOR THE SERVICE IN THE TWELVE MONTHS PRECEDING THE CLAIM.
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </section>
-
-              {/* Termination */}
-              <section id="termination" className="scroll-mt-24">
-                <Card className="bg-card/50 backdrop-blur">
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
-                      <AlertTriangle className="h-6 w-6 text-primary" />
-                      <span>9. Termination</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="prose prose-invert max-w-none">
-                    <p className="text-muted-foreground leading-relaxed mb-4">
-                      These Terms remain in effect until terminated by either you or Artilect. You may terminate these Terms at any time by unsubscribing from our newsletter and ceasing use of our Service.
-                    </p>
-                    <p className="text-muted-foreground leading-relaxed mb-4">
-                      We may terminate or suspend your access to the Service immediately, without prior notice or liability, for any reason, including but not limited to:
-                    </p>
-                    <ul className="text-muted-foreground space-y-2 mb-4 ml-6">
-                      <li>• Breach of these Terms</li>
-                      <li>• Fraudulent or abusive behavior</li>
-                      <li>• Request by law enforcement or other government agencies</li>
-                      <li>• Technical or security issues</li>
-                      <li>• Extended periods of inactivity</li>
-                    </ul>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Upon termination, your right to use the Service ceases immediately. Provisions that by their nature should survive termination shall survive, including ownership provisions, warranty disclaimers, and limitations of liability.
-                    </p>
-                  </CardContent>
-                </Card>
-              </section>
-
-              {/* Modifications to Terms */}
-              <section id="modifications" className="scroll-mt-24">
+              {/* 3. Intellectual Property Rights */}
+              <section id="ipr" className="scroll-mt-24">
                 <Card className="bg-card/50 backdrop-blur">
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
                       <FileText className="h-6 w-6 text-primary" />
-                      <span>10. Modifications to Terms</span>
+                      <span>3. Intellectual Property Rights</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="prose prose-invert max-w-none">
                     <p className="text-muted-foreground leading-relaxed mb-4">
-                      We reserve the right to modify these Terms at any time. When we make changes, we will:
-                    </p>
-                    <ul className="text-muted-foreground space-y-2 mb-4 ml-6">
-                      <li>• Update the "Last modified" date at the top of these Terms</li>
-                      <li>• Notify subscribers via email of material changes</li>
-                      <li>• Post the updated Terms on our website</li>
-                      <li>• Provide at least 30 days notice for significant changes</li>
-                    </ul>
-                    <p className="text-muted-foreground leading-relaxed mb-4">
-                      Your continued use of the Service after any modifications constitutes acceptance of the updated Terms. If you do not agree to the modified Terms, you should discontinue your use of the Service.
+                      Unless otherwise indicated, the Services and all content created and published by the Artilect AI
+                      Team—including text, graphics, logos, and code (collectively, "Our Content")—are the property of the
+                      members of the Artilect AI Team and are protected by copyright and other intellectual property laws.
                     </p>
                     <p className="text-muted-foreground leading-relaxed">
-                      We encourage you to review these Terms periodically to stay informed of any updates.
+                      We grant you a limited, non-exclusive, non-transferable, revocable license to access Our Content for
+                      your personal, non-commercial use only, subject to the sharing and attribution rules outlined below.
                     </p>
                   </CardContent>
                 </Card>
               </section>
 
-              {/* Governing Law */}
+              {/* 4. Permitted Use and Prohibited Conduct */}
+              <section id="permitted" className="scroll-mt-24">
+                <Card className="bg-card/50 backdrop-blur">
+                  <CardHeader>
+                    <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
+                      <Scale className="h-6 w-6 text-primary" />
+                      <span>4. Permitted Use and Prohibited Conduct</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="prose prose-invert max-w-none">
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      You agree to use the Services lawfully. You are expressly prohibited from:
+                    </p>
+                    <ul className="text-muted-foreground space-y-2 mb-6 ml-6">
+                      <li>• Systematic scraping, data mining, or extraction of Our Content.</li>
+                      <li>• Republishing substantial portions of Our Content without our express prior written permission.</li>
+                      <li>• Using the Services for any commercial purpose without obtaining a license.</li>
+                      <li>• Attempting to interfere with, disrupt, or bypass any security measures of the Services.</li>
+                      <li>• Transmitting any malware, spam, or unlawful, defamatory, or infringing material.</li>
+                      <li>• Impersonating any person or entity.</li>
+                    </ul>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Violation of these terms may result in the immediate and permanent suspension of your access to the
+                      Services, at our sole discretion.
+                    </p>
+                  </CardContent>
+                </Card>
+              </section>
+
+              {/* 5. User-Generated Content and Submissions */}
+              <section id="ugc" className="scroll-mt-24">
+                <Card className="bg-card/50 backdrop-blur">
+                  <CardHeader>
+                    <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
+                      <PenTool className="h-6 w-6 text-primary" />
+                      <span>5. User-Generated Content and Submissions</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="prose prose-invert max-w-none">
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      Should you submit any ideas, feedback, comments, or other materials ("Submissions") to us, you agree
+                      to the following:
+                    </p>
+                    <ul className="text-muted-foreground space-y-2 mb-6 ml-6">
+                      <li>
+                        • You grant the Artilect AI Team a perpetual, worldwide, non-exclusive, royalty-free, irrevocable
+                        license to use, reproduce, modify, adapt, publish, and display such Submissions in connection with
+                        the Services, without any obligation of compensation or attribution to you.
+                      </li>
+                      <li>
+                        • You warrant that you have the right to grant this license and that your Submissions do not
+                        infringe upon the rights of any third party.
+                      </li>
+                      <li>• You acknowledge that we have no obligation to keep any Submissions confidential.</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </section>
+
+              {/* 6. Third-Party Links and Content */}
+              <section id="thirdparty" className="scroll-mt-24">
+                <Card className="bg-card/50 backdrop-blur">
+                  <CardHeader>
+                    <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
+                      <LinkIcon className="h-6 w-6 text-primary" />
+                      <span>6. Third-Party Links and Content</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="prose prose-invert max-w-none">
+                    <p className="text-muted-foreground leading-relaxed">
+                      The Services may contain links to third-party websites, tools, or resources. Such links are provided
+                      for convenience only. We do not endorse, control, or assume any responsibility for the content,
+                      privacy policies, or practices of any third-party sites or services. You access and use them entirely
+                      at your own risk.
+                    </p>
+                  </CardContent>
+                </Card>
+              </section>
+
+              {/* 7. DISCLAIMER OF ALL WARRANTIES */}
+              <section id="disclaimer" className="scroll-mt-24">
+                <Card className="bg-card/50 backdrop-blur">
+                  <CardHeader>
+                    <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
+                      <AlertTriangle className="h-6 w-6 text-primary" />
+                      <span>7. DISCLAIMER OF ALL WARRANTIES</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="prose prose-invert max-w-none">
+                    <p className="text-muted-foreground leading-relaxed">
+                      THE SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. TO THE FULLEST EXTENT PERMITTED BY
+                      APPLICABLE LAW, THE ARTILECT AI TEAM EXPRESSLY DISCLAIMS ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR
+                      IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+                      PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. WE MAKE NO WARRANTY THAT THE SERVICES WILL BE
+                      UNINTERRUPTED, TIMELY, SECURE, ACCURATE, RELIABLE, OR ERROR-FREE. ANY RELIANCE YOU PLACE ON THE SERVICES
+                      OR OUR CONTENT IS STRICTLY AT YOUR OWN RISK.
+                    </p>
+                  </CardContent>
+                </Card>
+              </section>
+
+              {/* 8. LIMITATION OF LIABILITY */}
+              <section id="liability" className="scroll-mt-24">
+                <Card className="bg-card/50 backdrop-blur">
+                  <CardHeader>
+                    <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
+                      <Scale className="h-6 w-6 text-primary" />
+                      <span>8. LIMITATION OF LIABILITY</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="prose prose-invert max-w-none">
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE MEMBERS OF THE ARTILECT AI
+                      TEAM BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, OR
+                      ANY LOSS OF PROFITS OR REVENUES, WHETHER INCURRED DIRECTLY OR INDIRECTLY, OR ANY LOSS OF DATA, USE,
+                      GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM:
+                    </p>
+                    <ul className="text-muted-foreground space-y-2 mb-4 ml-6">
+                      <li>• (A) YOUR USE OF, OR INABILITY TO USE, THE SERVICES;</li>
+                      <li>• (B) ANY CONTENT OBTAINED FROM THE SERVICES; OR</li>
+                      <li>• (C) UNAUTHORIZED ACCESS, USE, OR ALTERATION OF YOUR TRANSMISSIONS.</li>
+                    </ul>
+                    <p className="text-muted-foreground leading-relaxed">
+                      OUR TOTAL AGGREGATE LIABILITY TO YOU FOR ANY AND ALL CLAIMS ARISING OUT OF OR RELATING TO THESE TERMS
+                      OR YOUR USE OF THE SERVICES SHALL NOT EXCEED FIFTY EUROS (€50.00).
+                    </p>
+                  </CardContent>
+                </Card>
+              </section>
+
+              {/* 9. Indemnification */}
+              <section id="indemnification" className="scroll-mt-24">
+                <Card className="bg-card/50 backdrop-blur">
+                  <CardHeader>
+                    <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
+                      <Shield className="h-6 w-6 text-primary" />
+                      <span>9. Indemnification</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="prose prose-invert max-w-none">
+                    <p className="text-muted-foreground leading-relaxed">
+                      You agree to defend, indemnify, and hold harmless the individual members of the Artilect AI Team from
+                      and against any and all claims, damages, obligations, losses, liabilities, costs, or debt, and
+                      expenses (including but not limited to attorney's fees) arising from: (a) your use of and access to
+                      the Services; (b) your violation of any term of these Terms; or (c) your violation of any third-party
+                      right, including without limitation any copyright or privacy right. This indemnification obligation
+                      will survive the termination of these Terms and your use of the Services.
+                    </p>
+                  </CardContent>
+                </Card>
+              </section>
+
+              {/* 10. Governing Law and Jurisdiction */}
               <section id="governing" className="scroll-mt-24">
                 <Card className="bg-card/50 backdrop-blur">
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
                       <Scale className="h-6 w-6 text-primary" />
-                      <span>11. Governing Law</span>
+                      <span>10. Governing Law and Jurisdiction</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="prose prose-invert max-w-none">
                     <p className="text-muted-foreground leading-relaxed mb-4">
-                      These Terms and your use of the Service are governed by and construed in accordance with the laws of the jurisdiction in which Artilect operates, without regard to conflict of law principles.
+                      These Terms, and any dispute or claim arising out of or in connection with them, shall be governed by
+                      and construed in accordance with the laws of France, without regard to its conflict of law provisions.
                     </p>
-                    <p className="text-muted-foreground leading-relaxed mb-4">
-                      Any disputes arising from these Terms or your use of the Service shall be resolved through:
-                    </p>
-                    <ul className="text-muted-foreground space-y-2 mb-4 ml-6">
-                      <li>• Good faith negotiations between the parties</li>
-                      <li>• Binding arbitration if negotiations fail</li>
-                      <li>• Courts of competent jurisdiction as a last resort</li>
-                    </ul>
                     <p className="text-muted-foreground leading-relaxed">
-                      You agree to waive any right to a jury trial and to participate in class action lawsuits related to these Terms or the Service.
+                      You agree that the courts of Paris, France, shall have exclusive jurisdiction to settle any dispute or
+                      claim that arises out of or in connection with these Terms or the Services.
                     </p>
                   </CardContent>
                 </Card>
               </section>
 
-              {/* Contact Information */}
+              {/* 11. Termination */}
+              <section id="termination" className="scroll-mt-24">
+                <Card className="bg-card/50 backdrop-blur">
+                  <CardHeader>
+                    <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
+                      <AlertTriangle className="h-6 w-6 text-primary" />
+                      <span>11. Termination</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="prose prose-invert max-w-none">
+                    <p className="text-muted-foreground leading-relaxed">
+                      We reserve the right, in our sole discretion, to suspend or terminate your access to the Services at
+                      any time, for any reason, with or without notice, including for any violation of these Terms.
+                    </p>
+                  </CardContent>
+                </Card>
+              </section>
+
+              {/* 12. Miscellaneous */}
+              <section id="misc" className="scroll-mt-24">
+                <Card className="bg-card/50 backdrop-blur">
+                  <CardHeader>
+                    <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
+                      <FileText className="h-6 w-6 text-primary" />
+                      <span>12. Miscellaneous</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="prose prose-invert max-w-none">
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      Entire Agreement: These Terms constitute the entire agreement between you and the Artilect AI Team
+                      regarding your use of the Services.
+                    </p>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      Severability: If any provision of these Terms is held to be invalid or unenforceable, the remaining
+                      provisions will remain in full force and effect.
+                    </p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      No Waiver: Our failure to enforce any right or provision of these Terms will not be considered a
+                      waiver of those rights.
+                    </p>
+                  </CardContent>
+                </Card>
+              </section>
+
+              {/* 13. Contact Information */}
               <section id="contact" className="scroll-mt-24">
                 <Card className="bg-card/50 backdrop-blur">
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-3 text-2xl font-heading">
                       <Phone className="h-6 w-6 text-primary" />
-                      <span>12. Contact Information</span>
+                      <span>13. Contact Information</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="prose prose-invert max-w-none">
                     <p className="text-muted-foreground leading-relaxed mb-4">
-                      If you have any questions about these Terms of Service, please contact us:
+                      For any questions about these Terms, please contact us at: <span className="text-primary">info@artilectai.com</span>
                     </p>
-                    <div className="bg-secondary/30 rounded-lg p-6 mb-4">
-                      <div className="space-y-3">
-                        <div>
-                          <span className="font-semibold text-foreground">Legal:</span>
-                          <span className="ml-2 text-primary">info@artilectai.com</span>
-                        </div>
-                        <div>
-                          <span className="font-semibold text-foreground">Support:</span>
-                          <span className="ml-2 text-primary">info@artilectai.com</span>
-                        </div>
-                        <div>
-                          <span className="font-semibold text-foreground">Website:</span>
-                          <span className="ml-2 text-primary">www.artilectai.com</span>
-                        </div>
-                      </div>
-                    </div>
-                    <p className="text-muted-foreground leading-relaxed">
-                      We will respond to your inquiries within 48 hours during business days. For urgent matters, please mark your email as "URGENT" in the subject line.
-                    </p>
+                    <p className="text-muted-foreground leading-relaxed">Website: <span className="text-primary">www.artilectai.com</span></p>
                   </CardContent>
                 </Card>
               </section>
             </div>
 
-            {/* Newsletter CTA */}
+            {/* Newsletter CTA (kept minimal to focus on Terms content) */}
             <div className="mt-16 mb-12">
               <Card className="bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
-                <CardContent className="text-center py-12">
-                  <h3 className="text-2xl font-heading font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    Ready to Join Artilect?
-                  </h3>
-                  <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-                    By subscribing, you agree to these Terms of Service and our Privacy Policy. 
-                    Get the latest AI insights delivered to your inbox.
+                <CardContent className="text-center py-10">
+                  <h3 className="text-2xl font-heading font-bold mb-2">Stay informed with Artilect AI</h3>
+                  <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
+                    Explore our latest insights and updates on AI. Your use of the Services is governed by these Terms.
                   </p>
-                  <Button 
-                    asChild 
-                    size="lg" 
-                    className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
-                  >
-                    <Link href="/#subscribe">Subscribe Now</Link>
+                  <Button asChild size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90">
+                    <Link href="/#subscribe">Subscribe</Link>
                   </Button>
                 </CardContent>
               </Card>

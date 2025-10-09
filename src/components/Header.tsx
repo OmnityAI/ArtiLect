@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -16,11 +17,17 @@ export default function Header() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [consent, setConsent] = useState(false);
 
   const handleNewsletterSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !email.trim()) {
       toast.error("Please fill in all fields");
+      return;
+    }
+
+    if (!consent) {
+      toast.error("Please agree to the Terms of Service and Privacy Policy");
       return;
     }
 
@@ -152,11 +159,21 @@ export default function Header() {
                       disabled={isLoading}
                     />
                   </div>
+                  <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <Checkbox id="header-consent" checked={consent} onCheckedChange={(v) => setConsent(Boolean(v))} />
+                    <label htmlFor="header-consent" className="leading-snug">
+                      I have read and agree to the
+                      {" "}
+                      <a href="/terms" className="text-primary underline-offset-2 hover:underline">Terms of Service</a>
+                      {" "}and{" "}
+                      <a href="/privacy" className="text-primary underline-offset-2 hover:underline">Privacy Policy</a>.
+                    </label>
+                  </div>
                   <Button 
                     type="submit" 
                     className="w-full" 
                     size="lg"
-                    disabled={isLoading}
+                    disabled={isLoading || !consent}
                   >
                     {isLoading ? "Subscribing..." : "Subscribe to Newsletter"}
                   </Button>
@@ -247,11 +264,21 @@ export default function Header() {
                           disabled={isLoading}
                         />
                       </div>
+                      <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <Checkbox id="mobile-consent" checked={consent} onCheckedChange={(v) => setConsent(Boolean(v))} />
+                        <label htmlFor="mobile-consent" className="leading-snug">
+                          I have read and agree to the
+                          {" "}
+                          <a href="/terms" className="text-primary underline-offset-2 hover:underline">Terms of Service</a>
+                          {" "}and{" "}
+                          <a href="/privacy" className="text-primary underline-offset-2 hover:underline">Privacy Policy</a>.
+                        </label>
+                      </div>
                       <Button 
                         type="submit" 
                         className="w-full" 
                         size="lg"
-                        disabled={isLoading}
+                        disabled={isLoading || !consent}
                       >
                         {isLoading ? "Subscribing..." : "Subscribe to Newsletter"}
                       </Button>

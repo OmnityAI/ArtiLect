@@ -42,17 +42,18 @@ export default function PrivacyPolicyPage() {
   
 
   const tableOfContents = [
+    { id: "introduction", title: "Introduction", icon: Shield },
     { id: "information-collection", title: "Information We Collect", icon: FileText },
-    { id: "information-usage", title: "How We Use Information", icon: Eye },
-    { id: "information-sharing", title: "Information Sharing", icon: Users },
-    { id: "data-security", title: "Data Storage & Security", icon: Lock },
-    { id: "user-rights", title: "Your Rights", icon: Shield },
+    { id: "information-usage", title: "How We Use Your Information", icon: Eye },
+    { id: "information-sharing", title: "Data Sharing & Disclosure", icon: Users },
+    { id: "data-security", title: "Data Security", icon: Lock },
+    { id: "data-retention", title: "Data Retention", icon: Clock },
+    { id: "user-rights", title: "Your GDPR Rights", icon: Shield },
     { id: "cookies-tracking", title: "Cookies & Tracking", icon: Globe },
-    { id: "third-party", title: "Third-Party Services", icon: Users },
-    { id: "international", title: "International Users", icon: Globe },
     { id: "children-privacy", title: "Children's Privacy", icon: Shield },
-    { id: "policy-updates", title: "Policy Updates", icon: Calendar },
-    { id: "contact", title: "Contact Information", icon: Phone }
+    { id: "international", title: "International Data Transfers", icon: Globe },
+    { id: "policy-updates", title: "Changes to this Policy", icon: Calendar },
+    { id: "contact", title: "Contact Us", icon: Phone }
   ];
 
   return (
@@ -115,16 +116,34 @@ export default function PrivacyPolicyPage() {
               </h1>
               <div className="prose prose-neutral prose-invert max-w-none">
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  At Artilect Newsletter, we respect your privacy and are committed to protecting your personal information. 
-                  This Privacy Policy explains how we collect, use, and safeguard your data when you subscribe to our newsletter 
-                  and use our services.
+                  This Privacy Policy (the “Policy”) explains how the individuals who manage the Artilect AI project (the
+                  “Artilect AI Team,” “we,” “us,” or “our”) collect, use, and protect your information when you use our
+                  Services, as defined in our Terms of Service. By using the Services, you agree to the collection and use of
+                  information in accordance with this Policy and our Terms of Service. If you do not agree with this Policy,
+                  you must not access the Services.
                 </p>
                 <div className="flex items-center text-sm text-muted-foreground mt-6">
                   <Clock className="h-4 w-4 mr-2" />
-                  Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                  Last Updated: 9 October 2025
                 </div>
               </div>
             </div>
+
+            {/* 1. Introduction */}
+            <section id="introduction" className="mb-12 scroll-mt-32">
+              <Card className="border-border/50">
+                <CardContent className="p-8">
+                  <div className="flex items-center mb-6">
+                    <Shield className="h-6 w-6 text-primary mr-3" />
+                    <h2 className="font-heading text-2xl font-semibold">1. Introduction</h2>
+                  </div>
+                  <p className="text-muted-foreground">
+                    This Policy is a part of our Terms of Service. By using the Services, you agree to the collection and
+                    use of information in accordance with this Policy and our Terms of Service.
+                  </p>
+                </CardContent>
+              </Card>
+            </section>
 
             {/* Information We Collect */}
             <section id="information-collection" className="mb-12 scroll-mt-32">
@@ -132,25 +151,24 @@ export default function PrivacyPolicyPage() {
                 <CardContent className="p-8">
                   <div className="flex items-center mb-6">
                     <FileText className="h-6 w-6 text-primary mr-3" />
-                    <h2 className="font-heading text-2xl font-semibold">Information We Collect</h2>
+                    <h2 className="font-heading text-2xl font-semibold">2. Information We Collect</h2>
                   </div>
                   <div className="space-y-6">
                     <div>
-                      <h3 className="font-semibold text-lg mb-3">Personal Information</h3>
+                      <h3 className="font-semibold text-lg mb-3">A. Personal Data You Provide Directly</h3>
                       <ul className="space-y-2 text-muted-foreground">
-                        <li>• <strong>Email Address:</strong> Required for newsletter delivery and account management</li>
-                        <li>• <strong>Name:</strong> Optional, used for personalization when provided</li>
-                        <li>• <strong>Subscription Preferences:</strong> Topic interests and frequency settings</li>
+                        <li>• <strong>Email Address:</strong> Collected when you subscribe to our newsletter, necessary to deliver content.</li>
+                        <li>• <strong>Communications:</strong> If you contact us, we may retain your correspondence and contact information.</li>
                       </ul>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg mb-3">Automatically Collected Data</h3>
+                      <h3 className="font-semibold text-lg mb-3">B. Data We Collect Automatically (Usage Data)</h3>
+                      <p className="text-muted-foreground mb-2">We or our service providers may collect:</p>
                       <ul className="space-y-2 text-muted-foreground">
-                        <li>• <strong>Email Engagement:</strong> Open rates, click-through rates, and reading time</li>
-                        <li>• <strong>Device Information:</strong> Device type, operating system, and email client</li>
-                        <li>• <strong>Usage Analytics:</strong> Website visits, page views, and interaction patterns</li>
-                        <li>• <strong>IP Address:</strong> For security and geographic analytics</li>
+                        <li>• IP address, browser type, operating system, and pages viewed</li>
+                        <li>• Email engagement data such as open and click rates</li>
                       </ul>
+                      <p className="text-muted-foreground mt-2">This data is used for analytics and to improve the Services.</p>
                     </div>
                   </div>
                 </CardContent>
@@ -163,27 +181,15 @@ export default function PrivacyPolicyPage() {
                 <CardContent className="p-8">
                   <div className="flex items-center mb-6">
                     <Eye className="h-6 w-6 text-primary mr-3" />
-                    <h2 className="font-heading text-2xl font-semibold">How We Use Information</h2>
+                    <h2 className="font-heading text-2xl font-semibold">3. How We Use Your Information</h2>
                   </div>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-4">
-                      <h3 className="font-semibold text-lg">Primary Uses</h3>
-                      <ul className="space-y-2 text-muted-foreground">
-                        <li>• Deliver newsletter content to your inbox</li>
-                        <li>• Personalize content based on your interests</li>
-                        <li>• Manage your subscription and preferences</li>
-                        <li>• Send important service announcements</li>
-                      </ul>
-                    </div>
-                    <div className="space-y-4">
-                      <h3 className="font-semibold text-lg">Analytics & Improvement</h3>
-                      <ul className="space-y-2 text-muted-foreground">
-                        <li>• Analyze content performance and engagement</li>
-                        <li>• Improve newsletter quality and relevance</li>
-                        <li>• Understand subscriber demographics and preferences</li>
-                        <li>• Optimize delivery timing and frequency</li>
-                      </ul>
-                    </div>
+                  <div className="space-y-4">
+                    <ul className="space-y-2 text-muted-foreground">
+                      <li>• To Provide and Maintain the Services (deliver newsletter, manage subscription, service announcements)</li>
+                      <li>• To Improve the Services (analyze interactions and enhance quality and relevance)</li>
+                      <li>• To Enforce Our Terms and Protect Our Rights</li>
+                      <li>• To Comply with Legal Obligations</li>
+                    </ul>
                   </div>
                 </CardContent>
               </Card>
@@ -195,24 +201,17 @@ export default function PrivacyPolicyPage() {
                 <CardContent className="p-8">
                   <div className="flex items-center mb-6">
                     <Users className="h-6 w-6 text-primary mr-3" />
-                    <h2 className="font-heading text-2xl font-semibold">Information Sharing</h2>
+                    <h2 className="font-heading text-2xl font-semibold">4. Data Sharing and Disclosure</h2>
                   </div>
-                  <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-6 mb-6">
-                    <p className="text-green-400 font-semibold mb-2">Our Commitment to You</p>
-                    <p className="text-muted-foreground">
-                      We <strong>never sell, rent, or trade</strong> your personal information to third parties. 
-                      Your data remains private and is only used to provide you with the best newsletter experience.
-                    </p>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="font-semibold text-lg">Limited Sharing Scenarios</h3>
-                    <ul className="space-y-2 text-muted-foreground">
-                      <li>• <strong>Service Providers:</strong> Trusted partners who help deliver our newsletter (email service providers)</li>
-                      <li>• <strong>Legal Requirements:</strong> When required by law or to protect our rights</li>
-                      <li>• <strong>Business Transfers:</strong> In the unlikely event of a merger or acquisition</li>
-                      <li>• <strong>Anonymized Data:</strong> Aggregated, non-personally identifiable statistics for research</li>
-                    </ul>
-                  </div>
+                  <p className="text-muted-foreground mb-4">
+                    We do not sell, rent, or trade your personal information. We may share your information only in the
+                    following limited circumstances:
+                  </p>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li>• <strong>With Service Providers:</strong> Trusted third parties (e.g., email delivery, analytics) who are contractually obligated to protect your data and use it only to provide services to us.</li>
+                    <li>• <strong>For Legal Reasons:</strong> To comply with law, protect safety, address fraud/security, or protect the rights and property of the Artilect AI Team.</li>
+                    <li>• <strong>In a Business Transfer:</strong> If the Artilect AI project is sold, merged, or assets transferred, we will notify you before your information is transferred and becomes subject to a different privacy policy.</li>
+                  </ul>
                 </CardContent>
               </Card>
             </section>
@@ -223,52 +222,31 @@ export default function PrivacyPolicyPage() {
                 <CardContent className="p-8">
                   <div className="flex items-center mb-6">
                     <Lock className="h-6 w-6 text-primary mr-3" />
-                    <h2 className="font-heading text-2xl font-semibold">Data Storage & Security</h2>
+                    <h2 className="font-heading text-2xl font-semibold">5. Data Security</h2>
                   </div>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <h3 className="font-semibold text-lg mb-4">Security Measures</h3>
-                      <div className="space-y-3">
-                        <div className="flex items-start space-x-3">
-                          <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
-                          <span className="text-muted-foreground">End-to-end encryption for data transmission</span>
-                        </div>
-                        <div className="flex items-start space-x-3">
-                          <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
-                          <span className="text-muted-foreground">Secure, SOC 2 compliant data centers</span>
-                        </div>
-                        <div className="flex items-start space-x-3">
-                          <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
-                          <span className="text-muted-foreground">Regular security audits and updates</span>
-                        </div>
-                        <div className="flex items-start space-x-3">
-                          <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
-                          <span className="text-muted-foreground">Access controls and authentication</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg mb-4">Data Retention</h3>
-                      <div className="space-y-3">
-                        <div className="flex items-start space-x-3">
-                          <div className="h-2 w-2 rounded-full bg-accent mt-2 shrink-0" />
-                          <span className="text-muted-foreground">Active subscriber data: Retained while subscribed</span>
-                        </div>
-                        <div className="flex items-start space-x-3">
-                          <div className="h-2 w-2 rounded-full bg-accent mt-2 shrink-0" />
-                          <span className="text-muted-foreground">Unsubscribed data: Deleted within 30 days</span>
-                        </div>
-                        <div className="flex items-start space-x-3">
-                          <div className="h-2 w-2 rounded-full bg-accent mt-2 shrink-0" />
-                          <span className="text-muted-foreground">Analytics data: Anonymized after 24 months</span>
-                        </div>
-                        <div className="flex items-start space-x-3">
-                          <div className="h-2 w-2 rounded-full bg-accent mt-2 shrink-0" />
-                          <span className="text-muted-foreground">Legal requirements: As required by law</span>
-                        </div>
-                      </div>
-                    </div>
+                  <p className="text-muted-foreground">
+                    We take commercially reasonable administrative and technical measures to protect the information we
+                    collect from loss, theft, and unauthorized access, disclosure, alteration, and destruction. However, no
+                    method of transmission over the Internet or electronic storage is 100% secure; we cannot guarantee
+                    absolute security.
+                  </p>
+                </CardContent>
+              </Card>
+            </section>
+
+            {/* Data Retention */}
+            <section id="data-retention" className="mb-12 scroll-mt-32">
+              <Card className="border-border/50">
+                <CardContent className="p-8">
+                  <div className="flex items-center mb-6">
+                    <Clock className="h-6 w-6 text-primary mr-3" />
+                    <h2 className="font-heading text-2xl font-semibold">6. Data Retention</h2>
                   </div>
+                  <p className="text-muted-foreground">
+                    We retain your personal data for as long as necessary to provide the Services and fulfill the purposes
+                    set out in this Policy. When you unsubscribe, we will delete your email address from active mailing lists
+                    within a reasonable timeframe, subject to any legal obligations to retain the information.
+                  </p>
                 </CardContent>
               </Card>
             </section>
@@ -279,55 +257,19 @@ export default function PrivacyPolicyPage() {
                 <CardContent className="p-8">
                   <div className="flex items-center mb-6">
                     <Shield className="h-6 w-6 text-primary mr-3" />
-                    <h2 className="font-heading text-2xl font-semibold">Your Rights</h2>
+                    <h2 className="font-heading text-2xl font-semibold">7. Your Data Protection Rights (Under GDPR)</h2>
                   </div>
-                  <div className="grid gap-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <Card className="bg-muted/50 border-border/50">
-                        <CardContent className="p-6">
-                          <h3 className="font-semibold text-lg mb-3 flex items-center">
-                            <Mail className="h-5 w-5 mr-2 text-primary" />
-                            Unsubscribe
-                          </h3>
-                          <p className="text-sm text-muted-foreground">
-                            Easy one-click unsubscribe in every email or manage preferences in your account dashboard.
-                          </p>
-                        </CardContent>
-                      </Card>
-                      <Card className="bg-muted/50 border-border/50">
-                        <CardContent className="p-6">
-                          <h3 className="font-semibold text-lg mb-3 flex items-center">
-                            <Eye className="h-5 w-5 mr-2 text-primary" />
-                            Access Your Data
-                          </h3>
-                          <p className="text-sm text-muted-foreground">
-                            Request a copy of all personal information we have about you in a portable format.
-                          </p>
-                        </CardContent>
-                      </Card>
-                      <Card className="bg-muted/50 border-border/50">
-                        <CardContent className="p-6">
-                          <h3 className="font-semibold text-lg mb-3 flex items-center">
-                            <FileText className="h-5 w-5 mr-2 text-primary" />
-                            Update Information
-                          </h3>
-                          <p className="text-sm text-muted-foreground">
-                            Correct or update your personal information and subscription preferences at any time.
-                          </p>
-                        </CardContent>
-                      </Card>
-                      <Card className="bg-muted/50 border-border/50">
-                        <CardContent className="p-6">
-                          <h3 className="font-semibold text-lg mb-3 flex items-center">
-                            <Lock className="h-5 w-5 mr-2 text-primary" />
-                            Delete Your Data
-                          </h3>
-                          <p className="text-sm text-muted-foreground">
-                            Request complete deletion of your personal information from our systems.
-                          </p>
-                        </CardContent>
-                      </Card>
-                    </div>
+                  <div className="space-y-4 text-muted-foreground">
+                    <ul className="space-y-2">
+                      <li>• The Right to Access</li>
+                      <li>• The Right to Rectification</li>
+                      <li>• The Right to Erasure (Right to be Forgotten)</li>
+                      <li>• The Right to Object to Processing</li>
+                      <li>• The Right to Data Portability</li>
+                    </ul>
+                    <p>
+                      To exercise any of these rights, please contact us at <span className="text-primary">info@artilectai.com</span>.
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -339,77 +281,14 @@ export default function PrivacyPolicyPage() {
                 <CardContent className="p-8">
                   <div className="flex items-center mb-6">
                     <Globe className="h-6 w-6 text-primary mr-3" />
-                    <h2 className="font-heading text-2xl font-semibold">Cookies & Tracking</h2>
+                    <h2 className="font-heading text-2xl font-semibold">8. Cookies and Tracking Technologies</h2>
                   </div>
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="font-semibold text-lg mb-3">Website Cookies</h3>
-                      <p className="text-muted-foreground mb-4">
-                        We use cookies to improve your browsing experience and analyze website performance. 
-                        You can control cookie settings in your browser preferences.
-                      </p>
-                      <div className="grid md:grid-cols-3 gap-4">
-                        <div className="bg-muted/30 p-4 rounded-lg">
-                          <h4 className="font-semibold mb-2">Essential</h4>
-                          <p className="text-sm text-muted-foreground">Required for basic site functionality</p>
-                        </div>
-                        <div className="bg-muted/30 p-4 rounded-lg">
-                          <h4 className="font-semibold mb-2">Analytics</h4>
-                          <p className="text-sm text-muted-foreground">Help us understand site usage</p>
-                        </div>
-                        <div className="bg-muted/30 p-4 rounded-lg">
-                          <h4 className="font-semibold mb-2">Preferences</h4>
-                          <p className="text-sm text-muted-foreground">Remember your settings</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg mb-3">Email Tracking</h3>
-                      <p className="text-muted-foreground">
-                        Our newsletters include tracking pixels to measure open rates and engagement. 
-                        This helps us improve content quality and delivery timing. You can disable image loading 
-                        in your email client to opt out of this tracking.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </section>
-
-            {/* Third-Party Services */}
-            <section id="third-party" className="mb-12 scroll-mt-32">
-              <Card className="border-border/50">
-                <CardContent className="p-8">
-                  <div className="flex items-center mb-6">
-                    <Users className="h-6 w-6 text-primary mr-3" />
-                    <h2 className="font-heading text-2xl font-semibold">Third-Party Services</h2>
-                  </div>
-                  <div className="space-y-6">
-                    <p className="text-muted-foreground">
-                      We work with trusted service providers to deliver our newsletter and analyze performance. 
-                      These partners are bound by strict data protection agreements and can only use your data 
-                      for the specific services they provide to us.
+                  <div className="space-y-4 text-muted-foreground">
+                    <p>
+                      We use cookies on our website to help analyze traffic and improve your user experience. Our emails may
+                      contain a tracking pixel to help measure engagement. You can typically control cookies through your
+                      browser settings and disable image loading in your email client to prevent pixel tracking.
                     </p>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h3 className="font-semibold text-lg mb-3">Email Service Provider</h3>
-                        <ul className="space-y-2 text-muted-foreground">
-                          <li>• Newsletter delivery and management</li>
-                          <li>• Subscription and preference handling</li>
-                          <li>• Basic engagement analytics</li>
-                          <li>• Spam protection and deliverability</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-lg mb-3">Analytics Services</h3>
-                        <ul className="space-y-2 text-muted-foreground">
-                          <li>• Website traffic and user behavior</li>
-                          <li>• Performance monitoring</li>
-                          <li>• Error tracking and debugging</li>
-                          <li>• Conversion and engagement metrics</li>
-                        </ul>
-                      </div>
-                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -421,51 +300,33 @@ export default function PrivacyPolicyPage() {
                 <CardContent className="p-8">
                   <div className="flex items-center mb-6">
                     <Globe className="h-6 w-6 text-primary mr-3" />
-                    <h2 className="font-heading text-2xl font-semibold">International Users</h2>
+                    <h2 className="font-heading text-2xl font-semibold">9. Children's Privacy</h2>
                   </div>
-                  <div className="space-y-6">
-                    <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-6">
-                      <h3 className="font-semibold text-lg mb-3 text-blue-400">GDPR Compliance</h3>
-                      <p className="text-muted-foreground">
-                        For users in the European Union, we comply with the General Data Protection Regulation (GDPR). 
-                        You have enhanced rights including data portability, the right to be forgotten, 
-                        and explicit consent requirements.
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg mb-3">Data Transfers</h3>
-                      <p className="text-muted-foreground mb-4">
-                        Your data may be processed and stored in countries outside your home country. 
-                        We ensure appropriate safeguards are in place, including:
-                      </p>
-                      <ul className="space-y-2 text-muted-foreground">
-                        <li>• Adequacy decisions from relevant authorities</li>
-                        <li>• Standard contractual clauses</li>
-                        <li>• Appropriate technical and organizational measures</li>
-                        <li>• Regular compliance assessments</li>
-                      </ul>
-                    </div>
+                  <div className="space-y-4">
+                    <p className="text-muted-foreground">
+                      The Services are not intended for or directed at individuals under the age of 16. We do not knowingly
+                      collect personal information from children under 16. If we become aware that we have collected personal
+                      data from a child under 16, we will take steps to delete that information.
+                    </p>
                   </div>
                 </CardContent>
               </Card>
             </section>
 
-            {/* Children's Privacy */}
+            {/* International Data Transfers */}
             <section id="children-privacy" className="mb-12 scroll-mt-32">
               <Card className="border-border/50">
                 <CardContent className="p-8">
                   <div className="flex items-center mb-6">
-                    <Shield className="h-6 w-6 text-primary mr-3" />
-                    <h2 className="font-heading text-2xl font-semibold">Children's Privacy</h2>
+                    <Globe className="h-6 w-6 text-primary mr-3" />
+                    <h2 className="font-heading text-2xl font-semibold">10. International Data Transfers</h2>
                   </div>
-                  <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-6">
-                    <p className="text-muted-foreground">
-                      Artilect Newsletter is not intended for children under the age of 13. We do not knowingly 
-                      collect personal information from children under 13. If you are a parent or guardian and 
-                      believe your child has provided us with personal information, please contact us immediately, 
-                      and we will delete such information from our systems.
-                    </p>
-                  </div>
+                  <p className="text-muted-foreground">
+                    Your information may be transferred to—and maintained on—computers located outside of your state,
+                    province, country, or other governmental jurisdiction where the data protection laws may differ. If you
+                    are in the EEA, your data may be transferred outside the EEA. We will ensure such transfers comply with
+                    applicable law by relying on appropriate safeguards, such as Standard Contractual Clauses.
+                  </p>
                 </CardContent>
               </Card>
             </section>
@@ -476,23 +337,13 @@ export default function PrivacyPolicyPage() {
                 <CardContent className="p-8">
                   <div className="flex items-center mb-6">
                     <Calendar className="h-6 w-6 text-primary mr-3" />
-                    <h2 className="font-heading text-2xl font-semibold">Policy Updates</h2>
+                    <h2 className="font-heading text-2xl font-semibold">11. Changes to This Privacy Policy</h2>
                   </div>
-                  <div className="space-y-4">
-                    <p className="text-muted-foreground">
-                      We may update this Privacy Policy from time to time to reflect changes in our practices, 
-                      technology, legal requirements, or other factors. When we make changes, we will:
-                    </p>
-                    <ul className="space-y-2 text-muted-foreground">
-                      <li>• Update the "Last updated" date at the top of this policy</li>
-                      <li>• Notify subscribers via email for significant changes</li>
-                      <li>• Provide a summary of changes in our next newsletter</li>
-                      <li>• Post announcements on our website and social media</li>
-                    </ul>
-                    <p className="text-muted-foreground">
-                      Continued use of our services after updates constitutes acceptance of the revised policy.
-                    </p>
-                  </div>
+                  <p className="text-muted-foreground">
+                    We may update this Privacy Policy from time to time. We will notify you of any changes by posting the
+                    new policy on this page and updating the “Last Updated” date. Your continued use of the Services after
+                    any modification will constitute your acceptance of such modification.
+                  </p>
                 </CardContent>
               </Card>
             </section>
@@ -503,46 +354,11 @@ export default function PrivacyPolicyPage() {
                 <CardContent className="p-8">
                   <div className="flex items-center mb-6">
                     <Phone className="h-6 w-6 text-primary mr-3" />
-                    <h2 className="font-heading text-2xl font-semibold">Contact Information</h2>
+                    <h2 className="font-heading text-2xl font-semibold">12. Contact Us</h2>
                   </div>
-                  <div className="space-y-6">
-                    <p className="text-muted-foreground">
-                      If you have any questions about this Privacy Policy or our data practices, 
-                      please don't hesitate to contact us:
-                    </p>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <Card className="bg-muted/50 border-border/50">
-                        <CardContent className="p-6">
-                          <h3 className="font-semibold text-lg mb-4">Privacy Questions</h3>
-                          <div className="space-y-3">
-                            <div className="flex items-center">
-                              <Mail className="h-4 w-4 text-primary mr-3" />
-                              <span className="text-muted-foreground">info@artilectai.com</span>
-                            </div>
-                            <div className="flex items-center">
-                              <Clock className="h-4 w-4 text-primary mr-3" />
-                              <span className="text-muted-foreground">Response within 48 hours</span>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                      <Card className="bg-muted/50 border-border/50">
-                        <CardContent className="p-6">
-                          <h3 className="font-semibold text-lg mb-4">Data Protection Officer</h3>
-                          <div className="space-y-3">
-                            <div className="flex items-center">
-                              <Mail className="h-4 w-4 text-primary mr-3" />
-                              <span className="text-muted-foreground">info@artilectai.com</span>
-                            </div>
-                            <div className="flex items-center">
-                              <Shield className="h-4 w-4 text-primary mr-3" />
-                              <span className="text-muted-foreground">GDPR & compliance matters</span>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </div>
+                  <p className="text-muted-foreground">
+                    If you have any questions about this Privacy Policy, please contact us at: <span className="text-primary">info@artilectai.com</span>
+                  </p>
                 </CardContent>
               </Card>
             </section>
