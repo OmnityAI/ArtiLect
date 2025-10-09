@@ -4,6 +4,7 @@ import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
 import ErrorReporter from "@/components/ErrorReporter";
 import Script from "next/script";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import CookieConsent from "../components/CookieConsent";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,6 +19,35 @@ export default function RootLayout({
       <body className="frame antialiased">
         <div className="app-shell">
           <ErrorReporter />
+          {/* Google tag with Consent Mode v2: default deny analytics until user accepts */}
+          <Script id="gtag-consent-init" strategy="beforeInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              // Set default consent to denied for analytics and ads
+              gtag('consent', 'default', {
+                'ad_storage': 'denied',
+                'analytics_storage': 'denied',
+                'functionality_storage': 'granted',
+                'security_storage': 'granted'
+              });
+              gtag('js', new Date());
+            `}
+          </Script>
+          <Script
+            id="gtag-src"
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-2LYX6FZW6V"
+            strategy="afterInteractive"
+          />
+          <Script id="gtag-config" strategy="afterInteractive">
+            {`
+              if (typeof window !== 'undefined' && window.gtag) {
+                // Do not auto send page_view until consent is granted
+                window.gtag('config', 'G-2LYX6FZW6V', { send_page_view: false });
+              }
+            `}
+          </Script>
           <Script
             src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/scripts//route-messenger.js"
             strategy="afterInteractive"
@@ -31,6 +61,7 @@ export default function RootLayout({
           {children}
           <ScrollToTop />
           <VisualEditsMessenger />
+          <CookieConsent measurementId="G-2LYX6FZW6V" />
         </div>
       </body>
     </html>
