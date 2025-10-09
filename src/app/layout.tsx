@@ -36,11 +36,10 @@ export default function RootLayout({
           </Script>
           <Script
             id="gtag-src"
-            async
             src="https://www.googletagmanager.com/gtag/js?id=G-2LYX6FZW6V"
-            strategy="afterInteractive"
+            strategy="beforeInteractive"
           />
-          <Script id="gtag-config" strategy="afterInteractive">
+          <Script id="gtag-config" strategy="beforeInteractive">
             {`
               if (typeof window !== 'undefined' && window.gtag) {
                 // Do not auto send page_view until consent is granted
