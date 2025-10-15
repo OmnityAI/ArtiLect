@@ -28,7 +28,7 @@ const AnimatedCounter = ({ target, duration = 2000 }: { target: number; duration
 
   return (
     <span className="font-mono text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-      {count.toLocaleString()}
+      {count.toLocaleString('de-DE')}
     </span>
   );
 };
@@ -96,7 +96,7 @@ export const SocialProof = () => {
           <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/70 transition-all duration-300 group">
             <div className="text-center">
               <div className="mb-3">
-                {isVisible && <AnimatedCounter target={12847} />}
+                {isVisible && <AnimatedCounter target={2888} />}
                 <span className="text-muted-foreground text-lg">+</span>
               </div>
               <p className="text-sm text-muted-foreground mb-2">Active Subscribers</p>

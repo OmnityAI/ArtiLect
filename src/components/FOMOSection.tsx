@@ -5,7 +5,8 @@ import { useState, useEffect } from "react";
 
 export const FOMOSection = () => {
   const [activeTab, setActiveTab] = useState<'missed' | 'coming'>('missed');
-  const [subscriberCount] = useState(12847);
+  // Updated follower/subscriber baseline count
+  const [subscriberCount] = useState(2888);
 
   const missedContent = [
     {
@@ -64,7 +65,7 @@ export const FOMOSection = () => {
             <TrendingUp className="w-5 h-5 text-accent" />
             <div className="text-left">
               <div className="text-2xl font-bold font-heading">
-                {subscriberCount.toLocaleString()}
+                {new Intl.NumberFormat('de-DE').format(subscriberCount)}
               </div>
               <p className="text-sm text-muted-foreground">professionals stay ahead</p>
             </div>
@@ -198,7 +199,7 @@ export const FOMOSection = () => {
           </p>
 
           <button className="bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary/25">
-            Join {subscriberCount.toLocaleString()}+ Professionals
+            Join +2000 Professionals
           </button>
         </div>
       </div>
