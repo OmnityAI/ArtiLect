@@ -204,18 +204,20 @@ export const ExitIntentPopup = ({ onClose, onSignup }: ExitIntentPopupProps) => 
               </form>
 
               {/* Trust indicators */}
-              <div className="grid grid-cols-3 items-center justify-items-center gap-3 mt-6 pt-6 border-t border-border">
-                <div className="flex items-center gap-1 text-[11px] leading-none text-muted-foreground whitespace-nowrap">
-                  <Shield className="h-3 w-3" aria-hidden="true" />
-                  <span>No spam</span>
-                </div>
-                <div className="flex items-center gap-1 text-[11px] leading-none text-muted-foreground whitespace-nowrap">
-                  <Users className="h-3 w-3" aria-hidden="true" />
-                  <span>+2000 subscribers</span>
-                </div>
-                <div className="flex items-center gap-1 text-[11px] leading-none text-muted-foreground whitespace-nowrap">
-                  <BellOff className="h-3 w-3" aria-hidden="true" />
-                  <span>Unsubscribe anytime</span>
+              <div className="mt-6 pt-6 border-t border-border">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-[11px] leading-none text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <Shield className="h-3 w-3" aria-hidden="true" />
+                    <span>No spam</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Users className="h-3 w-3" aria-hidden="true" />
+                    <span>+2000 subscribers</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <BellOff className="h-3 w-3" aria-hidden="true" />
+                    <span>Unsubscribe anytime</span>
+                  </div>
                 </div>
               </div>
             </>
