@@ -43,8 +43,8 @@ export default function FeaturedTopics() {
   };
 
   return (
-    <section className="w-full">
-  <div className="container max-w-6xl mx-auto px-6 md:px-8 lg:px-[120px]">
+    <section className="py-16 bg-background">
+  <div className="container mx-auto px-6 md:px-8 lg:px-[120px]">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
             Explore Featured Topics
@@ -63,7 +63,7 @@ export default function FeaturedTopics() {
                 key={topic.id}
                 href={`/tags/${topic.slug}`}
                 onClick={() => handleTopicClick(topic.title)}
-                className="group"
+                className="group block h-full"
               >
                 <Card className="h-full bg-card border-border hover:ring-2 hover:ring-ring/50 transition-all duration-200 hover:shadow-lg hover:shadow-primary/5 relative overflow-hidden">
                   {/* Subtle left accent stripe */}
