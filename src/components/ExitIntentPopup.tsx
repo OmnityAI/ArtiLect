@@ -148,7 +148,7 @@ export const ExitIntentPopup = ({ onClose, onSignup }: ExitIntentPopupProps) => 
                   Wait! Before you go...
                 </h2>
                 <p className="text-muted-foreground">
-                  Get our exclusive <strong className="text-foreground">AI Trends Report</strong> that 12,000+ professionals rely on for weekly insights.
+                  Get our exclusive <strong className="text-foreground">AI Trends Report</strong> that +2000 professionals rely on for weekly insights.
                 </p>
               </div>
 
@@ -211,7 +211,7 @@ export const ExitIntentPopup = ({ onClose, onSignup }: ExitIntentPopupProps) => 
                 </div>
                 <div className="flex items-center gap-1 text-[11px] leading-none text-muted-foreground whitespace-nowrap">
                   <Users className="h-3 w-3" aria-hidden="true" />
-                  <span>12,000+ subscribers</span>
+                  <span>+2000 subscribers</span>
                 </div>
                 <div className="flex items-center gap-1 text-[11px] leading-none text-muted-foreground whitespace-nowrap">
                   <BellOff className="h-3 w-3" aria-hidden="true" />

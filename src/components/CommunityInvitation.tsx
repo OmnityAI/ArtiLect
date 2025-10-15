@@ -148,7 +148,7 @@ export default function CommunityInvitation() {
             </h3>
             
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              Join 12,000+ AI professionals who get their weekly dose of intelligence every Tuesday. 
+              Join +2000 AI professionals who get their weekly dose of intelligence every Tuesday. 
               Free, curated, and always valuable.
             </p>
 
