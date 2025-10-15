@@ -92,7 +92,7 @@ export default function Header() {
   };
 
   return (
-    <header className={`sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50 ${isMenuOpen ? 'pointer-events-none' : ''}`}>
+    <header className={`sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50`}>
   <div className="container mx-auto px-6 md:px-8 lg:px-[120px]">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -223,9 +223,9 @@ export default function Header() {
             <div
               role="dialog"
               aria-modal="true"
-              className="fixed inset-0 z-[70] bg-card backdrop-blur animate-in fade-in slide-in-from-top-1 duration-200"
+              className="fixed inset-0 z-[70] bg-background/95 supports-[backdrop-filter]:bg-background/80 backdrop-blur-sm animate-in fade-in slide-in-from-top-1 duration-200"
             >
-              <div className="container mx-auto px-6 md:px-8 lg:px-[120px] py-6 relative h-full overflow-y-auto">
+              <div className="container mx-auto px-6 md:px-8 lg:px-[120px] py-6 relative h-full overflow-y-auto overscroll-contain">
                 <button
                   className="absolute right-6 top-6 p-2 rounded-md hover:bg-muted"
                   onClick={() => setIsMenuOpen(false)}
