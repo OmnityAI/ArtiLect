@@ -8,7 +8,8 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Brain, Star, Mail } from "lucide-react";
 import { toast } from "sonner";
-import Marquee from "react-fast-marquee";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function CommunityInvitation() {
   const [isSignupOpen, setIsSignupOpen] = useState(false);
@@ -105,12 +106,16 @@ export default function CommunityInvitation() {
           </p>
         </div>
 
-        {/* Testimonials - Horizontal Auto-Scrolling */}
-        <div className="mb-16">
-          <Marquee pauseOnHover={true} speed={32} gradient={false} aria-label="Testimonials">
+        {/* Testimonials - One-by-one Auto Swiping */}
+        <Carousel
+          className="mb-16"
+          opts={{ align: "start", loop: true }}
+          plugins={[Autoplay({ delay: 3500, stopOnInteraction: true, stopOnMouseEnter: true })]}
+        >
+          <CarouselContent>
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="mx-3">
-                <Card className="bg-card/50 border-border/50 hover:bg-card/70 transition-all duration-300 min-w-[280px] sm:min-w-[360px] md:min-w-[420px]">
+              <CarouselItem key={index} className="basis-full">
+                <Card className="bg-card/50 border-border/50 hover:bg-card/70 transition-all duration-300 max-w-2xl mx-auto">
                   <CardContent className="p-8">
                     <div className="flex items-center gap-1 mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
@@ -132,10 +137,10 @@ export default function CommunityInvitation() {
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </CarouselItem>
             ))}
-          </Marquee>
-        </div>
+          </CarouselContent>
+        </Carousel>
 
         {/* Newsletter CTA */}
         <div className="text-center">
