@@ -26,13 +26,41 @@ export const ExitIntentPopup = ({ onClose, onSignup }: ExitIntentPopupProps) => 
     }
   }, []);
 
-  // Exit intent detection
+  // Exit intent detection (desktop)
+  const isDesktopPointer = () => {
+    if (typeof window === 'undefined' || typeof window.matchMedia === 'undefined') return true;
+    // Pointer fine generally indicates mouse/trackpad
+    return window.matchMedia('(pointer: fine)').matches;
+  };
+
+  const triggerPopup = () => {
+    setIsVisible(true);
+    setHasTriggered(true);
+    try { sessionStorage.setItem('exitIntentShown', 'true'); } catch {}
+  };
+
   const handleMouseLeave = useCallback((e: MouseEvent) => {
+    if (!isDesktopPointer()) return;
     // Only trigger if mouse leaves from the top of the page
     if (e.clientY <= 0 && !hasTriggered && !isVisible) {
-      setIsVisible(true);
-      setHasTriggered(true);
-      sessionStorage.setItem('exitIntentShown', 'true');
+      triggerPopup();
+    }
+  }, [hasTriggered, isVisible]);
+
+  // Some browsers fire mouseout instead of mouseleave on document
+  const handleMouseOut = useCallback((e: MouseEvent) => {
+    if (!isDesktopPointer()) return;
+    const toElement = (e as any).toElement || (e as any).relatedTarget;
+    if (!toElement && e.clientY <= 0 && !hasTriggered && !isVisible) {
+      triggerPopup();
+    }
+  }, [hasTriggered, isVisible]);
+
+  // Also detect user hovering very close to top edge (intending to close/tab area)
+  const handleMouseMoveTopEdge = useCallback((e: MouseEvent) => {
+    if (!isDesktopPointer()) return;
+    if (e.clientY <= 6 && !hasTriggered && !isVisible) {
+      triggerPopup();
     }
   }, [hasTriggered, isVisible]);
 
@@ -51,19 +79,23 @@ export const ExitIntentPopup = ({ onClose, onSignup }: ExitIntentPopupProps) => 
 
   useEffect(() => {
     if (!hasTriggered) {
-      // Add delay to avoid false positives
+      // Add delay to avoid false positives on initial page load
       const timer = setTimeout(() => {
         document.addEventListener('mouseleave', handleMouseLeave);
+        document.addEventListener('mouseout', handleMouseOut);
+        document.addEventListener('mousemove', handleMouseMoveTopEdge);
         document.addEventListener('touchmove', handleTouchMove);
-      }, 3000);
+      }, 1500);
 
       return () => {
         clearTimeout(timer);
         document.removeEventListener('mouseleave', handleMouseLeave);
+        document.removeEventListener('mouseout', handleMouseOut);
+        document.removeEventListener('mousemove', handleMouseMoveTopEdge);
         document.removeEventListener('touchmove', handleTouchMove);
       };
     }
-  }, [handleMouseLeave, handleTouchMove, hasTriggered]);
+  }, [handleMouseLeave, handleMouseOut, handleMouseMoveTopEdge, handleTouchMove, hasTriggered]);
 
   const handleClose = () => {
     setIsVisible(false);
