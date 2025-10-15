@@ -92,7 +92,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
+    <header className={`sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50 ${isMenuOpen ? 'pointer-events-none' : ''}`}>
   <div className="container mx-auto px-6 md:px-8 lg:px-[120px]">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -198,7 +198,7 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden p-2"
+            className="md:hidden p-2 pointer-events-auto"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -213,17 +213,17 @@ export default function Header() {
         {/* Mobile Menu Overlay */}
         {isMenuOpen && (
           <div className="md:hidden">
-            {/* Backdrop under the overlay (below header) */}
+            {/* Backdrop covering entire viewport */}
             <div
-              className="fixed inset-0 top-20 z-50 bg-black/40"
+              className="fixed inset-0 z-[60] bg-black/40"
               onClick={() => setIsMenuOpen(false)}
               aria-hidden="true"
             />
-            {/* Panel */}
+            {/* Full-screen Panel */}
             <div
               role="dialog"
               aria-modal="true"
-              className="fixed inset-x-0 top-20 bottom-0 z-[60] bg-card/95 backdrop-blur border-t border-border/50"
+              className="fixed inset-0 z-[70] bg-card backdrop-blur animate-in fade-in slide-in-from-top-1 duration-200"
             >
               <div className="container mx-auto px-6 md:px-8 lg:px-[120px] py-6 relative h-full overflow-y-auto">
                 <button

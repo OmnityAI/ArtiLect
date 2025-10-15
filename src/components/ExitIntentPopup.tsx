@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { X, Mail, ArrowRight, Shield, Users, FileText } from 'lucide-react';
+import { X, Mail, ArrowRight, Shield, Users, FileText, BellOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -204,17 +204,18 @@ export const ExitIntentPopup = ({ onClose, onSignup }: ExitIntentPopupProps) => 
               </form>
 
               {/* Trust indicators */}
-              <div className="flex items-center justify-center space-x-6 mt-6 pt-6 border-t border-border">
-                <div className="flex items-center text-xs text-muted-foreground">
-                  <Shield className="h-3 w-3 mr-1" />
-                  No spam
+              <div className="grid grid-cols-3 items-center justify-items-center gap-3 mt-6 pt-6 border-t border-border">
+                <div className="flex items-center gap-1 text-[11px] leading-none text-muted-foreground whitespace-nowrap">
+                  <Shield className="h-3 w-3" aria-hidden="true" />
+                  <span>No spam</span>
                 </div>
-                <div className="flex items-center text-xs text-muted-foreground">
-                  <Users className="h-3 w-3 mr-1" />
-                  12,000+ subscribers
+                <div className="flex items-center gap-1 text-[11px] leading-none text-muted-foreground whitespace-nowrap">
+                  <Users className="h-3 w-3" aria-hidden="true" />
+                  <span>12,000+ subscribers</span>
                 </div>
-                <div className="text-xs text-muted-foreground">
-                  Unsubscribe anytime
+                <div className="flex items-center gap-1 text-[11px] leading-none text-muted-foreground whitespace-nowrap">
+                  <BellOff className="h-3 w-3" aria-hidden="true" />
+                  <span>Unsubscribe anytime</span>
                 </div>
               </div>
             </>
