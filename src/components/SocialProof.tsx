@@ -121,7 +121,7 @@ export const SocialProof = () => {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">Open Rate</span>
-                <span className="font-bold text-accent">98%</span>
+                <span className="font-bold text-accent">88%</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">Countries</span>

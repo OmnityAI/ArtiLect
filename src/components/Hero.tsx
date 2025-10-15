@@ -279,7 +279,7 @@ export default function Hero() {
 
                 {/* Newsletter Stats */}
                 <div className="flex items-center gap-6 pt-4 border-t border-border/50">
-                  <span className="text-xs text-muted-foreground">12k+ subscribers</span>
+                  <span className="text-xs text-muted-foreground">+2000 subscribers</span>
                   <span className="text-xs text-muted-foreground">5 min read</span>
                   <span className="text-xs text-accent">Weekly</span>
                 </div>
